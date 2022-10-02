@@ -100,22 +100,21 @@ def clean_data () :
 
     return df_sources_custom
 
+df_custom = get_data ()
 
-df_custom = clean_data()
+#df_custom = clean_data()
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-
 st.write('You selected:', sector_option)
+st.title("Welcome to Streamlit!")
 
-
-#st.title("Welcome to Streamlit!")
 
 
 fig = px.scatter_3d(
-        df_custom [ df_custom.Sector == sector_option ],
-        #x="Profit Margin",
-        #y="Industry",
+        #df_custom [ df_custom.Sector == sector_option ],
+        x="Profit Margin",
+        y="Industry",
         z = 'Profit Margin',
-        y = 'Market Cap' ,
+        #y = 'Market Cap' ,
         x='Industry',
         width=1000,
         height=800,
