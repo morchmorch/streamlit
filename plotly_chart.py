@@ -33,3 +33,5 @@ with col3:
 
 st.write("Pie chart in Streamlit")
 st.plotly_chart(fig)
+
+st.dataframe(df_custom)
