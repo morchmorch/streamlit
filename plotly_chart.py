@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
-sector_option =  st.selectbox ( df_custom.Sector.unique().tolist() )
+sector_option =  st.selectbox ( 'Which skill do you most want to learn?', df_custom.Sector.unique().tolist() )
 
 st.write('You selected:', sector_option)
 
