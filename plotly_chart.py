@@ -20,7 +20,6 @@ fig = px.scatter_3d(
         z = 'Sector',
         y = 'Market Cap' ,
         x='Industry',
-        color = 'Industry',
         width=1000,
         height=800,
         hover_name="Company",
