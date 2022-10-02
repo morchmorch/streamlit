@@ -100,9 +100,11 @@ def clean_data () :
 
     return df_sources_custom
 
-df_custom = get_data ()
+#df_custom = get_data ()
 
 #df_custom = clean_data()
+
+df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.write('You selected:', sector_option)
 st.title("Welcome to Streamlit!")
@@ -110,7 +112,7 @@ st.title("Welcome to Streamlit!")
 
 
 fig = px.scatter_3d(
-        #df_custom [ df_custom.Sector == sector_option ],
+        df_custom [ df_custom.Sector == sector_option ],
         x="Profit Margin",
         y="Industry",
         z = 'Profit Margin',
