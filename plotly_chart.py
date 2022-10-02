@@ -130,6 +130,24 @@ fig = px.scatter_3d(
 
 )
 #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
+fig = px.scatter_3d(
+        df_custom [ df_custom.Sector == sector_option ],
+        #x="Profit Margin",
+        #y="Industry",
+        z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
+        y = 'Daily Slope(5,Daily ADX Line(14))' ,
+        x='Industry',
+        width=1000,
+        height=800,
+        #hover_name="Company",
+        hover_data= ['Company','Market Cap','Profit Margin'],
+        #size = 'Market Cap',
+        color = 'Industry',
+        color_continuous_scale=px.colors.sequential.RdBu_r,
+        #template="plotly_white"
+
+
+)
 
 st.write("Pie chart in Streamlit")
 st.plotly_chart(fig)
