@@ -4,7 +4,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
-df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
+
+def get_data () :
+    df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
+    return df_custom
+
+df_custom = get_data()
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 st.write('You selected:', sector_option)
