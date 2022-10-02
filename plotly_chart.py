@@ -164,6 +164,8 @@ df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() ) + 'all sectors'
 
+st.title('Sector')
+
 draw_f_fig(sector_option)
 
 #st.dataframe(df_custom)
