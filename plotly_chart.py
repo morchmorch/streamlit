@@ -100,6 +100,57 @@ def clean_data () :
 
     return df_sources_custom
 
+
+def draw_fig (sector_optionn) :
+
+    fig = px.scatter_3d(
+            df_custom [ df_custom.Sector == sector_option ],
+            #x="Profit Margin",
+            #y="Industry",
+            z = 'Profit Margin',
+            y = 'Sales growth quarter over quarter' ,
+            x='Industry',
+            width=1000,
+            height=800,
+            #hover_name="Company",
+            hover_data= ['Company','Market Cap','Profit Margin'],
+            #size = 'Market Cap',
+            color = 'Industry',
+            color_continuous_scale=px.colors.sequential.RdBu_r,
+            #template="plotly_white"
+
+
+    )
+    #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
+
+    st.plotly_chart(fig)
+
+    df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
+
+    fig = px.scatter_3d(
+            df_custom [ df_custom.Sector == sector_option ],
+            #x="Profit Margin",
+            #y="Industry",
+            z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
+            y = 'Daily Slope(5,Daily ADX Line(14))' ,
+            x='Industry',
+            width=1000,
+            height=800,
+            #hover_name="Company",
+            hover_data= ['Company','Market Cap','Profit Margin'],
+            #size = 'Market Cap',
+            color = 'Industry',
+            color_continuous_scale=px.colors.sequential.RdBu_r,
+            #template="plotly_white"
+
+
+    )
+
+    st.plotly_chart(fig)
+
+
+## main
+
 #df_custom = get_data ()
 
 #df_custom = clean_data()
@@ -108,56 +159,9 @@ df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockchar
 
 
 
-sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-st.write('You selected:', sector_option)
-st.title("Welcome to Streamlit!")
+sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() ) + 'all sectors'
 
-
-
-fig = px.scatter_3d(
-        df_custom [ df_custom.Sector == sector_option ],
-        #x="Profit Margin",
-        #y="Industry",
-        z = 'Profit Margin',
-        y = 'Sales growth quarter over quarter' ,
-        x='Industry',
-        width=1000,
-        height=800,
-        #hover_name="Company",
-        hover_data= ['Company','Market Cap','Profit Margin'],
-        #size = 'Market Cap',
-        color = 'Industry',
-        color_continuous_scale=px.colors.sequential.RdBu_r,
-        #template="plotly_white"
-
-
-)
-#st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
-
-st.plotly_chart(fig)
-
-df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
-
-fig = px.scatter_3d(
-        df_custom [ df_custom.Sector == sector_option ],
-        #x="Profit Margin",
-        #y="Industry",
-        z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
-        y = 'Daily Slope(5,Daily ADX Line(14))' ,
-        x='Industry',
-        width=1000,
-        height=800,
-        #hover_name="Company",
-        hover_data= ['Company','Market Cap','Profit Margin'],
-        #size = 'Market Cap',
-        color = 'Industry',
-        color_continuous_scale=px.colors.sequential.RdBu_r,
-        #template="plotly_white"
-
-
-)
-
-st.write("Pie chart in Streamlit")
-st.plotly_chart(fig)
+draw_fig(sector_option)
 
 st.dataframe(df_custom)
+
