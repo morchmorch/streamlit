@@ -131,7 +131,7 @@ fig = px.scatter_3d(
 )
 #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
 
-fig.show()
+st.plotly_chart(fig)
 
 fig = px.scatter_3d(
         df_custom [ df_custom.Sector == sector_option ],
