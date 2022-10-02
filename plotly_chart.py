@@ -4,6 +4,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
+skill_option = st.selectbox(
+  'Which skill do you most want to learn?',
+  ('Java', 'Python', 'C', 'PHP', 'C++', 'Javascript', 'HTML', 'Other'))
+st.write('You selected:', skill_option)
+
+
 st.title("Welcome to Streamlit!")
 
 df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
