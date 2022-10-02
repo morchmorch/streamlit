@@ -24,10 +24,7 @@ fig = px.scatter_3d(
 
 
 )
-st.sidebar.multiselect(
-    "Please select the sector:",
-    options=df_custom["Sector"].unique(),
-    )
+#st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
 
 col1, col2, col3 = st.columns([1,1,1])
 
