@@ -20,6 +20,8 @@ fig = px.scatter_3d(
         z = 'Sector',
         y = 'Market Cap' ,
         x='Industry',
+        color = 'Industry'
+
 
 )
 st.sidebar.multiselect(
