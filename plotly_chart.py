@@ -17,6 +17,10 @@ fig = px.scatter_3d(
         x='Industry',
 
 )
+st.sidebar.multiselect(
+    "Please select the month:",
+    options=df_custom["Sector"].unique(),
+    )
 
 st.write("Pie chart in Streamlit")
 st.plotly_chart(fig)
