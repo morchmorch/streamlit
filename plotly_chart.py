@@ -113,11 +113,11 @@ st.title("Welcome to Streamlit!")
 
 fig = px.scatter_3d(
         df_custom [ df_custom.Sector == sector_option ],
-        x="Profit Margin",
-        y="Industry",
+        #x="Profit Margin",
+        #y="Industry",
         z = 'Profit Margin',
-        #y = 'Market Cap' ,
-        #x='Industry',
+        y = 'Sales growth quarter over quarter' ,
+        x='Industry',
         width=1000,
         height=800,
         #hover_name="Company",
