@@ -130,7 +130,8 @@ def draw_t_fig (df_custom, sector_optionn) :
     df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
     fig = px.scatter_3d(
-            df_custom [ df_custom.Sector == sector_option ],
+            df_custom,
+            #df_custom [ df_custom.Sector == sector_option ],
             #x="Profit Margin",
             #y="Industry",
             z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
