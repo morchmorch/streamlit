@@ -163,5 +163,5 @@ sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolis
 
 draw_fig(sector_option)
 
-st.dataframe(df_custom)
+#st.dataframe(df_custom)
 
