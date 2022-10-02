@@ -27,7 +27,7 @@ fig = px.scatter_3d(
         #size = 'Market Cap',
         color = 'Industry',
         color_continuous_scale=px.colors.sequential.RdBu_r,
-        template="plotly_white",
+        template="plotly_white"
 
 
 )
