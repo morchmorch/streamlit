@@ -26,7 +26,7 @@ fig = px.scatter_3d(
         hover_data= ['Company','Market Cap','Profit Margin'],
         #size = 'Market Cap',
         color = 'Industry',
-        #color_continuous_scale=px.colors.sequential.RdBu_r,
+        color_continuous_scale=px.colors.sequential.RdBu_r,
         #template="plotly_white"
 
 
