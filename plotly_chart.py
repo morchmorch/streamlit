@@ -159,7 +159,7 @@ def draw_f_fig (sector_optionn) :
 df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
 
 
-df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
+df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() ) + 'all sectors'
