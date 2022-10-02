@@ -72,6 +72,22 @@ def clean_data () :
 
     df_custom ['Symbol']=df_custom['Ticker']
 
+    df_custom ['Profit Margin'] = df_custom ['Profit Margin'].fillna(0)
+    df_custom ['Market Cap'] = df_custom ['Market Cap'].fillna(0)
+    df_custom ['Sales growth quarter over quarter'] = df_custom ['Sales growth quarter over quarter'].fillna(0)
+
+
+
+    df_custom ['Profit Margin'] = df_custom ['Profit Margin'].astype(str).str.split('%').str.get(0)
+
+    df_custom ['Profit Margin'] = df_custom ['Profit Margin'].astype(float).astype(int)
+
+
+    df_custom ['Sales growth quarter over quarter'] = df_custom ['Sales growth quarter over quarter'].astype(str).str.split('%').str.get(0)
+
+    df_custom ['Sales growth quarter over quarter'] = df_custom ['Sales growth quarter over quarter'].astype(float).astype(int)
+
+
     rsiandslopedf['Ticker'] = rsiandslopedf ['Symbol']
 
     df_sources_custom = rsiandslopedf.merge( df_custom[['Ticker','Symbol','Company',  'Market Cap','Performance (Week)', 'Performance (Month)', '52-Week High', '52-Week Low','20-Day Simple Moving Average', '50-Day Simple Moving Average', '200-Day Simple Moving Average', 'Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume','Earnings Date' ,'Sales growth quarter over quarter', 'Profit Margin','EPS growth next year' ]], on = 'Ticker')
