@@ -164,9 +164,8 @@ df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
-st.title('Sector')
 
-fig = draw_f_fig(df_custom, sector_option)
+draw_f_fig(df_custom, sector_option)
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
