@@ -9,7 +9,7 @@ st.title("Welcome to Streamlit!")
 df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
 
 fig = px.scatter_3d(
-        df_ec,
+        df_custom,
         #x="Profit Margin",
         #y="Industry",
         z = 'Sector',
