@@ -126,7 +126,7 @@ def draw_f_fig (df_custom, sector_optionn) :
     st.plotly_chart(fig)
 
 
-def draw_f_fig (sector_optionn) :
+def draw_t_fig (sector_optionn) :
 
     fig = px.scatter_3d(
             df_custom [ df_custom.Sector == sector_option ],
