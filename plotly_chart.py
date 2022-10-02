@@ -14,7 +14,7 @@ st.title("Welcome to Streamlit!")
 
 
 fig = px.scatter_3d(
-        df_custom,
+        df_custom [ df_custom.Sector == sector_option ],
         #x="Profit Margin",
         #y="Industry",
         z = 'Sector',
