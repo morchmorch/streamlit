@@ -1,20 +1,20 @@
 #plotly_chart.py
 import streamlit as st
+import plotly.express as px
 import plotly.graph_objects as go
-
 
 st.title("Welcome to Streamlit!")
 
-fig = go.Figure(
-    data=[go.Pie(
-        labels=['A', 'B', 'C'],
-        values=[30, 20, 50]
-    )]
-)
-fig = fig.update_traces(
-    hoverinfo='label+percent',
-    textinfo='value',
-    textfont_size=15
+df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
+
+fig = px.scatter_3d(
+        df_ec,
+        #x="Profit Margin",
+        #y="Industry",
+        z = 'Sector',
+        y = 'Market Cap' ,
+        x='Industry',
+
 )
 
 st.write("Pie chart in Streamlit")
