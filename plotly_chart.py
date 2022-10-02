@@ -101,7 +101,7 @@ def clean_data () :
     return df_sources_custom
 
 
-def draw_fig (sector_optionn) :
+def draw_f_fig (sector_optionn) :
 
     fig = px.scatter_3d(
             df_custom [ df_custom.Sector == sector_option ],
@@ -125,7 +125,8 @@ def draw_fig (sector_optionn) :
 
     st.plotly_chart(fig)
 
-    df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
+
+def draw_f_fig (sector_optionn) :
 
     fig = px.scatter_3d(
             df_custom [ df_custom.Sector == sector_option ],
@@ -158,10 +159,12 @@ def draw_fig (sector_optionn) :
 df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
 
 
+df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
+
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() ) + 'all sectors'
 
-draw_fig(sector_option)
+draw_f_fig(sector_option)
 
 #st.dataframe(df_custom)
 
