@@ -101,7 +101,7 @@ def clean_data () :
     return df_sources_custom
 
 
-def draw_f_fig (sector_optionn) :
+def draw_f_fig (df_custom, sector_optionn) :
 
     fig = px.scatter_3d(
             df_custom [ df_custom.Sector == sector_option ],
@@ -147,7 +147,7 @@ def draw_f_fig (sector_optionn) :
 
     )
 
-    st.plotly_chart(fig)
+
 
 
 ## main
@@ -166,7 +166,7 @@ sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolis
 
 st.title('Sector')
 
-draw_f_fig(sector_option)
-
+fig = draw_f_fig(df_custom, sector_option)
+#st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
