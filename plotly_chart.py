@@ -105,6 +105,9 @@ def clean_data () :
 #df_custom = clean_data()
 
 df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
+
+
+
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.write('You selected:', sector_option)
 st.title("Welcome to Streamlit!")
@@ -132,6 +135,8 @@ fig = px.scatter_3d(
 #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
 
 st.plotly_chart(fig)
+
+df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
 fig = px.scatter_3d(
         df_custom [ df_custom.Sector == sector_option ],
