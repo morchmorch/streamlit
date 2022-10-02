@@ -10,7 +10,7 @@ sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolis
 st.write('You selected:', sector_option)
 
 
-st.title("Welcome to Streamlit!")
+#st.title("Welcome to Streamlit!")
 
 
 fig = px.scatter_3d(
