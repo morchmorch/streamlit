@@ -162,7 +162,7 @@ df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockchar
 df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
 
 
-sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() ) + 'all sectors'
+sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 st.title('Sector')
 
