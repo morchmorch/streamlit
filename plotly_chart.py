@@ -128,6 +128,8 @@ def draw_f_fig (df_custom, sector_optionn) :
 
 def draw_t_fig (df_custom, sector_optionn) :
     df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 50 ]
+    df_custom = df_custom[ df_custom ['Daily Slope(5,Daily RSI(14,Daily Close))'] > 50 ]
+    df_custom = df_custom[ df_custom [ 'Daily Slope(5,Daily ADX Line(14))' ] > 50 ]
 
     fig = px.scatter_3d(
             df_custom,
