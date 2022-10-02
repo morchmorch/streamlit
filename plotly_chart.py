@@ -9,7 +9,83 @@ def get_data () :
     df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
     return df_custom
 
-df_custom = get_data()
+def clean_data () :
+    df_arr = []
+
+    slist = ['xlf','xle','xlk','xlp','xlre','xlk','xlc','xlv','xlb','xly']
+    for sstr in slist :
+
+        try :
+
+            surl = 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/' + sstr + '-industries-rsi-stockcharts.csv'
+            
+            print (surl)
+            fdf = pd.read_csv (surl)
+            df_arr.append(fdf)
+            #fig = px.strip(fdf.sort_values (by='Daily RSI(14,Daily Close)',ascending=False), x='Daily RSI(14,Daily Close)',y='Industry',color=fdf.Sector,hover_name="Name",hover_data=['Symbol'])
+            #fig.show()
+        except Exception as e: print(e)
+
+
+    adf = pd.concat(df_arr)
+
+    df_arr = []
+    slist = ['xlf','xle','xlk','xlp','xlre','xlk','xlc','xlv','xlb','xly']
+    for sstr in slist :
+
+        try :
+            surl = 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/' + sstr + '-industries-rsii-slope-stockcharts.csv'
+            
+            print (surl)
+            fdf = pd.read_csv (surl)
+            df_arr.append(fdf)
+            #fig = px.strip(fdf.sort_values (by='Daily RSI(14,Daily Close)',ascending=False), x='Daily RSI(14,Daily Close)',y='Industry',color=fdf.Sector,hover_name="Name",hover_data=['Symbol'])
+            #fig.show()
+        except Exception as e: print(e)
+
+    rsislopedf = pd.concat(df_arr)
+
+
+    df_arr = []
+    slist = ['xlf','xle','xlk','xlp','xlre','xlk','xlc','xlv','xlb','xly']
+    for sstr in slist :
+        try :
+
+            surl = 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/' + sstr + '-industries-adx-slope-stockcharts.csv' 
+            
+            print (surl)
+            fdf = pd.read_csv (surl)
+            df_arr.append(fdf)
+            
+            #fig = px.strip(fdf.sort_values (by='Daily RSI(14,Daily Close)',ascending=False), x='Daily RSI(14,Daily Close)',y='Industry',color=fdf.Sector,hover_name="Name",hover_data=['Symbol'])
+            #fig.show()
+        except Exception as e: print(e)
+
+    adxslopedf = pd.concat(df_arr)
+    
+    rsiandslopetdf = pd.merge(adf,rsislopedf[['Daily Slope(5,Daily RSI(14,Daily Close))','Symbol']], on = ['Symbol'])
+
+    rsiandslopedf = pd.merge(rsiandslopetdf,adxslopedf[['Daily Slope(5,Daily ADX Line(14))','Symbol']], on = ['Symbol'])
+
+
+    df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
+
+    df_custom ['Symbol']=df_custom['Ticker']
+
+    rsiandslopedf['Ticker'] = rsiandslopedf ['Symbol']
+
+    df_sources_custom = rsiandslopedf.merge( df_custom[['Ticker','Symbol','Company',  'Market Cap','Performance (Week)', 'Performance (Month)', '52-Week High', '52-Week Low','20-Day Simple Moving Average', '50-Day Simple Moving Average', '200-Day Simple Moving Average', 'Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume','Earnings Date' ,'Sales growth quarter over quarter', 'Profit Margin','EPS growth next year' ]], on = 'Ticker')
+
+
+    df_sources_custom ['Market Cap'] = df_sources_custom ['Market Cap'].fillna(0)
+
+
+    df_sources_custom ['Profit Margin'] = df_sources_custom ['Profit Margin'].fillna(0)
+
+    return df_sources_custom
+
+
+df_custom = clean_data()
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 st.write('You selected:', sector_option)
