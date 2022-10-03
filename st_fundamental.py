@@ -166,7 +166,7 @@ def draw_t_fig (df_custom, sector_optionn) :
 
 kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
 
-kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (NTM)' ]
+kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (NTM)' ]
 
 kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
@@ -174,9 +174,9 @@ kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 10 ]
 
 kdf = kdf [ kdf ['Net Income Margin % (LTM)'] < 100 ]
 
-kdf = kdf [ kdf [ 'Total Revenues/CAGR (1Y FY)' ] > 10 ]
+kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
-kdf = kdf [ kdf [ 'Total Revenues/CAGR (1Y FY)' ] < 1000 ]
+kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 df_custom = kdf.copy()
 
