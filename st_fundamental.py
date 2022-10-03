@@ -170,6 +170,8 @@ kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sale
 
 kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
+kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 5 ]
+
 df_custom = kdf.copy()
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
