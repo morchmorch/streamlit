@@ -170,7 +170,7 @@ kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sale
 
 kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
-kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 5 ]
+kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 10 ]
 
 df_custom = kdf.copy()
 
