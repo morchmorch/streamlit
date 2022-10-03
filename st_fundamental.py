@@ -178,6 +178,9 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
 kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
+
+st.radio( "Do you like coding?",  df_custom.Sector.unique().tolist())
+
 df_custom = kdf.copy()
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
