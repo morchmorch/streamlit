@@ -103,8 +103,12 @@ def clean_data () :
 
 def draw_f_fig (df_custom, sector_option) :
 
+    if sector_option is not 'All':
+        df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by =  'Net Income Margin % (FY)')
+    else :
+        df_custom = df_custom. sort_values(by =  'Net Income Margin % (FY)')
     fig = px.scatter_3d(
-            df_custom [ df_custom.Sector == sector_option  ]. sort_values(by =  'Net Income Margin % (FY)') , 
+            df_custom ,
             #x="Profit Margin",
             #y="Industry",
             z = 'Total Revenues/CAGR (2Y FY)',
