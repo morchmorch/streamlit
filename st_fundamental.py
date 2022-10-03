@@ -101,10 +101,10 @@ def clean_data () :
     return df_sources_custom
 
 
-def draw_f_fig (df_custom, sector_optionn) :
+def draw_f_fig (df_custom) :
 
     fig = px.scatter_3d(
-            df_custom [ df_custom.Sector == sector_option ],
+            df_custom, 
             #x="Profit Margin",
             #y="Industry",
             z = 'Total Revenues/CAGR (1Y FY)',
@@ -171,10 +171,10 @@ kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
 df_custom = kdf.copy()
 
-sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+#sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 
-draw_f_fig(df_custom, sector_option)
+draw_f_fig(df_custom)
 
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
