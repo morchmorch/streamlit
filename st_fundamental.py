@@ -108,7 +108,7 @@ def draw_f_fig (df_custom, sector_option) :
     else :
         df_custom = df_custom. sort_values(by =  'Net Income Margin % (FY)')
 
-    camera = dict ( up=dict(x=0, y=0, z=0), center=dict(x=0, y=0, z=0), eye=dict(x=2.5, y=1.5, z=2) )
+    camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=2.5, y=1.5, z=2) )
 
     fig = px.scatter_3d(
             df_custom ,
@@ -117,8 +117,8 @@ def draw_f_fig (df_custom, sector_option) :
             z = 'Total Revenues/CAGR (2Y FY)',
             y =  'Net Income Margin % (FY)' ,
             x='Industry',
-            width=2500,
-            height=1000,
+            width=1000,
+            height=800,
             hover_name="Name",
             #hover_data= ['Company','Market Cap','Profit Margin'],
             hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
