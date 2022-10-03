@@ -144,7 +144,7 @@ def draw_f_fig (df_custom, sector_option) :
             zaxis = dict( nticks=0 ,ticktext =[""] ),
             
             
-            #camera=camera
+            camera=camera
         ),
     )
     #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
