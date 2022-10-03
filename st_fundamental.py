@@ -170,9 +170,9 @@ kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sale
 
 kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
-kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 10 ]
+kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
 
-kdf = kdf [ kdf ['Net Income Margin % (LTM)'] < 100 ]
+kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
 
 kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
