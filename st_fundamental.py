@@ -108,7 +108,7 @@ def draw_f_fig (df_custom, sector_option) :
     else :
         df_custom = df_custom. sort_values(by =  'Net Income Margin % (FY)')
 
-    camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=1.2, y=1.0, z=1), eye=dict(x=3, y=1.5, z=2) )
+    camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=1.2, y=1.0, z=1), eye=dict(x=2.5, y=1.5, z=2) )
 
     fig = px.scatter_3d(
             df_custom ,
@@ -144,7 +144,7 @@ def draw_f_fig (df_custom, sector_option) :
             zaxis = dict( nticks=0 ,ticktext =[""] ),
             
             
-            #camera=camera
+            camera=camera
         ),
     )
     #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
