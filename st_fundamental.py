@@ -107,6 +107,9 @@ def draw_f_fig (df_custom, sector_option) :
         df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by =  'Net Income Margin % (FY)')
     else :
         df_custom = df_custom. sort_values(by =  'Net Income Margin % (FY)')
+
+    camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=1.2, y=1.0, z=0.5), eye=dict(x=3, y=1.5, z=2) )
+
     fig = px.scatter_3d(
             df_custom ,
             #x="Profit Margin",
@@ -121,7 +124,7 @@ def draw_f_fig (df_custom, sector_option) :
             hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
             #size = 'Market Cap',
             labels={ 'Total Revenues/CAGR (2Y FY)' : 'Revenues CAGR (2YFY)' ,'Net Income Margin % (FY)':'NI Margin(%)', "Industry": ""} ,
-
+            camera = camera,
             color = 'Industry',
             color_continuous_scale=px.colors.sequential.RdBu_r,
             #template="plotly_white"
