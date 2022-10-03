@@ -184,7 +184,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 df_custom = kdf.copy()
 
-sector_option = st.radio( "Sector",  df_custom.Sector.unique().tolist())
+sector_option = st.radio( "Sector",  df_custom.Sector.unique().tolist().append ('All'))
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
