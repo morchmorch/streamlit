@@ -112,10 +112,12 @@ def draw_f_fig (df_custom, sector_option) :
             x='Industry',
             width=1000,
             height=800,
-            #hover_name="Company",
+            hover_name="Company",
             #hover_data= ['Company','Market Cap','Profit Margin'],
             hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
             #size = 'Market Cap',
+            labels={ 'Total Revenues/CAGR (2Y FY)' : 'Revenues CAGR (2YFY)' ,'Net Income Margin % (FY)':'NI Margin(%)', "Industry": ""}
+
             color = 'Industry',
             color_continuous_scale=px.colors.sequential.RdBu_r,
             #template="plotly_white"
