@@ -101,10 +101,10 @@ def clean_data () :
     return df_sources_custom
 
 
-def draw_f_fig (df_custom) :
+def draw_f_fig (df_custom, sector_option) :
 
     fig = px.scatter_3d(
-            df_custom, 
+            df_custom [ df_custom.Sector == sector_option  ], 
             #x="Profit Margin",
             #y="Industry",
             z = 'Total Revenues/CAGR (2Y FY)',
@@ -180,7 +180,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 df_custom = kdf.copy()
 
-#sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 
 draw_f_fig(df_custom)
