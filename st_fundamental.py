@@ -124,12 +124,28 @@ def draw_f_fig (df_custom, sector_option) :
             hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
             #size = 'Market Cap',
             labels={ 'Total Revenues/CAGR (2Y FY)' : 'Revenues CAGR (2YFY)' ,'Net Income Margin % (FY)':'NI Margin(%)', "Industry": ""} ,
-            camera = camera,
             color = 'Industry',
             color_continuous_scale=px.colors.sequential.RdBu_r,
             #template="plotly_white"
 
 
+    )
+    fig.update_layout(
+        scene = dict(
+            xaxis = dict (nticks=0,ticktext =["x"], ticks='outside', gridcolor="white", showbackground=True,backgroundcolor="rgb(200, 200, 230)",
+            tickfont=dict(
+                                color='white',
+                                size=1,
+                                family='Old Standard TT, serif',)
+            ) ,
+            xaxis_title='',
+            #xaxis_showspikes=False,
+            yaxis = dict(nticks=0, backgroundcolor="rgb(230, 230,200)" ),
+            zaxis = dict( nticks=0 ,ticktext =[""] ),
+            
+            
+            camera=camera
+        ),
     )
     #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
 
