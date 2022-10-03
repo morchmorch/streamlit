@@ -104,7 +104,7 @@ def clean_data () :
 def draw_f_fig (df_custom, sector_option) :
 
     fig = px.scatter_3d(
-            df_custom [ df_custom.Sector == sector_option  ], 
+            df_custom [ df_custom.Sector == sector_option  ]. sort_values(by =  'Net Income Margin % (FY)') , 
             #x="Profit Margin",
             #y="Industry",
             z = 'Total Revenues/CAGR (2Y FY)',
@@ -114,7 +114,7 @@ def draw_f_fig (df_custom, sector_option) :
             height=800,
             #hover_name="Company",
             #hover_data= ['Company','Market Cap','Profit Margin'],
-            hover_data= ['Name', 'Ticker' ],
+            hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
             #size = 'Market Cap',
             color = 'Industry',
             color_continuous_scale=px.colors.sequential.RdBu_r,
