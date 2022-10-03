@@ -107,8 +107,8 @@ def draw_f_fig (df_custom, sector_optionn) :
             df_custom [ df_custom.Sector == sector_option ],
             #x="Profit Margin",
             #y="Industry",
-            z = 'Profit Margin',
-            y = 'Sales growth quarter over quarter' ,
+            z = 'Total Revenues/CAGR (1Y FY)',
+            y = 'Net Income Margin % (LTM)' ,
             x='Industry',
             width=1000,
             height=800,
@@ -161,16 +161,20 @@ def draw_t_fig (df_custom, sector_optionn) :
 
 #df_custom = clean_data()
 
-df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
+#df_custom = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
 
+kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
 
+kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (NTM)' ]
 
+kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
+
+df_custom = kdf.copy()
 
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 
 draw_f_fig(df_custom, sector_option)
-draw_t_fig(df_custom, sector_option)
 
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
