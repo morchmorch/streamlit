@@ -172,6 +172,10 @@ kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
 kdf = kdf [ kdf ['Net Income Margin % (LTM)'] > 10 ]
 
+kdf = kdf [ kdf ['Net Income Margin % (LTM)'] < 100 ]
+
+kdf = kdf [ kdf [ 'Total Revenues/CAGR (1Y FY)' ] < 1000 ]
+
 df_custom = kdf.copy()
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
