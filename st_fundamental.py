@@ -183,7 +183,7 @@ df_custom = kdf.copy()
 sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 
-draw_f_fig(df_custom)
+draw_f_fig(df_custom, sector_option)
 
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
