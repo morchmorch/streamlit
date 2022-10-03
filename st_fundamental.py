@@ -117,7 +117,7 @@ def draw_f_fig (df_custom, sector_option) :
             z = 'Total Revenues/CAGR (2Y FY)',
             y =  'Net Income Margin % (FY)' ,
             x='Industry',
-            width=1000,
+            width=1500,
             height=800,
             hover_name="Name",
             #hover_data= ['Company','Market Cap','Profit Margin'],
