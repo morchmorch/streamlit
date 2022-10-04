@@ -167,17 +167,37 @@ def draw_t_fig (df_custom, sector_optionn) :
             x='Industry',
             width=1000,
             height=800,
-            #hover_name="Company",
-            hover_data= ['Name', 'Ticker' ],
+            hover_name="Name",
+            #hover_data= ['Company','Market Cap','Profit Margin'],
+            hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
             #size = 'Market Cap',
+            labels={ 'Daily Slope(5,Daily RSI(14,Daily Close))' : 'rsi-slope' ,'Daily Slope(5,Daily ADX Line(14))':'adx-sllope', "Industry": ""} ,
             color = 'Industry',
             color_continuous_scale=px.colors.sequential.RdBu_r,
             #template="plotly_white"
 
 
     )
-    st.plotly_chart(fig)
+    fig.update_layout(
+        scene = dict(
+            xaxis = dict (nticks=0,ticktext =["x"], ticks='outside', gridcolor="white", showbackground=True,backgroundcolor="rgb(200, 200, 230)",
+            tickfont=dict(
+                                color='white',
+                                size=1,
+                                family='Old Standard TT, serif',)
+            ) ,
+            xaxis_title='',
+            #xaxis_showspikes=False,
+            yaxis = dict(nticks=0, backgroundcolor="rgb(230, 230,200)" ),
+            zaxis = dict( nticks=0 ,ticktext =[""] ),
+            
+            
+            camera=camera
+        ),
+    )
+    #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
 
+    st.plotly_chart(fig)
 
 
 
