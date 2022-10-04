@@ -177,7 +177,7 @@ def draw_t_fig (df_custom, sector_optionn) :
             height=800,
             hover_name="Name",
             #hover_data= ['Company','Market Cap','Profit Margin'],
-            hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
+            hover_data= ['Name', 'Ticker', 'Industry' ]
             #size = 'Market Cap',
             labels={ 'Daily Slope(5,Daily RSI(14,Daily Close))' : 'rsi-slope' ,'Daily Slope(5,Daily ADX Line(14))':'adx-sllope', "Industry": ""} ,
             color = 'Industry',
