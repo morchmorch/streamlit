@@ -205,7 +205,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
 
-df_custom = fdf.copy()
+df_custom = tdf.copy()
 l = df_custom.Sector.unique().tolist()
 l.append('All')
 sector_option = st.radio( "Sector",  l  )
