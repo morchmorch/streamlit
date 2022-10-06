@@ -69,7 +69,7 @@ def take_string_give_url (option):
 
 def draw_trend_fig(sector_option):
 
-    df = pd.read_html ( take_string_give_url ( sector_option ) )
+    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ','.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
