@@ -124,7 +124,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
 draw_trend_fig()
-draw_external_fig
+draw_external_fig()
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
