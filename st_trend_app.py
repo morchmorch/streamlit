@@ -142,7 +142,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 
-tab1, tab2, tab3 = st.tabs(["stocks", "etfs"])
+tab1, tab2 = st.tabs(["stocks", "etfs"])
 
 with tab1:
     
