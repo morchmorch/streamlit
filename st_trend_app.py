@@ -70,7 +70,7 @@ def take_string_give_url (option):
 
 def draw_trend_fig():
 
-    col1, col2 = st.columns(2)
+    col1, col2 , col3 = st.columns(3)
 
     with col1:
 
