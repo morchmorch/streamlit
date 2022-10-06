@@ -141,15 +141,26 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
-col1, col2 , col3 = st.columns(3)
 
-with col1:
-    draw_trend_fig()
-with col2:
-    draw_external_fig()
-with col3:
-    draw_technical_fig()
+tab1, tab2, tab3 = st.tabs(["stocks", "etfs"])
 
+with tab1:
+    
+    st.header("Stocks")
+
+    col1, col2 , col3 = st.columns(3)
+
+    with col1:
+        draw_trend_fig()
+    with col2:
+        draw_external_fig()
+    with col3:
+        draw_technical_fig()
+
+
+with tab2:
+   st.header("ETFs")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
 
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
