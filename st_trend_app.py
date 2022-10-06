@@ -70,16 +70,19 @@ def take_string_give_url (option):
 
 def draw_trend_fig():
 
+    col1, col2, col3 = st.columns(3)
 
-    l = ['52wkhigh', '60plusrsi']
-    sector_option = st.radio( "Technical",  l  )
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    with col1:
 
-    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
-    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-    st.caption ( ', '.join (df[cols].symbols.tolist()) )
-    st.write(df[cols])
- 
+        l = ['52wkhigh', '60plusrsi']
+        sector_option = st.radio( "Technical",  l  )
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        st.write(df[cols])
+     
 
 def draw_external_fig():
 
