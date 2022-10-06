@@ -104,8 +104,8 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #l = df_custom.Sector.unique().tolist()
 #l.append('All')
 
-l = ['52wkhigh', '60plusrsi']
-sector_option = st.radio( "Technical",  l  )
+#l = ['52wkhigh', '60plusrsi']
+#sector_option = st.radio( "Technical",  l  )
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
