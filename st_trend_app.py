@@ -67,7 +67,7 @@ def take_string_give_url (option):
     }
     return url_dict[option]
 
-def draw_trend_fig(sector_option):
+def draw_trend_fig():
 
 
     l = ['52wkhigh', '60plusrsi']
@@ -111,7 +111,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 
 
-draw_trend_fig(sector_option)
+draw_trend_fig()
 
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
