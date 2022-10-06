@@ -124,10 +124,10 @@ st.set_page_config(page_title="Investrecipes",layout='wide')
 
 col1, col2 , col3 = st.columns(3)
 
-    with col1:
-        draw_trend_fig()
-    with col 2:
-        draw_external_fig()
+with col1:
+    draw_trend_fig()
+with col 2:
+    draw_external_fig()
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
