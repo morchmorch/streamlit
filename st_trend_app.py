@@ -60,25 +60,20 @@ def draw_f_fig (df_custom, sector_option) :
 
     st.plotly_chart(fig)
 
-
+def take_string_give_url (option):
+    url_dict = {
+        '52wkhigh' :  'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html',
+        '60plusrsi' : 'https://investrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html'
+    }
+    return url_dict[option]
 
 def draw_trend_fig(sector_option):
 
-    if sector_option == '52wkhigh' :
-        df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html') [0]
-        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        st.caption ( ','.join (df[cols].symbols.tolist()) )
-        st.write(df[cols])
-        #st.write ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html')
-
-    if sector_option == '60plusrsi' :
-        df = pd.read_html ('https://investrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html')[0]
-        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        st.caption ( ','.join (df[cols].symbols.tolist()) )
-        st.write(df[cols])
-        #st.write ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html')
-
-
+    df = read_html ( take_string_give_url ( sector_option ) )
+    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+    st.caption ( ','.join (df[cols].symbols.tolist()) )
+    st.write(df[cols])
+ 
 
 
 ## main
