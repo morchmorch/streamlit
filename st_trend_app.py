@@ -147,6 +147,10 @@ with col1:
     draw_trend_fig()
 with col2:
     draw_external_fig()
+with col3:
+    draw_technical_fig()
+
+
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
