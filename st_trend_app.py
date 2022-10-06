@@ -166,7 +166,7 @@ with tab1:
 with tab2:
     st.header("ETFs")
     st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_improving_cmf-stockcharts.csv.html')
+    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_improving_cmf-stockcharts.csv.html')[0]
     st.write(df)
   
 #st.plotly_chart(fig)
