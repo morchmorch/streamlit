@@ -70,19 +70,15 @@ def take_string_give_url (option):
 
 def draw_trend_fig():
 
-    col1, col2 , col3 = st.columns(3)
+    l = ['52wkhigh', '60plusrsi']
+    sector_option = st.radio( "Technical",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-    with col1:
-
-        l = ['52wkhigh', '60plusrsi']
-        sector_option = st.radio( "Technical",  l  )
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
-        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
-        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        st.caption ( ', '.join (df[cols].symbols.tolist()) )
-        st.write(df[cols])
-     
+    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+    st.caption ( ', '.join (df[cols].symbols.tolist()) )
+    st.write(df[cols])
+ 
 
 def draw_external_fig():
 
@@ -126,8 +122,12 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
-draw_trend_fig()
-draw_external_fig()
+col1, col2 , col3 = st.columns(3)
+
+    with col1:
+        draw_trend_fig()
+    with col 2:
+        draw_external_fig()
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
 
