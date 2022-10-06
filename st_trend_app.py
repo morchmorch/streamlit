@@ -102,7 +102,7 @@ def draw_technical_fig():
 
 
     l = ['unusual_volume', 'price_up_and_volume_up']
-    sector_option = st.radio( "External",  l  )
+    sector_option = st.radio( "Technical",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
