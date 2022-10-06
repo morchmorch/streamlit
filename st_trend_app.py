@@ -158,6 +158,7 @@ with tab1:
     with col3:
         draw_technical_fig()
 
+    st.caption ('Correlated')
     df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.write(df[cols])
