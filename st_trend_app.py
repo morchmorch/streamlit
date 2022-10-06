@@ -64,6 +64,7 @@ def take_string_give_url (option):
     url_dict = {
         '52wkhigh' :  'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html',
         '60plusrsi' : 'https://investrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html'
+        'insider_buying': 'https://investrecipes.s3.amazonaws.com/apps/insiderbuying/insider-buying-finviz.csv-agg.html'
     }
     return url_dict[option]
 
@@ -80,7 +81,18 @@ def draw_trend_fig():
     st.write(df[cols])
  
 
+def draw_external_fig():
 
+
+    l = ['insider_buying']
+    sector_option = st.radio( "External",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+    st.caption ( ', '.join (df[cols].symbols.tolist()) )
+    st.write(df[cols])
+ 
 ## main
 
 
