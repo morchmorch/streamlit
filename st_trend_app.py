@@ -183,14 +183,11 @@ with tab2:
     col1, col2 , col3 = st.columns(3)
 
     with col1:
-        draw_trend_fig()
+        draw_etf_fig()
     with col2:
         draw_external_fig()
     with col3:
         draw_technical_fig()
- st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_improving_cmf-stockcharts.csv.html')[0]
-    st.write(df)
   
 #st.plotly_chart(fig)
 #st.dataframe(df_custom)
