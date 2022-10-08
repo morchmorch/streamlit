@@ -68,8 +68,11 @@ def take_string_give_url (option):
         'in_news': 'https://investrecipes.s3.amazonaws.com/apps/news/finviz_major_news.csv-agg.html',
         'unusual_volume': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_unusual-volume-finviz-agg.html',
         'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
-        'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html'
-        
+        'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
+        'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_momentum-stockcharts.csv.html',
+        'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
+        'etf_in_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' 
+
     }
     return url_dict[option]
 
@@ -110,6 +113,17 @@ def draw_technical_fig():
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
+
+def draw_etf_fig() :
+    l = ['etf_in_rsi', 'etf_etfs_rsi','etf_in_momentum']
+    sector_option = st.radio( "Technical",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+    cols = ['Symbol','Name']
+    st.caption ( ', '.join (df[cols].symbols.tolist()) )
+    st.write(df[cols])
+
 
 
 ## main
@@ -165,7 +179,16 @@ with tab1:
 
 with tab2:
     st.header("ETFs")
-    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+    
+    col1, col2 , col3 = st.columns(3)
+
+    with col1:
+        draw_trend_fig()
+    with col2:
+        draw_external_fig()
+    with col3:
+        draw_technical_fig()
+ st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
     df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_improving_cmf-stockcharts.csv.html')[0]
     st.write(df)
   
