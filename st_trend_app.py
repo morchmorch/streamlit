@@ -121,7 +121,6 @@ def draw_etf_fig() :
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
     cols = ['Symbol','Name']
-    st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
 
 
