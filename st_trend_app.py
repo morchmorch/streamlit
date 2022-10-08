@@ -181,8 +181,8 @@ with tab1:
     st.caption ('Correlated')
     df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-    st.write(df[cols])
-
+    #st.write(df[cols])
+    st.dataframe (use_container_width = True)
 with tab2:
     st.header("ETFs")
     
