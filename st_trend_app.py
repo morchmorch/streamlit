@@ -179,7 +179,7 @@ with tab1:
 with tab2:
     st.header("ETFs")
     
-    col1, col2 , col3 = st.columns(3)
+    col1, col2 = st.columns23)
 
     with col1:
         draw_etf_fig()
