@@ -69,7 +69,7 @@ def take_string_give_url (option):
         'unusual_volume': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_unusual-volume-finviz-agg.html',
         'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
         'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
-        'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_momentum-stockcharts.csv.html',
+        'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
         'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
         'etf_in_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' 
 
