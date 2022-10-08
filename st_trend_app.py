@@ -71,7 +71,8 @@ def take_string_give_url (option):
         'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
         'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
         'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
-        'etf_in_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' 
+        'etf_in_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' ,
+        'koyfin_etf' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_koyfin-list.png'
 
     }
     return url_dict[option]
@@ -123,6 +124,12 @@ def draw_etf_fig() :
     cols = ['Symbol','Name']
     st.write(df[cols])
 
+
+def draw_etf_image() :
+    l = ['koyfin_etf']
+    sector_option = st.radio( "Technical",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    st.image ( take_string_give_url ( sector_option ) )
 
 
 ## main
@@ -183,5 +190,6 @@ with tab2:
 
     with col1:
         draw_etf_fig()
-  
+    with col2 :
+        draw_etf_image() 
 
