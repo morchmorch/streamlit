@@ -80,7 +80,7 @@ def take_string_give_url (option):
 def draw_trend_fig():
 
     l = ['52wkhigh', '60plusrsi','golden_cross']
-    sector_option = st.radio( "Technical",  l  )
+    sector_option = st.radio( "Technical (stocks hitting milestones)",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -117,7 +117,7 @@ def draw_technical_fig():
 
 def draw_etf_fig() :
     l = ['etf_in_momentum', 'etf_etfs_rsi','etf_in_rsi']
-    sector_option = st.radio( "Technical (stocks hitting milestones)",  l  )
+    sector_option = st.radio( "Technical",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
