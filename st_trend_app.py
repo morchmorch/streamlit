@@ -163,7 +163,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 
-tab1, tab2 = st.tabs(["stocks", "etfs"])
+tab1, tab2,tab3,tab4 = st.tabs(["stocks", "etfs", "Market and Sector" , "Explore" ])
 
 with tab1:
     
@@ -183,8 +183,29 @@ with tab1:
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     #st.write(df[cols])
     st.dataframe (use_container_width = True)
+
 with tab2:
     st.header("ETFs")
+    
+    col1, col2 = st.columns(2)
+
+    with col1:
+        draw_etf_fig()
+    with col2 :
+        draw_etf_image() 
+
+with tab3:
+    st.header("Market and Sector")
+    
+    col1, col2 = st.columns(2)
+
+    with col1:
+        draw_etf_fig()
+    with col2 :
+        draw_etf_image() 
+
+with tab4:
+    st.header("Market and Sector")
     
     col1, col2 = st.columns(2)
 
