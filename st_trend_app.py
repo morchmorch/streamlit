@@ -217,7 +217,5 @@ with tab4:
     st.header("Market and Sector")
     
     col1, col2 = st.columns(2)
-    with col1:
-        draw_market_sector()
 
 
