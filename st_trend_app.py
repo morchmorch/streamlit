@@ -211,13 +211,10 @@ with tab3:
 
     with col1:
         draw_market_sector()
+
 with tab4:
     st.header("Market and Sector")
     
     col1, col2 = st.columns(2)
 
-    with col1:
-        draw_etf_fig()
-    with col2 :
-        draw_etf_image() 
 
