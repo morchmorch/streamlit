@@ -123,11 +123,11 @@ def draw_etf_fig() :
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
     cols = ['Symbol','Name']
     st.write(df[cols])
-
+    st.image ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv-rrg.png')
 
 def draw_etf_image() :
     l = ['koyfin_etf']
-    sector_option = st.radio( "Technical",  l  )
+    sector_option = st.radio( "Performance",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.image ( take_string_give_url ( sector_option ) )
 
