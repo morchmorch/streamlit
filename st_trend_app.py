@@ -134,6 +134,7 @@ def draw_etf_image() :
     st.image ( take_string_give_url ( sector_option ) )
 
 def draw_market_sector() :
+
     l = ['macro_market_charts','sector_market_charts']
     sector_option = st.radio( "Performance",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
