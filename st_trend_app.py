@@ -89,12 +89,13 @@ def draw_milestone_fig():
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
+    st.markdown("""---""") 
  
     st.caption ('charts')
     st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
     #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
-
+    st.markdown("""---""") 
     cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
     
     html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + ".html"
@@ -113,16 +114,16 @@ def draw_external_fig():
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
-    
+    st.markdown("""---""")  
     #st.write (  take_string_give_url ( sector_option ).split('-agg')[0] + '-charts.png' )
  
     st.caption ('charts')
     st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
     #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
+    st.markdown("""---""") 
 
     cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
-    
     html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + ".html"
     df = pd.read_html ( html_page )[0]
     st.caption ('fundamentals')
