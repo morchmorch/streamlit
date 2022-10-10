@@ -179,7 +179,7 @@ def draw_market_sector() :
 
     if sector_option is 'xly' :
         adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
-        xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_xly') ]
+        xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_xly')) ]
         images = xlydf.key.tolist()
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x.key for x in images]
         st.image(urls)
