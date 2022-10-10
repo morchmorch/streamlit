@@ -182,7 +182,7 @@ def draw_market_sector() :
         xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_xly')) ]
         images = xlydf.key.tolist()
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
-        st.image(urls)
+        st.image(urls,width=200,caption=urls)
          
 
 ## main
