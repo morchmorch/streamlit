@@ -3,6 +3,8 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+from PIL import Image
+
 #blah
 
 def get_data () :
@@ -171,7 +173,7 @@ def draw_market_sector() :
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.image ( take_string_give_url ( sector_option ) )
 
-    st.image ('https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d')
+    st.image (Image.open ('https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d') )
 
 
 
