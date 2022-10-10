@@ -172,7 +172,7 @@ def draw_market_sector() :
     sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.image ( take_string_give_url ( sector_option ) )
-    st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'.png' )
+    st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
      
 
 ## main
