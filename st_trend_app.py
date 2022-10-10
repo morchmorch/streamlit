@@ -79,7 +79,7 @@ def take_string_give_url (option):
     }
     return url_dict[option]
 
-def draw_trend_fig():
+def draw_milestone_fig():
 
     l = ['52wkhigh', '60plusrsi','golden_cross']
     sector_option = st.radio( "Stocks hitting technical milestones",  l  )
@@ -95,7 +95,7 @@ def draw_external_fig():
 
 
     l = ['insider_buying', 'in_news']
-    sector_option = st.radio( "Stocks with External tailwinds",  l  )
+    sector_option = st.radio( "Stocks with external tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -109,7 +109,7 @@ def draw_technical_fig():
 
 
     l = ['unusual_volume', 'price_up_and_volume_up']
-    sector_option = st.radio( "Stocks with Technical tailwinds",  l  )
+    sector_option = st.radio( "Stocks with eechnical tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -182,13 +182,15 @@ with tab1:
 
     col1, col2 , col3 = st.columns(3)
 
-    with col1:
-        draw_trend_fig()
-    with col2:
-        draw_external_fig()
-    with col3:
+   with col1:
         draw_technical_fig()
 
+   with col3:
+        draw_external_fig()
+   
+    with col2:
+        draw_milestone_fig()
+ 
     st.caption ('Correlated')
     df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
