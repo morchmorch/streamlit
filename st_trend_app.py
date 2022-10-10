@@ -198,7 +198,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 
-tab1, tab2,tab3,tab4 = st.tabs([" (stocks) ", " (etfs) ", " (market and sector) " , " (explore) " ])
+tab1, tab2,tab3,tab4 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (explore) " ])
 
 with tab1:
     
