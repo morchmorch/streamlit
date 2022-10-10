@@ -107,8 +107,8 @@ def draw_milestone_fig():
         try :
             st.write(df[cols])
         except :
-            st.write (df.columns.tolist())
-            st.write (df ['Symbol','Name','SCTR'] )
+            #st.write (df.columns.tolist())
+            st.write (df [['Symbol','Name','SCTR']] )
      
 def draw_external_fig():
 
