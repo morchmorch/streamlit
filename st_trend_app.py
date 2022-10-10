@@ -173,7 +173,7 @@ def draw_market_sector() :
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.image ( take_string_give_url ( sector_option ) )
 
-    st.markdown ( '![https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d]' )
+    st.markdown ( '![https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d]' ,unsafe_allow_html =True)
 
 
 
