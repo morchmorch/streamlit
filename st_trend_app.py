@@ -105,6 +105,7 @@ def draw_external_fig():
     
     #st.write (  take_string_give_url ( sector_option ).split('-agg')[0] + '-charts.png' )
  
+    st.caption ('charts')
     st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
     #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
@@ -114,6 +115,7 @@ def draw_external_fig():
     html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + ".html"
     st.write(html_page)
     df = pd.read_html ( html_page )[0]
+    st.caption ('fundamentals')
     st.write(df[cols])
     
 def draw_technical_fig():
