@@ -175,8 +175,7 @@ def draw_market_sector() :
 
     st.image ('https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d')
     #st.markdown ( '![](https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d)' ,unsafe_allow_html =True)
-
-
+    st.write( f'<iframe src="https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d"></iframe>', unsafe_allow_html=True,)
 
 ## main
 
