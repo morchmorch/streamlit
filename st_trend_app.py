@@ -95,7 +95,7 @@ def draw_external_fig():
 
 
     l = ['insider_buying', 'in_news']
-    sector_option = st.radio( "External",  l  )
+    sector_option = st.radio( "Stocks with External tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -109,7 +109,7 @@ def draw_technical_fig():
 
 
     l = ['unusual_volume', 'price_up_and_volume_up']
-    sector_option = st.radio( "Technical",  l  )
+    sector_option = st.radio( "Stocks with Technical tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -178,7 +178,7 @@ tab1, tab2,tab3,tab4 = st.tabs(["stocks", "etfs", "Market and Sector" , "Explore
 
 with tab1:
     
-    st.header("Stocks")
+    st.header("(Stocks)")
 
     col1, col2 , col3 = st.columns(3)
 
@@ -196,7 +196,7 @@ with tab1:
     st.dataframe (use_container_width = True)
 
 with tab2:
-    st.header("ETFs")
+    st.header("(ETFs)")
     
     col1, col2 = st.columns(2)
 
@@ -206,7 +206,7 @@ with tab2:
         draw_etf_image() 
 
 with tab3:
-    st.header("Market and Sector")
+    st.header("(Market and Sector)")
     
     col1, col2 = st.columns(2)
 
@@ -214,7 +214,7 @@ with tab3:
         draw_market_sector()
 
 with tab4:
-    st.header("Market and Sector")
+    st.header("(weekly performance)")
     
     col1, col2 = st.columns(2)
 
