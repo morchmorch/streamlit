@@ -182,10 +182,10 @@ with tab1:
 
     col1, col2 , col3 = st.columns(3)
 
-   with col1:
+    with col1:
         draw_technical_fig()
 
-   with col3:
+    with col3:
         draw_external_fig()
    
     with col2:
