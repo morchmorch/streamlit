@@ -129,7 +129,7 @@ def draw_external_fig():
     st.caption ('charts')
     st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
     #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
-    st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
+    Vyst.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.markdown("""---""") 
 
     cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
@@ -172,10 +172,8 @@ def draw_market_sector() :
     sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.image ( take_string_give_url ( sector_option ) )
-
-    st.image ('https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d')
-    #st.markdown ( '![](https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d)' ,unsafe_allow_html =True)
-    st.write( f'<iframe src="https://stockcharts.com/freecharts/rrg/?s=XLU,XLP,XLK,XLY,XLRE,XLP,XLE,XLF,XLI,XLC,XLB&b=$SPX&p=d&y=1&t=5&f=chg,d"></iframe>', unsafe_allow_html=True,)
+    st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'.png' )
+     
 
 ## main
 
