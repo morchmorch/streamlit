@@ -168,12 +168,22 @@ def draw_etf_image() :
 
 def draw_market_sector() :
 
-    l = ['macro_market_charts','sector_market_charts']
+    l = ['macro_market_charts','sector_market_charts','xly']
     sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    st.image ( take_string_give_url ( sector_option ) )
-    st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
-     
+    
+    if sector_option is not 'xly' :
+
+        st.image ( take_string_give_url ( sector_option ) )
+        st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
+
+    if sector_option is 'xly' :
+        adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
+        xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_xly') ]
+        images = xlydf.key.tolist()
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x.key for x in images]
+        st.image(urls)
+         
 
 ## main
 
@@ -242,10 +252,12 @@ with tab2:
 with tab3:
     st.header("(Weekly Performance)")
     
-    col1, col2 = st.columns(2)
+    #col1, col2 = st.columns(2)
 
-    with col1:
-        draw_market_sector()
+    #with col1:
+        #draw_market_sector()   
+    
+    draw_market_sector()
 
 with tab4:
     st.header("(weekly performance)")
