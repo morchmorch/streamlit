@@ -106,13 +106,13 @@ def draw_external_fig():
     #st.write (  take_string_give_url ( sector_option ).split('-agg')[0] + '-charts.png' )
  
     st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
-    
+    st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
 
     cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
     
     html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + "+.html"
-    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+    df = pd.read_html ( html_page )[0]
     st.write(df[cols])
     
 def draw_technical_fig():
