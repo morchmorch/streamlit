@@ -100,9 +100,11 @@ def draw_milestone_fig():
     
     html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + ".html"
     df = pd.read_html ( html_page )[0]
-    st.write(df.columns.tolist())
     st.caption ('fundamentals')
-    st.write(df[cols])
+    try :
+        st.write(df[cols])
+    except :
+        st.write (df ['Symbol','Name','SCTR'] )
  
 def draw_external_fig():
 
