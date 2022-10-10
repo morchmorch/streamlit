@@ -109,6 +109,12 @@ def draw_external_fig():
     
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
 
+    cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
+    
+    html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + "+.html"
+    df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+    st.write(df[cols])
+    
 def draw_technical_fig():
 
 
