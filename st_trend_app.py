@@ -102,6 +102,8 @@ def draw_external_fig():
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
+    
+    st.write (  take_string_give_url ( sector_option ).split('-agg')[0] + '-charts.png' )
  
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-charts.png' )
 
