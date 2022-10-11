@@ -187,6 +187,18 @@ def draw_market_sector() :
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.image(urls,width=600,caption=captions)
          
+def draw_momentum_figs():
+    l = ['industries_rrg']
+    sector_option = st.radio( "industries_rrg",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+   
+    adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
+    images = [ x for x in adf.key.tolist() if 'industries_rrg' in x]
+    urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
+    captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+    st.image(urls,width=600,caption=captions)
+ 
+
 
 ## main
 
@@ -219,7 +231,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 
-tab1, tab2,tab3,tab4 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (explore) " ])
+tab1, tab2,tab3,tab4,tab5 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) " " (explore) " ])
 
 with tab1:
     
@@ -266,5 +278,9 @@ with tab4:
     st.header("(weekly performance)")
     
     col1, col2 = st.columns(2)
+
+with tab5:
+    st.header("(momentum viewa)")
+    draw_momentum_figs()    
 
 
