@@ -168,16 +168,18 @@ def draw_etf_image() :
 
 def draw_market_sector() :
 
-    l = ['macro_market_charts','sector_market_charts','xly']
+    l = ['macro_market_charts','sector_market_charts']
+    sectors = ['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly']
+    l.extend(['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly'])
     sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     
-    if sector_option is not 'xly' :
+    if 'x' not in sector_option :
 
         st.image ( take_string_give_url ( sector_option ) )
         st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
 
-    if sector_option is 'xly' :
+    else :
         adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
         xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_xly')) ]
         images = xlydf.key.tolist()
