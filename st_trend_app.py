@@ -193,8 +193,7 @@ def draw_momentum_figs():
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
    
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
-    images = [ x for x in adf.key.tolist() if x.startswith ('industry_')  ]
-    st.write (images)
+    images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'industries' in x ]
     urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
