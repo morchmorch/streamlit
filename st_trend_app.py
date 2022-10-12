@@ -194,10 +194,10 @@ def draw_momentum_figs():
     images  = [] 
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
 
-    if sector_option == '"industries_rrg' :
+    if 'industries' in sector_option :
         images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'industries_' in x ]
 
-    if sector_option == '"companies_rrg' :
+    if 'companies' in sector_option:
         images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'companies' in x ]
 
 
