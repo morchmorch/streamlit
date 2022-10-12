@@ -188,10 +188,10 @@ def draw_market_sector() :
         st.image(urls,width=600,caption=captions)
          
 def draw_momentum_figs():
-    l = ['industries_rrg']
+    l = ['industries_rrg', "companies_rrg"]
     sector_option = st.radio( "industries_rrg",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-   
+    images  = [] 
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
 
     if sector_option == '"industries_rrg' :
