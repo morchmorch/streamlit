@@ -282,12 +282,12 @@ with tab3:
     draw_market_sector()
 
 with tab4:
-    st.header("(weekly performance)")
-    
-    col1, col2 = st.columns(2)
-
-with tab5:
     st.header("(momentum views)")
     draw_momentum_figs()    
+
+with tab5:
+    st.header("(explore)")
+    
+    col1, col2 = st.columns(2)
 
 
