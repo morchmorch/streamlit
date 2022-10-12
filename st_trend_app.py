@@ -193,7 +193,7 @@ def draw_momentum_figs():
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
    
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
-    images = [ x for x in adf.key.tolist() if 'industries_rrg' in x]
+    images = [ x for x in adf.key.tolist() if 'industry_' in x]
     urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
@@ -280,7 +280,7 @@ with tab4:
     col1, col2 = st.columns(2)
 
 with tab5:
-    st.header("(momentum viewa)")
+    st.header("(momentum views)")
     draw_momentum_figs()    
 
 
