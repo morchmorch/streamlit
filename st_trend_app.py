@@ -194,6 +194,7 @@ def draw_momentum_figs():
    
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
     images = [ x for x in adf.key.tolist() if x.startswith ('industry_')  ]
+    st.write (images)
     urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
