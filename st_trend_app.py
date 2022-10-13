@@ -210,7 +210,7 @@ def draw_market_sector() :
         
 
         #finviz companies by industry
-        i = [x for x in images if 'industry-' in x and 'finviz' in x]
+        i = [x for x in images if 'industry_' in x and 'finviz' in x and 'rrg' not in x and '60' not in x and '52' not in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.write ('companies by industry')
