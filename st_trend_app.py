@@ -214,6 +214,7 @@ def draw_market_sector() :
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         st.write (urls)
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+        st.write(captions)
         st.write ('companies by industry')
         st.image(urls,width=600,caption=captions)
         
