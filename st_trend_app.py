@@ -229,7 +229,7 @@ def draw_momentum_figs():
 
     if 'industries' in sector_option :
         images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'industries_' in x ]
-
+        images = [x for x in adf.key.tolist() if 'industries_rrg' in x and 'stockworld' in x]
     if 'companies' in sector_option:
         images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'companies' in x ]
 
