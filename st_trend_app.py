@@ -216,7 +216,7 @@ def draw_market_sector() :
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.write(captions)
         st.write ('companies by industry')
-        st.image(urls,width=600,caption=captions)
+        st.image(urls,width=600,caption=i)
         
         
         
