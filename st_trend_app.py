@@ -65,6 +65,7 @@ def draw_f_fig (df_custom, sector_option) :
 def take_string_give_url (option):
     url_dict = {
         '52wkhigh' :  'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html',
+        '52wkhigh(fv)': 'https://investrecipes.s3.amazonaws.com/all_stocks/technical/52wkhigh/stockworld_all_52wkhigh-finviz.csv-agg.html'
         '60plusrsi' : 'https://investrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html',
         'insider_buying': 'https://investrecipes.s3.amazonaws.com/apps/insiderbuying/insider-buying-finviz.csv-agg.html',
         'in_news': 'https://investrecipes.s3.amazonaws.com/apps/news/finviz_major_news.csv-agg.html',
@@ -84,7 +85,7 @@ def take_string_give_url (option):
 
 def draw_milestone_fig():
 
-    l = [ '60plusrsi','52wkhigh', 'golden_cross']
+    l = [ '60plusrsi','52wkhigh', '52wkhigh(fv)', 'golden_cross']
     sector_option = st.radio( "Stocks hitting technical milestones",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
@@ -187,23 +188,34 @@ def draw_market_sector() :
 
         # industry rrg
         i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.write ('industry rrg')
         st.image(urls,width=600,caption=captions)
  
         # companiees rrg
         i= [x for x in images if 'rrg' in x and x.startswith('industry_')]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
-        st.write ('industry rrg')
+        st.write ('companies rrg')
         st.image(urls,width=600,caption=captions)
  
          # koyfin etf
-        [x for x in images if 'koyfin' in x and 'etf' in x]
+        i = [x for x in images if 'koyfin' in x and 'etf' in x]
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
+        captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+        st.write (' ETF ')
+        st.image(urls,width=600,caption=captions)
+ 
+
+
         #finviz companies by industry
-        [x for x in images if 'industry-' in x and 'finviz' in x]
-       
+        i = [x for x in images if 'industry-' in x and 'finviz' in x]
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
+        captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+        st.write ('companies by industry')
+        st.image(urls,width=600,caption=captions)
+        
         
         
 
