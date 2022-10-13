@@ -183,10 +183,30 @@ def draw_market_sector() :
         adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
         xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_'+sector_option)) ]
         images = xlydf.key.tolist()
+
+        # industry rrg
+        i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+        st.write ('industry rrg')
         st.image(urls,width=600,caption=captions)
-         
+ 
+        # companiees rrg
+        i= [x for x in images if 'rrg' in x and x.startswith('industry_')]
+        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
+        captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
+        st.write ('industry rrg')
+        st.image(urls,width=600,caption=captions)
+ 
+         # koyfin etf
+        [x for x in images if 'koyfin' in x and 'etf' in x]
+        #finviz companies by industry
+        [x for x in images if 'industry-' in x and 'finviz' in x]
+       
+        
+        
+
+        
 def draw_momentum_figs():
     l = ['industries_rrg', "companies_rrg"]
     sector_option = st.radio( "industries_rrg",  l  )
