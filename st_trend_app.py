@@ -181,7 +181,7 @@ def draw_market_sector() :
         images.append ( take_string_give_url ( sector_option ) )
         images.append ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
         st.write ('macro')
-        st.image (images, width=800)
+        st.image (images, width=1000)
         #st.image ( take_string_give_url ( sector_option ) )
         #st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
 
