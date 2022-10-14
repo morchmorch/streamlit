@@ -181,7 +181,7 @@ def draw_market_sector() :
         images.append ( take_string_give_url ( sector_option ) )
         images.append ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
         st.write ('macro')
-        st.image (images, width=1200)
+        st.image (images, width=1000)
         #st.image ( take_string_give_url ( sector_option ) )
         #st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
 
@@ -195,7 +195,7 @@ def draw_market_sector() :
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.write ('industry and companies rrg')
-        st.image(urls,width=12000,caption=captions)
+        st.image(urls,width=10000,caption=captions)
  
         # companiees rrg
         i= [x for x in images if 'stockworld_' + sector_option + '_rrg' in  x]
