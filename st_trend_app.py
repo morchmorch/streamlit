@@ -178,7 +178,7 @@ def draw_market_sector() :
     
     if 'x' not in sector_option :
         images = []
-        images.append ( take_string_give_url ( sector_option )
+        images.append ( take_string_give_url ( sector_option ) A)
         images.append ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
         st.image (images)
         #st.image ( take_string_give_url ( sector_option ) )
