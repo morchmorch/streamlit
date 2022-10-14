@@ -195,7 +195,7 @@ def draw_market_sector() :
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         st.write ('industry and companies rrg')
-        st.image(urls,width=600,caption=captions)
+        st.image(urls,width=800,caption=captions)
  
         # companiees rrg
         i= [x for x in images if 'stockworld_' + sector_option + '_rrg' in  x]
