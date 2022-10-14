@@ -167,7 +167,7 @@ def draw_technical_fig():
         df = pd.read_html ( html_page )[0]
         st.caption ('fundamentals')
         st.write(df[cols])
-    excpet : st.write ('no page found')
+    except : st.write ('no page found')
     
 
 def draw_etf_fig() :
