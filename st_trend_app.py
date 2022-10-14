@@ -177,9 +177,12 @@ def draw_market_sector() :
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     
     if 'x' not in sector_option :
-
-        st.image ( take_string_give_url ( sector_option ) )
-        st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
+        images = []
+        images.append ( take_string_give_url ( sector_option )
+        images.append ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
+        st.image (images)
+        #st.image ( take_string_give_url ( sector_option ) )
+        #st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
 
     else :
         adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
