@@ -147,11 +147,13 @@ def draw_technical_fig():
     l = [ 'strong_patterns', 'unusual_volume', 'price_up_and_volume_up']
     sector_option = st.radio( "Stocks with technical tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    st.markdown("""---""")  
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
+    st.markdown("""---""")  
 
 def draw_etf_fig() :
     l = ['etf_in_momentum', 'etf_etfs_rsi','etf_in_rsi']
