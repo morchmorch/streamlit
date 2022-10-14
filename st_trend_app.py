@@ -154,6 +154,19 @@ def draw_technical_fig():
     st.caption ( ', '.join (df[cols].symbols.tolist()) )
     st.write(df[cols])
     st.markdown("""---""")  
+ 
+    st.caption ('charts')
+    st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts.png' )
+    #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
+    st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
+    st.markdown("""---""") 
+
+    cols = ['Ticker','Company','Profit Margin','Sales growth quarter over quarter']
+    html_page =  take_string_give_url ( sector_option ).split('-agg')[0] + ".html"
+    df = pd.read_html ( html_page )[0]
+    st.caption ('fundamentals')
+    st.write(df[cols])
+    
 
 def draw_etf_fig() :
     l = ['etf_in_momentum', 'etf_etfs_rsi','etf_in_rsi']
