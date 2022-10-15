@@ -79,7 +79,8 @@ def take_string_give_url (option):
         'koyfin_etf' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_koyfin-list.png',
         'etf_heatmap' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_heatmap-finviz.png',
         'macro_market_charts': 'https://investrecipes.s3.amazonaws.com/market/fundamental/comparisoncharts/etfworld_sector_all_market-finviz-charts.png',    
-        'sector_market_charts': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png'
+        'sector_market_charts': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png',
+        'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png'
 
     }
     return url_dict[option]
@@ -188,7 +189,7 @@ def draw_etf_image() :
 
 def draw_market_sector() :
 
-    l = ['macro_market_charts','sector_market_charts']
+    l = ['macro_market_charts','sector_market_charts','sector_rrg']
     sectors = ['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly']
     l.extend(['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly'])
     sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
