@@ -72,6 +72,7 @@ def take_string_give_url (option):
         'strong_patterns': 'https://investrecipes.s3.amazonaws.com/all_stocks/technical/strongpatterns/stockworld_all_52wkhigh-strong-patterns-finviz.csv-agg.html',
         'unusual_volume': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_unusual-volume-finviz-agg.html',
         'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
+        'high_adx_slope':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_adx_slope-stockcharts.csv-agg.html',
         'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
         'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
         'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
@@ -145,7 +146,7 @@ def draw_external_fig():
 def draw_technical_fig():
 
 
-    l = [ 'strong_patterns', 'unusual_volume', 'price_up_and_volume_up']
+    l = [ 'strong_patterns', 'unusual_volume', 'price_up_and_volume_up','high_adx_slope']
     sector_option = st.radio( "Stocks with technical tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.markdown("""---""")  
