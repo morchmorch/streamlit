@@ -345,9 +345,35 @@ try :
         draw_momentum_figs()    
 
     with tab5:
-        st.header("(explore)")
-        
-        col1, col2 = st.columns(2)
+        st.header("(fundamental)")
+        kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+
+        kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
+
+        kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
+
+        kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
+
+        kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
+
+        kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
+
+        kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
+
+
+
+        df_custom = kdf.copy()
+        l = df_custom.Sector.unique().tolist()
+        l.append('All')
+        sector_option = st.radio( "Sector",  l  )
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+        #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+
+
+        draw_f_fig(df_custom, sector_option)
+
+         
 
 except Exception as e: print(e)
 
