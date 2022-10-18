@@ -297,54 +297,57 @@ st.set_page_config(page_title="Investrecipes",layout='wide')
 
 tab1, tab2,tab3,tab4,tab5 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (explore) " ])
 
-with tab1:
-    
-    st.header("(Stocks)")
+try :
 
-    col1, col2 , col3 = st.columns(3)
+    with tab1:
+        
+        st.header("(Stocks)")
 
-    with col1:
-        draw_technical_fig()
+        col1, col2 , col3 = st.columns(3)
 
-    with col3:
-        draw_external_fig()
-   
-    with col2:
-        draw_milestone_fig()
- 
-    st.caption ('Correlated')
-    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
-    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-    #st.write(df[cols])
-    st.dataframe (use_container_width = True)
+        with col1:
+            draw_technical_fig()
 
-with tab2:
-    st.header("(ETFs)")
-    
-    col1, col2 = st.columns(2)
+        with col3:
+            draw_external_fig()
+       
+        with col2:
+            draw_milestone_fig()
+     
+        st.caption ('Correlated')
+        df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        #st.write(df[cols])
+        st.dataframe (use_container_width = True)
 
-    with col1:
-        draw_etf_fig()
-    with col2 :
-        draw_etf_image() 
+    with tab2:
+        st.header("(ETFs)")
+        
+        col1, col2 = st.columns(2)
 
-with tab3:
-    st.header("(Weekly Performance)")
-    
-    #col1, col2 = st.columns(2)
+        with col1:
+            draw_etf_fig()
+        with col2 :
+            draw_etf_image() 
 
-    #with col1:
-        #draw_market_sector()   
-    
-    draw_market_sector()
+    with tab3:
+        st.header("(Weekly Performance)")
+        
+        #col1, col2 = st.columns(2)
 
-with tab4:
-    st.header("(momentum views)")
-    draw_momentum_figs()    
+        #with col1:
+            #draw_market_sector()   
+        
+        draw_market_sector()
 
-with tab5:
-    st.header("(explore)")
-    
-    col1, col2 = st.columns(2)
+    with tab4:
+        st.header("(momentum views)")
+        draw_momentum_figs()    
 
+    with tab5:
+        st.header("(explore)")
+        
+        col1, col2 = st.columns(2)
+
+except Exception as e: print(e)
 
