@@ -37,7 +37,7 @@ def draw_t_fig () :
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 40 ]
-        df_custom = df_custom[ df_custom ['Daily Slope(5,Daily RSI(14,Daily Close))'] > 0 ]
+    df_custom = df_custom[ df_custom ['Daily Slope(5,Daily RSI(14,Daily Close))'] > 0 ]
     df_custom = df_custom[ df_custom [ 'Daily Slope(5,Daily ADX Line(14))' ] > 0 ]
 
     if sector_option is not 'All':
