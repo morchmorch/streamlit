@@ -454,7 +454,7 @@ try :
         draw_f_fig()
 
     with tab6:
-        st.header("(fundamental)")
+        st.header("(technical)")
         draw_t_fig()
 
           
