@@ -174,7 +174,7 @@ def draw_technical_fig():
     
 
 def draw_etf_fig() :
-    l = ['etf_in_momentum', ,'etf_in_rsi', 'etf_in_pmo_cmf', 'etf_etfs_rsi']
+    l = ['etf_in_momentum', 'etf_in_rsi', 'etf_in_pmo_cmf', 'etf_etfs_rsi']
     sector_option = st.radio( "Technical",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
