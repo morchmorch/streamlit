@@ -12,7 +12,33 @@ def get_data () :
     return df_custom
 
 
-def draw_f_fig (df_custom, sector_option) :
+def draw_f_fig () :
+
+    kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+
+    kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
+
+    kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
+
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
+
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
+
+    kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
+
+    kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
+
+
+
+    df_custom = kdf.copy()
+    l = df_custom.Sector.unique().tolist()
+    l.append('All')
+    sector_option = st.radio( "Sector",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+
+
 
     if sector_option is not 'All':
         df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by =  'Net Income Margin % (FY)')
@@ -346,32 +372,7 @@ try :
 
     with tab5:
         st.header("(fundamental)")
-        kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
-
-        kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
-
-        kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
-
-        kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
-
-        kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
-
-        kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
-
-        kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
-
-
-
-        df_custom = kdf.copy()
-        l = df_custom.Sector.unique().tolist()
-        l.append('All')
-        sector_option = st.radio( "Sector",  l  )
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
-        #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-
-
-        draw_f_fig(df_custom, sector_option)
+        draw_f_fig()
 
          
 
