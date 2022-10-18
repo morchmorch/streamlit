@@ -11,6 +11,85 @@ def get_data () :
     df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
     return df_custom
 
+def draw_t_fig () :
+    tdf = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
+
+    kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+
+    kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
+
+    kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
+
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
+
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
+
+    kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
+
+    kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
+
+
+
+    df_custom = tdf.copy()
+    l = df_custom.Sector.unique().tolist()
+    l.append('All')
+    sector_option = st.radio( "Sector",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 40 ]
+        df_custom = df_custom[ df_custom ['Daily Slope(5,Daily RSI(14,Daily Close))'] > 0 ]
+    df_custom = df_custom[ df_custom [ 'Daily Slope(5,Daily ADX Line(14))' ] > 0 ]
+
+    if sector_option is not 'All':
+        df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by ='Daily Slope(5,Daily ADX Line(14))' )
+    else :
+        df_custom = df_custom. sort_values(by  = 'Daily Slope(5,Daily ADX Line(14))' )
+
+    camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=2.5, y=1.5, z=2) )
+
+
+    fig = px.scatter_3d(
+            df_custom,
+            #df_custom [ df_custom.Sector == sector_option ],
+            #x="Profit Margin",
+            #y="Industry",
+            z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
+            y = 'Daily Slope(5,Daily ADX Line(14))' ,
+            x='Industry',
+            width=1000,
+            height=800,
+            hover_name="Name",
+            #hover_data= ['Company','Market Cap','Profit Margin'],
+            hover_data= ['Name', 'Ticker', 'Industry' ],
+            #size = 'Market Cap',
+            labels={ 'Daily Slope(5,Daily RSI(14,Daily Close))' : 'rsi-slope' ,'Daily Slope(5,Daily ADX Line(14))':'adx-sllope', "Industry": ""} ,
+            color = 'Industry',
+            color_continuous_scale=px.colors.sequential.RdBu_r,
+            #template="plotly_white"
+
+
+    )
+    fig.update_layout(
+        scene = dict(
+            xaxis = dict (nticks=0,ticktext =["x"], ticks='outside', gridcolor="white", showbackground=True,backgroundcolor="rgb(200, 200, 230)",
+            tickfont=dict(
+                                color='white',
+                                size=1,
+                                family='Old Standard TT, serif',)
+            ) ,
+            xaxis_title='',
+            #xaxis_showspikes=False,
+            yaxis = dict(nticks=0, backgroundcolor="rgb(230, 230,200)" ),
+            zaxis = dict( nticks=0 ,ticktext =[""] ),
+            
+            
+            camera=camera
+        ),
+    )
+    #st.sidebar.multiselect( "Please select the sector:", options=df_custom["Sector"].unique(),)
+
+    st.plotly_chart(fig)
+
 
 def draw_f_fig () :
 
@@ -321,7 +400,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 
-tab1, tab2,tab3,tab4,tab5 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (explore) " ])
+tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
 try :
 
@@ -374,7 +453,11 @@ try :
         st.header("(fundamental)")
         draw_f_fig()
 
-         
+    with tab6:
+        st.header("(fundamental)")
+        draw_t_fig()
+
+          
 
 except Exception as e: print(e)
 
