@@ -280,7 +280,7 @@ def draw_technical_fig():
 
 def draw_etf_fig() :
     l = ['industries_momentum', 'industries_rsi', 'industries_pmo_cmf', 'etf_etfs_rsi']
-    sector_option = st.radio( "Technical",  l  )
+    sector_option = st.radio( "Industry Groups and ETFs with Technical Strengths",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
@@ -299,14 +299,13 @@ def draw_market_sector() :
     l = ['macro_market_charts','sector_market_charts','sector_rrg']
     sectors = ['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly']
     l.extend(['xlp','xlv','xlre','xlf','xlc','xle','xlre','xlb','xli','xlk','xly'])
-    sector_option = st.radio( "Market Performance",  l , key = 'Market Performance' )
+    sector_option = st.radio( "Macro and Sector Weekly Performance",  l , key = 'Market Performance' )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     
     if 'x' not in sector_option :
         images = []
         images.append ( take_string_give_url ( sector_option ) )
         images.append ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
-        st.write ('macro')
         st.image (images, width=1000)
         #st.image ( take_string_give_url ( sector_option ) )
         #st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
@@ -352,7 +351,7 @@ def draw_market_sector() :
         
 def draw_momentum_figs():
     l = ['industries_rrg', "companies_rrg"]
-    sector_option = st.radio( "industries_rrg",  l  )
+    sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     images  = [] 
     adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
