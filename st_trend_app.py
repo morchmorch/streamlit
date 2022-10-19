@@ -179,7 +179,7 @@ def take_string_give_url (option):
         'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
         'high_adx_slope':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_adx_slope-stockcharts.csv-agg.html',
         'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
-        'etf_in_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
+        'industries_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
         'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
         'industries_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' ,
         'industries_pmo_cmf': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv-agg.html',
@@ -279,7 +279,7 @@ def draw_technical_fig():
     
 
 def draw_etf_fig() :
-    l = ['industries_momentum', 'industries_rsi', 'etf_in_pmo_cmf', 'etf_etfs_rsi']
+    l = ['industries_momentum', 'industries_rsi', 'industries_pmo_cmf', 'etf_etfs_rsi']
     sector_option = st.radio( "Technical",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
