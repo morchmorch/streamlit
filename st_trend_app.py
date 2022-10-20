@@ -350,6 +350,7 @@ def draw_market_sector() :
 
         
 def draw_momentum_figs():
+    print ( 'draw_momentum_figs' )
     l = ['industries_rrg', "companies_rrg"]
     sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
@@ -401,62 +402,60 @@ st.set_page_config(page_title="Investrecipes",layout='wide')
 
 tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
-try :
 
-    with tab1:
-        
-        st.header("(Stocks)")
+with tab1:
+    
+    st.header("(Stocks)")
 
-        col1, col2 , col3 = st.columns(3)
+    col1, col2 , col3 = st.columns(3)
 
-        with col1:
-            draw_technical_fig()
+    with col1:
+        draw_technical_fig()
 
-        with col3:
-            draw_external_fig()
-       
-        with col2:
-            draw_milestone_fig()
-     
-        st.caption ('Correlated')
-        df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
-        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        #st.write(df[cols])
-        st.dataframe (use_container_width = True)
+    with col3:
+        draw_external_fig()
+   
+    with col2:
+        draw_milestone_fig()
+ 
+    st.caption ('Correlated')
+    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
+    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+    #st.write(df[cols])
+    st.dataframe (use_container_width = True)
 
-    with tab2:
-        st.header("(ETFs)")
-        
-        col1, col2 = st.columns(2)
+with tab2:
+    st.header("(ETFs)")
+    
+    col1, col2 = st.columns(2)
 
-        with col1:
-            draw_etf_fig()
-        with col2 :
-            draw_etf_image() 
+    with col1:
+        draw_etf_fig()
+    with col2 :
+        draw_etf_image() 
 
-    with tab3:
-        st.header("(Weekly Performance)")
-        
-        #col1, col2 = st.columns(2)
+with tab3:
+    st.header("(Weekly Performance)")
+    
+    #col1, col2 = st.columns(2)
 
-        #with col1:
-            #draw_market_sector()   
-        
-        draw_market_sector()
+    #with col1:
+        #draw_market_sector()   
+    
+    draw_market_sector()
 
-    with tab4:
-        st.header("(momentum views)")
-        draw_momentum_figs()    
+with tab4:
+    st.header("(momentum views)")
+    draw_momentum_figs()    
 
-    with tab5:
-        st.header("(fundamental)")
-        draw_f_fig()
+with tab5:
+    st.header("(fundamental)")
+    draw_f_fig()
 
-    with tab6:
-        st.header("(technical)")
-        draw_t_fig()
+with tab6:
+    st.header("(technical)")
+    draw_t_fig()
 
-          
+      
 
-except Exception as e: print(e)
 
