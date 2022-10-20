@@ -279,7 +279,7 @@ def draw_technical_fig():
     
 
 def draw_etf_fig() :
-    l = ['industries_momentum', 'industries_rsi', 'industries_pmo_cmf', 'etf_etfs_rsi']
+    l = ['industries_momentum', 'industries_rsi', 'etf_etfs_rsi']
     sector_option = st.radio( "Industry Groups and ETFs with Technical Strengths",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
@@ -403,7 +403,7 @@ st.set_page_config(page_title="Investrecipes",layout='wide')
 tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
 
-with tab1:
+with tab2:
     
     st.header("(Stocks)")
 
@@ -424,7 +424,7 @@ with tab1:
     #st.write(df[cols])
     #st.dataframe (use_container_width = True)
 
-with tab2:
+with tab1:
     st.header("(ETFs)")
     
     col1, col2 = st.columns(2)
