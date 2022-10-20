@@ -434,7 +434,8 @@ with tab2:
    
     with col2:
         draw_milestone_fig()
- with tab3:
+
+with tab3:
     st.header("(Weekly Performance)")
     
     #col1, col2 = st.columns(2)
