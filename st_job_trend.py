@@ -230,57 +230,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
+pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
 
-tab1, tab2,tab3,tab4,tab5 = st.tabs([" (stocks-technical analysis) ", " (etfs - technical analysis) ", " (market - weekly performance) " , " (momentum views) ", " (explore) " ])
-
-with tab1:
-    
-    st.header("(Stocks)")
-
-    col1, col2 , col3 = st.columns(3)
-
-    with col1:
-        draw_technical_fig()
-
-    with col3:
-        draw_external_fig()
-   
-    with col2:
-        draw_milestone_fig()
- 
-    st.caption ('Correlated')
-    df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
-    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-    #st.write(df[cols])
-    st.dataframe (use_container_width = True)
-
-with tab2:
-    st.header("(ETFs)")
-    
-    col1, col2 = st.columns(2)
-
-    with col1:
-        draw_etf_fig()
-    with col2 :
-        draw_etf_image() 
-
-with tab3:
-    st.header("(Weekly Performance)")
-    
-    #col1, col2 = st.columns(2)
-
-    #with col1:
-        #draw_market_sector()   
-    
-    draw_market_sector()
-
-with tab4:
-    st.header("(weekly performance)")
-    
-    col1, col2 = st.columns(2)
-
-with tab5:
-    st.header("(momentum viewa)")
-    draw_momentum_figs()    
-
+st.dataframe(pdf)
 
