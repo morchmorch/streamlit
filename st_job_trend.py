@@ -199,6 +199,8 @@ def draw_momentum_figs():
     st.image(urls,width=600,caption=captions)
  
 
+def make_clickable(val):
+    return '<a href="{}">{}</a>'.format(val,val)
 
 ## main
 
@@ -251,6 +253,8 @@ sector_option = st.radio( "Hiring Companies",  l  )
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 joindf = joindf [ joindf.Company_Name.str.contains (sector_option) ]   
+
+joindf.style.format(make_clickable)
  
 st.markdown ( joindf[dcols].to_html(), unsafe_allow_html=True  )
 
