@@ -256,5 +256,5 @@ joindf = joindf [ joindf.Company_Name.str.contains (sector_option) ]
 
 joindf.style.format(make_clickable)
  
-st.markdown ( joindf[dcols].to_html(), unsafe_allow_html=True  )
+st.markdown ( joindf.to_html(), unsafe_allow_html=True  )
 
