@@ -320,6 +320,8 @@ def draw_market_sector() :
         # industry rrg
         #i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industries' in x] 
+        st.write(i)
+        str.write(sector_option)
         i = [ x for x in i if sector_option in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
