@@ -38,12 +38,13 @@ def draw_t_fig () :
 
     df_custom = df_custom[ df_custom ['Daily RSI(14,Daily Close)'] > 40 ]
     df_custom = df_custom[ df_custom ['Daily Slope(5,Daily RSI(14,Daily Close))'] > 0 ]
-    df_custom = df_custom[ df_custom [ 'Daily Slope(5,Daily ADX Line(14))' ] > 0 ]
+    #df_custom = df_custom[ df_custom [ 'Daily Slope(5,Daily ADX Line(14))' ] > 0 ]
+    df_custom = df_custom[ df_custom [ 'Daily ADX Line(14)' ] > 0 ]
 
     if sector_option is not 'All':
-        df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by ='Daily Slope(5,Daily ADX Line(14))' )
+        df_custom = df_custom [ df_custom.Sector == sector_option  ]. sort_values(by ='Daily ADX Line(14)' )
     else :
-        df_custom = df_custom. sort_values(by  = 'Daily Slope(5,Daily ADX Line(14))' )
+        df_custom = df_custom. sort_values(by  = 'Daily ADX Line(14)' )
 
     camera = dict ( up=dict(x=1.5, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=2.5, y=1.5, z=2) )
 
