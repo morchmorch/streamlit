@@ -203,21 +203,6 @@ def draw_momentum_figs():
 ## main
 
 
-kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
-
-kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
-
-kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
-
-kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
-
-kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
-
-kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
-
-kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
-
-
 
 #df_custom = kdf.copy()
 #l = df_custom.Sector.unique().tolist()
@@ -231,6 +216,34 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 st.set_page_config(page_title="Investrecipes",layout='wide')
 
 pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
+
+joindf=pdf.copy()
+
+
+joindf.Post_Date = pd.to_datetime(joindf.Post_Date)
+joindf = joindf[joindf.Post_Date > datetime.datetime.now() - pd.to_timedelta("30day")]
+
+joindf=joindf[joindf.Company_Name.str.len() > 2]
+joindf=joindf[joindf.Job_Title.str.len() > 2]
+
+
+#print (joindf.columns)
+
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("set()", "NA", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("}", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("{", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("(", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace(")", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\\", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("'.", "'", regex=True)
+
+
+
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("xa0", "", regex=True)
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\u200e", "", regex=True)
+
+joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
+joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
 
 st.dataframe(pdf)
 
