@@ -246,5 +246,11 @@ joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.re
 joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
 joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
 
+l = joindf.Company_name.tolist()
+sector_option = st.radio( "Hiring Companies",  l  )
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+joindf = joindf [ joindf.Company_Name.str.contains (sector_option) ]   
+ 
 st.markdown ( joindf[dcols].to_html(), unsafe_allow_html=True  )
 
