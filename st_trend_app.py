@@ -335,17 +335,9 @@ def draw_market_sector() :
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         #st.image(urls,width=600,caption=captions)
  
-        c_urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
-        c_captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
-        st.write (c_urls)
-        st.write (c_captions)
-        urls.extend (c_urls)
-        captions.extend(c_captions)
 
-        #st.image(urls,width=600,caption=captions)
- 
          # koyfin etf
-        i = [x for x in images if 'koyfin' in x and 'etf' in x and str(sector_option).strip() in x ]
+        i = [x for x in images if 'koyfin' in x and 'etf' in x and str(sector_option).strip() in x and 'industry_' in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         
