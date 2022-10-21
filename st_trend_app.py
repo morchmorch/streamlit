@@ -322,7 +322,7 @@ def draw_market_sector() :
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industries' in x] 
         st.write(i)
         st.write(sector_option)
-        i = [ x for x in i if sector_option in x]
+        i = [ x for x in i if str(sector_option).strip() in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
 
