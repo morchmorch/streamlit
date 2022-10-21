@@ -345,7 +345,7 @@ def draw_market_sector() :
         #st.image(urls,width=600,caption=captions)
  
          # koyfin etf
-        i = [x for x in images if 'koyfin' in x and 'etf' in x]
+        i = [x for x in images if 'koyfin' in x and 'etf' in x and str(sector_option).strip() in x ]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         
@@ -354,7 +354,7 @@ def draw_market_sector() :
         st.image(urls,width=600,caption=captions)
 
         #finviz companies by industry
-        i = [x for x in images if 'industry_' in x and 'finviz' in x and 'rrg' not in x and '60' not in x and '52' not in x]
+        i = [x for x in images if 'industry_' in x and 'finviz' in x and 'rrg' not in x and '60' not in x and '52' not in x and str(sector_option).strip() in x ]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[-1] for x in i]
         st.write ('companies by industry')
