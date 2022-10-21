@@ -333,17 +333,18 @@ def draw_market_sector() :
         i = [ x for x in i if sector_option in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
-        st.image(urls,width=600,caption=captions)
+        #st.image(urls,width=600,caption=captions)
  
- 
-         # koyfin etf
-        i = [x for x in images if 'koyfin' in x and 'etf' in x]
         c_urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         c_captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
 
         urls.extend (c_urls)
         captions.extend(c_captions)
-        st.image(urls,width=600,caption=captions)
+
+         st.image(urls,width=600,caption=captions)
+ 
+         # koyfin etf
+        i = [x for x in images if 'koyfin' in x and 'etf' in x]
 
         st.write (' ETF ')
         
