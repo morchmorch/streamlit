@@ -320,8 +320,6 @@ def draw_market_sector() :
         # industry rrg
         #i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industr' in x] 
-        st.write(i)
-        st.write(sector_option)
         i = [ x for x in i if str(sector_option).strip() in x]
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
@@ -332,9 +330,7 @@ def draw_market_sector() :
         # companiees rrg
         #i= [x for x in images if 'stockworld_' + sector_option + '_rrg' in  x]
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'stockcharts_'+ sector_option+"_rrg" in x ] 
-        st.write(i)
         i = [ x for x in i if sector_option in x]
-        st.write(i)
         urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         #st.image(urls,width=600,caption=captions)
@@ -346,7 +342,7 @@ def draw_market_sector() :
         urls.extend (c_urls)
         captions.extend(c_captions)
 
-        st.image(urls,width=600,caption=captions)
+        #st.image(urls,width=600,caption=captions)
  
          # koyfin etf
         i = [x for x in images if 'koyfin' in x and 'etf' in x]
@@ -355,6 +351,7 @@ def draw_market_sector() :
         
         st.write (' ETF ')
         
+        st.image(urls,width=600,caption=captions)
 
         #finviz companies by industry
         i = [x for x in images if 'industry_' in x and 'finviz' in x and 'rrg' not in x and '60' not in x and '52' not in x]
