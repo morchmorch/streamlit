@@ -245,5 +245,5 @@ joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.re
 joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
 joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
 
-st.dataframe(pdf)
+st.dataframe( joindf[dcols]  )
 
