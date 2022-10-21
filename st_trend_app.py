@@ -319,7 +319,7 @@ def draw_market_sector() :
 
         # industry rrg
         #i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
-        i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industries' in x] 
+        i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industr' in x] 
         st.write(i)
         st.write(sector_option)
         i = [ x for x in i if str(sector_option).strip() in x]
