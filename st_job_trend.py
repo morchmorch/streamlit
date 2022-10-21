@@ -219,6 +219,7 @@ pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
 
 joindf=pdf.copy()
 
+dcols = ['Post_Date', 'Job_Title', 'Company_Name','Company_Location', 'Job_Link','Company_Description']
 
 joindf.Post_Date = pd.to_datetime(joindf.Post_Date)
 joindf = joindf[joindf.Post_Date > datetime.datetime.now() - pd.to_timedelta("30day")]
