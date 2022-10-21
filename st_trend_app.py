@@ -55,7 +55,7 @@ def draw_t_fig () :
             #x="Profit Margin",
             #y="Industry",
             z = 'Daily Slope(5,Daily RSI(14,Daily Close))',
-            y = 'Daily Slope(5,Daily ADX Line(14))' ,
+            y = 'Daily ADX Line(14)' ,
             x='Industry',
             width=1000,
             height=800,
