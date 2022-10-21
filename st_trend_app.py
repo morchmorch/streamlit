@@ -341,7 +341,7 @@ def draw_market_sector() :
         urls.extend (c_urls)
         captions.extend(c_captions)
 
-         st.image(urls,width=600,caption=captions)
+        st.image(urls,width=600,caption=captions)
  
          # koyfin etf
         i = [x for x in images if 'koyfin' in x and 'etf' in x]
