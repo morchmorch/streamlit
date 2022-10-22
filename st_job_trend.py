@@ -215,7 +215,15 @@ def make_clickable(val):
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-st.set_page_config(page_title="Investrecipes",layout='wide')
+st.set_page_config(page_title="JobsMills",layout='wide')
+
+
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
+
 
 pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
 
