@@ -198,6 +198,65 @@ def draw_momentum_figs():
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
  
+def display_jobs(role,job) :
+
+    pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
+
+    joindf=pdf.copy()
+
+    dcols = ['Post_Date', 'Job_Title', 'Company_Name','Company_Location', 'Job_Link','Company_Description']
+
+    joindf.Post_Date = pd.to_datetime(joindf.Post_Date)
+    joindf = joindf[joindf.Post_Date > datetime.datetime.now() - pd.to_timedelta("30day")]
+
+    joindf=joindf[joindf.Company_Name.str.len() > 2]
+    joindf=joindf[joindf.Job_Title.str.len() > 2]
+
+
+    #print (joindf.columns)
+
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("set()", "NA", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("}", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("{", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("(", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace(")", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\\", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("'.", "'", regex=True)
+
+
+
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("xa0", "", regex=True)
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\u200e", "", regex=True)
+
+    joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
+    joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
+
+
+    tlist =[' vp ','officer', 'president'] 
+    must_term = 'product manag'
+    print (must_term)
+
+    joindf=joindf[joindf.Job_Title.str.lower().str.contains (must_term) ]
+
+    joindfd=joindf[joindf.Job_Title.str.lower().str.contains('|'.join(tlist) , na=False) ]
+
+
+    l = joindfd.Company_Name.tolist()
+
+    sector_option = st.radio( "Hiring Companies",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    joindf = joindfd [ joindf.Company_Name.str.contains (sector_option) ]   
+
+
+
+    joindf.style.format(make_clickable)
+     
+    st.markdown ( joindf[dcols].to_html(escape=False , render_links=True  ), unsafe_allow_html=True )
+
+    st.write(add_radio)
+
+
 
 def make_clickable(val):
     return '<a href="{}">{}</a>'.format(val,val)
@@ -225,59 +284,5 @@ with st.sidebar:
     )
 
 
+ display_jobs("role","job") 
 
-pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
-
-joindf=pdf.copy()
-
-dcols = ['Post_Date', 'Job_Title', 'Company_Name','Company_Location', 'Job_Link','Company_Description']
-
-joindf.Post_Date = pd.to_datetime(joindf.Post_Date)
-joindf = joindf[joindf.Post_Date > datetime.datetime.now() - pd.to_timedelta("30day")]
-
-joindf=joindf[joindf.Company_Name.str.len() > 2]
-joindf=joindf[joindf.Job_Title.str.len() > 2]
-
-
-#print (joindf.columns)
-
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("set()", "NA", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("}", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("{", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("(", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace(")", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\\", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("'.", "'", regex=True)
-
-
-
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("xa0", "", regex=True)
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("\u200e", "", regex=True)
-
-joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
-joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
-
-
-tlist =[' vp ','officer', 'president'] 
-must_term = 'product manag'
-print (must_term)
-
-joindf=joindf[joindf.Job_Title.str.lower().str.contains (must_term) ]
-
-joindfd=joindf[joindf.Job_Title.str.lower().str.contains('|'.join(tlist) , na=False) ]
-
-
-l = joindfd.Company_Name.tolist()
-
-sector_option = st.radio( "Hiring Companies",  l  )
-st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
-joindf = joindfd [ joindf.Company_Name.str.contains (sector_option) ]   
-
-
-
-joindf.style.format(make_clickable)
- 
-st.markdown ( joindf[dcols].to_html(escape=False , render_links=True  ), unsafe_allow_html=True )
-
-st.write(add_radio)
