@@ -201,7 +201,7 @@ def draw_momentum_figs():
 def display_jobs(role,job) :
 
     pdf = pd.DataFrame()
-    if 'product' in job :
+    if 'Product' in job :
         pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
         must_term = 'product manag'
 
