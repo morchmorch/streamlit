@@ -250,6 +250,7 @@ joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=
 
 
 tlist =[' vp ','officer', 'president'] 
+must_term = 'product manag'
 print (must_term)
 
 joindf=joindf[joindf.Job_Title.str.lower().str.contains (must_term) ]
