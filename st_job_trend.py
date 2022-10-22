@@ -288,8 +288,7 @@ tab1, tab2, tab3  = st.tabs([ "Product Management" , "Security", "Producct Marke
 with st.sidebar:
     add_radio = st.radio(
         "Role",
-        ("Executive", "Manager", "Individual" )
-    )
+        ("Executive", "Manager", "Individual" ) , key = 'role')
 
 with tab1 :
 
