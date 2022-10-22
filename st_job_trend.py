@@ -249,7 +249,7 @@ def display_jobs(role,job,tlist) :
 
     l = joindfd.Company_Name.tolist()
 
-    sector_option = st.radio( "Hiring Companies",  l  , key = 'companies')
+    sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job)
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     joindf = joindfd [ joindf.Company_Name.str.contains (sector_option) ]   
