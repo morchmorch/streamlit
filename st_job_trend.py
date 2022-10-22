@@ -274,8 +274,10 @@ def make_clickable(val):
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+
 st.set_page_config(page_title="JobsMills",layout='wide')
 
+tab1, tab2, tab3  = st.tabs([ "Product Management" , "Security", "Producct Marketing" )
 
 with st.sidebar:
     add_radio = st.radio(
@@ -283,13 +285,14 @@ with st.sidebar:
         ("Executive", "Manager", "Individual" )
     )
 
-role = add_radio
+with tab1 :
 
-if 'Exec' in role :
-    tlist =[' vp ','officer', 'president'] 
-if 'Mana' in role :
-    tlist = ['director']
+    role = add_radio
+
+    if 'Exec' in role :
+        tlist =[' vp ','officer', 'president'] 
+    if 'Mana' in role :
+        tlist = ['director']
 
 
-display_jobs("Exec","Product",tlist) 
-
+    display_jobs("Exec","Product",tlist) 
