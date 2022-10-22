@@ -284,5 +284,5 @@ with st.sidebar:
     )
 
 
- display_jobs("role","job") 
+display_jobs("role","job") 
 
