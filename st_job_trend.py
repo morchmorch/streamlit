@@ -205,6 +205,12 @@ def display_jobs(role,job,tlist) :
         pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
         must_term = 'product manag'
 
+    if 'security' in job.lower() :
+        pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/cloud_security.csv')
+        must_term = 'security'
+
+
+
     joindf=pdf.copy()
 
     dcols = ['Post_Date', 'Job_Title', 'Company_Name','Company_Location', 'Job_Link','Company_Description']
@@ -291,6 +297,18 @@ with tab1 :
 
     if 'Exec' in role :
         tlist =[' vp ','officer', 'president'] 
+    if 'Mana' in role :
+        tlist = ['director']
+
+
+    display_jobs("Exec","Product",tlist) 
+
+with tab2 :
+
+    role = add_radio
+
+    if 'Exec' in role :
+        tlist =[' vp ','officer', 'president', 'ciso'] 
     if 'Mana' in role :
         tlist = ['director']
 
