@@ -288,7 +288,7 @@ role = add_radio
 if 'Exec' in role :
     tlist =[' vp ','officer', 'president'] 
 if 'Mana' in role :
-    tlist = ['director','manager']
+    tlist = ['director']
 
 
 display_jobs("Exec","Product",tlist) 
