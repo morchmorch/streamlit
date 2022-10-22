@@ -277,7 +277,7 @@ def make_clickable(val):
 
 st.set_page_config(page_title="JobsMills",layout='wide')
 
-tab1, tab2, tab3  = st.tabs([ "Product Management" , "Security", "Producct Marketing" )
+tab1, tab2, tab3  = st.tabs([ "Product Management" , "Security", "Producct Marketing"] )
 
 with st.sidebar:
     add_radio = st.radio(
