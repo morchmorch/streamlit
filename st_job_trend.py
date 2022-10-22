@@ -200,7 +200,9 @@ def draw_momentum_figs():
  
 def display_jobs(role,job) :
 
-    pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
+    if 'product' in job :
+        pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
+        must_term = 'product manag'
 
     joindf=pdf.copy()
 
@@ -231,9 +233,11 @@ def display_jobs(role,job) :
     joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
     joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
 
+    if 'Exec' in role :
+        tlist =[' vp ','officer', 'president'] 
+    if 'Mana' in role :
+        tlist = ['director','manager']
 
-    tlist =[' vp ','officer', 'president'] 
-    must_term = 'product manag'
     print (must_term)
 
     joindf=joindf[joindf.Job_Title.str.lower().str.contains (must_term) ]
