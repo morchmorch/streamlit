@@ -286,9 +286,7 @@ st.set_page_config(page_title="JobsMills",layout='wide')
 tab1, tab2, tab3  = st.tabs([ "Product Management" , "Security", "Producct Marketing"] )
 
 with st.sidebar:
-    add_radio = st.radio(
-        "Role",
-        ("Executive", "Manager", "Individual" ) , key = 'role')
+    add_radio = st.selectboz( "Role", ("Executive", "Manager", "Individual" ) , key = 'role')
 
 with tab1 :
 
