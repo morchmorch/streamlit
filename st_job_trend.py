@@ -198,7 +198,7 @@ def draw_momentum_figs():
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
  
-def display_jobs(role,job) :
+def display_jobs(role,job,tlist) :
 
     pdf = pd.DataFrame()
     if 'Product' in job :
@@ -233,11 +233,6 @@ def display_jobs(role,job) :
 
     joindf['Company_Description'] = joindf['Company_Description'].astype(str).str.replace("www.owler.com", "", regex=True)
     joindf=joindf.sort_values('Post_Date' , ascending=False).drop_duplicates(subset=['Job_Title', 'Company_Name'], keep='last')
-
-    if 'Exec' in role :
-        tlist =[' vp ','officer', 'president'] 
-    if 'Mana' in role :
-        tlist = ['director','manager']
 
     print (must_term)
 
@@ -288,6 +283,13 @@ with st.sidebar:
         ("Executive", "Manager", "Individual" )
     )
 
+role = add_radio
 
-display_jobs("Exec","Product") 
+if 'Exec' in role :
+    tlist =[' vp ','officer', 'president'] 
+if 'Mana' in role :
+    tlist = ['director','manager']
+
+
+display_jobs("Exec","Product",tlist) 
 
