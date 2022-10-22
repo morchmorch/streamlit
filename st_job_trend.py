@@ -220,9 +220,10 @@ st.set_page_config(page_title="JobsMills",layout='wide')
 
 with st.sidebar:
     add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
+        "Role",
+        ("Executive", "Manager", "Individual" )
     )
+
 
 
 pdf = pd.read_csv('https://worldopen.s3.amazonaws.com/product_management.csv')
@@ -279,3 +280,4 @@ joindf.style.format(make_clickable)
  
 st.markdown ( joindf[dcols].to_html(escape=False , render_links=True  ), unsafe_allow_html=True )
 
+st.write(add_radio)
