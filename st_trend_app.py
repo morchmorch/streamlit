@@ -461,7 +461,7 @@ with tab3:
 with tab4:
     st.header("(momentum views across stocks, industries, etfs )")
     l = ['silver cross', 'golden cross']
-    sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
+    sector_option = st.radio( "Industries , ETFs, Stocks by technical factor",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     col1, col2 , col3 = st.columns(3)
 
