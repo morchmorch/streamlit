@@ -464,8 +464,8 @@ with tab4:
     with col1 :
         st.write ('stocks')
         if 'silver' in sector_option :
-            sector_option = "stocks_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+            col1_sector_option = "stocks_20_50_sma"
+        df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write(df[cols])
@@ -473,8 +473,8 @@ with tab4:
     with col2:
         st.write ('industries')
         if 'silver' in sector_option :
-            sector_option = "industries_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+            col2_sector_option = "industries_20_50_sma"
+        df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write (sector_option)
@@ -484,8 +484,8 @@ with tab4:
     with col3:
         st.write ('etfs')
         if 'silver' in sector_option :
-            sector_option = "etfs_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+            col3_sector_option = "etfs_20_50_sma"
+        df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write(df[cols])
