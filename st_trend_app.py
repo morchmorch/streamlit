@@ -189,9 +189,9 @@ def take_string_give_url (option):
         'macro_market_charts': 'https://investrecipes.s3.amazonaws.com/market/fundamental/comparisoncharts/etfworld_sector_all_market-finviz-charts.png',    
         'sector_market_charts': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png',
         'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
-        'industries_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv-agg.html',
+        'industries_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv.html',
         'stocks_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv-agg.html',
-        'etf_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv-agg.html'
+        'etf_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html'
 
     }
     return url_dict[option]
@@ -476,6 +476,7 @@ with tab4:
             col2_sector_option = "industries_20_50_sma"
         df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        cols = ['Symbol','Name']
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write (sector_option)
         st.write(df[cols])
@@ -487,6 +488,7 @@ with tab4:
             col3_sector_option = "etfs_20_50_sma"
         df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        cols = ['Symbol','Name']
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write(df[cols])
 
