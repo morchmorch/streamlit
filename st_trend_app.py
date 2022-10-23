@@ -460,9 +460,9 @@ with tab4:
     col1, col2 , col3 = st.columns(3)
     with col1 :
         st.write ('stocks')
-    with cols2:
+    with col2:
         st.write ('industries')
-    with cols2:
+    with col3:
         st.write ('etfs')
     #draw_momentum_figs()    
 
