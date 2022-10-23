@@ -453,8 +453,18 @@ with tab3:
     draw_market_sector()
 
 with tab4:
-    st.header("(momentum views)")
-    draw_momentum_figs()    
+    st.header("(momentum views across stocks, industries, etfs )")
+    l = [" silver cross " , "golden cross" ]
+    sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    col1, col2 , col3 = st.columns(3)
+    with col1 :
+        st.write ('stocks')
+    with cols2:
+        st.write ('industries')
+    with cols2:
+        st.write ('etfs')
+    #draw_momentum_figs()    
 
 with tab5:
     st.header("(fundamental)")
