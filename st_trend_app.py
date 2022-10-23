@@ -188,7 +188,10 @@ def take_string_give_url (option):
         'etf_heatmap' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_heatmap-finviz.png',
         'macro_market_charts': 'https://investrecipes.s3.amazonaws.com/market/fundamental/comparisoncharts/etfworld_sector_all_market-finviz-charts.png',    
         'sector_market_charts': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png',
-        'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png'
+        'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
+        'industries_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv-agg.html',
+        'stocks_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv-agg.html',
+        'etf_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv-agg.html'
 
     }
     return url_dict[option]
@@ -455,15 +458,33 @@ with tab3:
 with tab4:
     st.header("(momentum views across stocks, industries, etfs )")
     l = [" silver cross " , "golden cross" ]
+    l = [ "industries20_50_sma", "etfs_20_50_sma", "stocks_20_50_sma"]
     sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     col1, col2 , col3 = st.columns(3)
     with col1 :
         st.write ('stocks')
+        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        st.write(df[cols])
+
     with col2:
         st.write ('industries')
+        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        st.write(df[cols])
+
+
     with col3:
         st.write ('etfs')
+        df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        st.write(df[cols])
+
+
     #draw_momentum_figs()    
 
 with tab5:
