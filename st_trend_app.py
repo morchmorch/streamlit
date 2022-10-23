@@ -470,7 +470,7 @@ with tab4:
             col1_sector_option = "stocks_20_50_sma"
         if 'gold' in sector_option :
             col1_sector_option = "stocks_50_200_sma"
-         df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
+        df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.dataframe ( df[cols], height=1000)
@@ -481,7 +481,7 @@ with tab4:
             col2_sector_option = "industries_20_50_sma"
         if 'gold' in sector_option :
             col2_sector_option = "industries_50_200_sma"
-         df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
+        df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
@@ -495,7 +495,7 @@ with tab4:
             col3_sector_option = "etfs_20_50_sma"
         if 'gold' in sector_option :
             col3_sector_option = "etfs_50_200_sma"
-         df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
+        df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
