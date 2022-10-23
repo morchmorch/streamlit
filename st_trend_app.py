@@ -464,18 +464,8 @@ with tab4:
     sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     col1, col2 , col3 = st.columns(3)
-    with col1 :
-        st.write ('stocks')
-        if 'silver' in sector_option :
-            col1_sector_option = "stocks_20_50_sma"
-        if 'gold' in sector_option :
-            col1_sector_option = "stocks_50_200_sma"
-        df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
-        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        #st.caption ( ', '.join (df[cols].symbols.tolist()) )
-        st.dataframe ( df[cols], height=1000)
 
-    with col2:
+    with col1:
         st.write ('industries')
         if 'silver' in sector_option :
             col2_sector_option = "industries_20_50_sma"
@@ -485,12 +475,11 @@ with tab4:
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
-        st.write (sector_option)
         st.dataframe ( df[cols], height=1000)
         #st.write(df[cols])
 
 
-    with col3:
+    with col2:
         st.write ('etfs')
         if 'silver' in sector_option :
             col3_sector_option = "etfs_20_50_sma"
@@ -503,6 +492,16 @@ with tab4:
         #st.write(df[cols])
         st.dataframe ( df[cols], height=1000)
 
+    with col3 :
+        st.write ('stocks')
+        if 'silver' in sector_option :
+            col1_sector_option = "stocks_20_50_sma"
+        if 'gold' in sector_option :
+            col1_sector_option = "stocks_50_200_sma"
+        df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
+        cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+        #st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        st.dataframe ( df[cols], height=1000)
 
     #draw_momentum_figs()    
 
