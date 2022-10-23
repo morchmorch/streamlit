@@ -457,13 +457,15 @@ with tab3:
 
 with tab4:
     st.header("(momentum views across stocks, industries, etfs )")
-    l = [" silver cross " , "golden cross" ]
-    l = [ "industries_20_50_sma", "etfs_20_50_sma", "stocks_20_50_sma"]
+    l = ["silver cross" , "golden cross" ]
+    #l = [ "industries_20_50_sma", "etfs_20_50_sma", "stocks_20_50_sma"]
     sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     col1, col2 , col3 = st.columns(3)
     with col1 :
         st.write ('stocks')
+        if 'silver' in sector_option :
+            sector_option = "stocks_20_50_sma"
         df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
@@ -471,6 +473,8 @@ with tab4:
 
     with col2:
         st.write ('industries')
+        if 'silver' in sector_option :
+            sector_option = "industries_20_50_sma"
         df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
@@ -479,6 +483,8 @@ with tab4:
 
     with col3:
         st.write ('etfs')
+        if 'silver' in sector_option :
+            sector_option = "etfs_20_50_sma"
         df = pd.read_html ( take_string_give_url ( sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         st.caption ( ', '.join (df[cols].symbols.tolist()) )
