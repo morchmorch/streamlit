@@ -467,7 +467,7 @@ with tab4:
             col1_sector_option = "stocks_20_50_sma"
         df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write(df[cols])
 
     with col2:
@@ -477,7 +477,7 @@ with tab4:
         df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
-        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write (sector_option)
         st.write(df[cols])
 
@@ -489,7 +489,7 @@ with tab4:
         df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
-        st.caption ( ', '.join (df[cols].symbols.tolist()) )
+        #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write(df[cols])
 
 
