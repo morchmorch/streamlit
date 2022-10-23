@@ -468,7 +468,7 @@ with tab4:
         df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
-        st.write(df[cols])
+        st.dattaframee ( df[cols], height=200)
 
     with col2:
         st.write ('industries')
