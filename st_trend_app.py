@@ -191,7 +191,10 @@ def take_string_give_url (option):
         'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
         'industries_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv.html',
         'stocks_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv-agg.html',
-        'etfs_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html'
+        'etfs_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html'A
+        'industries_50_200_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_50_200-stockcharts.csv.html',
+        'etfs_50_200_sma':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_50_200-stockcharts.csv.html',
+        'stocks_50_200_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_50_200-stockcharts.csv-agg.html'
 
     }
     return url_dict[option]
@@ -465,7 +468,9 @@ with tab4:
         st.write ('stocks')
         if 'silver' in sector_option :
             col1_sector_option = "stocks_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
+        if 'gold' in sector_option :
+            col1_sector_option = "stocks_50_200_sma"
+         df = pd.read_html ( take_string_give_url ( col1_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.dataframe ( df[cols], height=1000)
@@ -474,7 +479,9 @@ with tab4:
         st.write ('industries')
         if 'silver' in sector_option :
             col2_sector_option = "industries_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
+        if 'gold' in sector_option :
+            col2_sector_option = "industries_50_200_sma"
+         df = pd.read_html ( take_string_give_url ( col2_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
@@ -486,7 +493,9 @@ with tab4:
         st.write ('etfs')
         if 'silver' in sector_option :
             col3_sector_option = "etfs_20_50_sma"
-        df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
+        if 'gold' in sector_option :
+            col3_sector_option = "etfs_50_200_sma"
+         df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
