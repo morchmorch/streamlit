@@ -486,7 +486,8 @@ with tab4:
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
         st.write (sector_option)
-        st.write(df[cols])
+        st.dataframe ( df[cols], height=1000)
+        #st.write(df[cols])
 
 
     with col3:
@@ -499,7 +500,8 @@ with tab4:
         cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
         cols = ['Symbol','Name']
         #st.caption ( ', '.join (df[cols].symbols.tolist()) )
-        st.write(df[cols])
+        #st.write(df[cols])
+        st.dataframe ( df[cols], height=1000)
 
 
     #draw_momentum_figs()    
