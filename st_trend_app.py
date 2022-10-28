@@ -176,7 +176,8 @@ def take_string_give_url (option):
         'insider_buying': 'https://investrecipes.s3.amazonaws.com/apps/insiderbuying/insider-buying-finviz.csv-agg.html',
         'in_news': 'https://investrecipes.s3.amazonaws.com/apps/news/finviz_major_news.csv-agg.html',
         'strong_patterns': 'https://investrecipes.s3.amazonaws.com/all_stocks/technical/strongpatterns/stockworld_all_52wkhigh-strong-patterns-finviz.csv-agg.html',
-        'unusual_volume': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_unusual-volume-finviz-agg.html',
+        'etf_unusual_relative_volume': 'https://investrecipes.s3.amazonaws.com/apps/volumegainers/etfworld-relative_volume-finviz.csv-agg.html',
+        'stock_unusual_relative_volume': 'https://investrecipes.s3.amazonaws.com/apps/volumegainers/stockworld-relative-volume_finviz.csv-agg.html',
         'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
         'high_adx_slope':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_adx_slope-stockcharts.csv-agg.html',
         'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
@@ -259,7 +260,7 @@ def draw_external_fig():
 def draw_technical_fig():
 
 
-    l = [ 'strong_patterns', 'unusual_volume', 'price_up_and_volume_up','high_adx_slope']
+    l = [ 'strong_patterns', 'etf_unusual_relative_volume', 'stock_unusual_relative_volume' , 'price_up_and_volume_up','high_adx_slope']
     sector_option = st.radio( "Stocks with technical tailwinds",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.markdown("""---""")  
