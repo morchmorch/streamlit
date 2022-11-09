@@ -474,11 +474,12 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
-st.write(allfiles)
+l = [x.key for x in allfiles if 'momentum' in x.key]
+st.write(mfiles)
 
 #l = joindfd.Company_Name.tolist()
-#sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
-#st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+sector_option = st.radio( "Hiring Companies",  l )
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 
 
