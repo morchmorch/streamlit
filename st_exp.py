@@ -474,7 +474,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
-l = allfiles
+l = [x.key for x in allfiles]
 #l = [x.key for x in allfiles if 'momentum' in x.key]
 #st.write(l)
 
