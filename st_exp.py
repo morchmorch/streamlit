@@ -11,6 +11,43 @@ def get_data () :
     df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
     return df_custom
 
+def find_object_prefix_days(bucketname, prefix, days):
+    print (bucketname, prefix)
+    import boto3, datetime,pytz
+    from datetime import timedelta
+    s3 = boto3.resource('s3')
+    my_bucket = s3.Bucket(bucketname)
+    unsorted = []
+    for myfile in my_bucket.objects.filter( Prefix=prefix ):
+        if  myfile.last_modified > ( datetime.datetime.now(pytz.utc) - timedelta(days=days) ) :
+            unsorted.append(myfile)
+    if len(unsorted) > 0 :
+        #files = [{'prefix':prefix, 'object':obj.key.split(",")[-1], 'timestamp': obj.last_modified.strftime("%B %d, %Y") } for obj in sorted(unsorted, key=lambda x:x.last_modified, reverse=True)]
+        files = unsorted
+        print (files)
+        return files
+    else :
+        return []
+
+
+def find_object_prefix_suffix_days(bucketname, prefix, suffix, days):
+    print (bucketname, prefix)
+    import boto3, datetime,pytz
+    from datetime import timedelta
+    s3 = boto3.resource('s3')
+    my_bucket = s3.Bucket(bucketname)
+    unsorted = []
+    for myfile in my_bucket.objects.filter( Prefix=prefix ):
+        if  myfile.last_modified > ( datetime.datetime.now(pytz.utc) - timedelta(days=days) ) :
+            if ( myfile.key.endswith(suffix) ) :
+                unsorted.append(myfile)
+    if len(unsorted) > 0 :
+        #files = [{'prefix':prefix, 'object':obj.key.split(",")[-1], 'timestamp': obj.last_modified.strftime("%B %d, %Y") } for obj in sorted(unsorted, key=lambda x:x.last_modified, reverse=True)]
+        files = unsorted
+        return files
+    else :
+        return []
+
 def draw_t_fig () :
     tdf = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
     print (tdf.shape)
@@ -383,6 +420,9 @@ def draw_momentum_figs():
  
 
 
+def list_csvs_display_table():
+
+
 ## main
 
 
@@ -426,6 +466,19 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+l = joindfd.Company_Name.tolist()
+
+    sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
+
+
+#l = joindfd.Company_Name.tolist()
+#sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
+#st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
 
 
 st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
