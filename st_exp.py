@@ -478,7 +478,7 @@ l = [x.key for x in allfiles if 'momentum' in x.key]
 st.write(l)
 
 #l = joindfd.Company_Name.tolist()
-sector_option = st.radio( "Hiring Companies",  l )
+sector_option = st.selectbox( "Hiring Companies",  l )
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 df = pd.read_csv('https://investrecipes.s3.amazonaws.com/' + sector_option)
