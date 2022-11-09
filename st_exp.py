@@ -475,7 +475,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
 l = [x.key for x in allfiles if 'momentum' in x.key]
-st.write(mfiles)
+st.write(l)
 
 #l = joindfd.Company_Name.tolist()
 sector_option = st.radio( "Hiring Companies",  l )
