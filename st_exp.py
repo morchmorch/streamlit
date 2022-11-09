@@ -467,10 +467,10 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-l = joindfd.Company_Name.tolist()
+#l = joindfd.Company_Name.tolist()
 
-    sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+#sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
+#st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
 
