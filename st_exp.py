@@ -481,6 +481,7 @@ st.write(l)
 sector_option = st.radio( "Hiring Companies",  l )
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
+st.write ('https://investrecipes.s3.amazonaws.com/' + sector_option)
 
 
 st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
