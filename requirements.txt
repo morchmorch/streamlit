@@ -1,4 +1,5 @@
 plotly
+pyyaml
 streamlit_authenticator
 pandas
 lxml
