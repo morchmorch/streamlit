@@ -443,6 +443,20 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
+with open('../config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
+
+name, authentication_status, username = authenticator.login('Login', 'main')
+
+
 
 #df_custom = kdf.copy()
 #l = df_custom.Sector.unique().tolist()
