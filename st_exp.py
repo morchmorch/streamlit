@@ -469,48 +469,57 @@ name, authentication_status, username = authenticator.login('Login', 'main')
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
+
+
+
 st.set_page_config(page_title="secops",layout='wide', page_icon='🎯')
 
+if authentication_status:
 
-st.sidebar.header("Filters")
-
-
-# ---- HIDE STREAMLIT STYLE ----
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
-#l = joindfd.Company_Name.tolist()
-
-#sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
-#st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
-allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
-l = [x.key for x in allfiles]
-#l = [x.key for x in allfiles if 'momentum' in x.key]
-#st.write(l)
-
-#l = joindfd.Company_Name.tolist()
-sector_option = st.selectbox( "Hiring Companies",  l )
-st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
-df = pd.read_csv('https://investrecipes.s3.amazonaws.com/' + sector_option)
-
-st.write(df)
+    authenticator.logout('Logout', 'main')
+    st.sidebar.header("Filters")
 
 
-st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
+    # ---- HIDE STREAMLIT STYLE ----
+    hide_st_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_st_style, unsafe_allow_html=True)
 
-with st.expander("See explanation"):
-    st.write("""
-        The chart above shows some numbers I picked for you.
-        I rolled actual dice for these, so they're *guaranteed* to
-        be random.
-    """)
-    st.image("https://static.streamlit.io/examples/dice.jpg")
+    #l = joindfd.Company_Name.tolist()
 
+    #sector_option = st.radio( "Hiring Companies",  l  , key = 'companies'+job+role)
+    #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    allfiles = find_object_prefix_suffix_days('investrecipes','','csv',1)
+    l = [x.key for x in allfiles]
+    #l = [x.key for x in allfiles if 'momentum' in x.key]
+    #st.write(l)
+
+    #l = joindfd.Company_Name.tolist()
+    sector_option = st.selectbox( "Hiring Companies",  l )
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    df = pd.read_csv('https://investrecipes.s3.amazonaws.com/' + sector_option)
+
+    st.write(df)
+
+
+    st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
+
+    with st.expander("See explanation"):
+        st.write("""
+            The chart above shows some numbers I picked for you.
+            I rolled actual dice for these, so they're *guaranteed* to
+            be random.
+        """)
+        st.image("https://static.streamlit.io/examples/dice.jpg")
+
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
