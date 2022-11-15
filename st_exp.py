@@ -446,7 +446,7 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
 with open('./config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+    config = yaml.load(file, Loader=yaml.SafeLoader)
 
 authenticator = stauth.Authenticate(
     config['credentials'],
