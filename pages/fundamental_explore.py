@@ -412,14 +412,15 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
 st.set_page_config(page_title="Investrecipes",layout='wide')
+draw_f_fig()
 
 
-tab1  = st.tabs([ " (fundamental explore) " ])
+#tab1  = st.tabs([ " (fundamental explore) " ])
 
 
 
-with tab1:
-    st.header("(fundamental)")
+#with tab1: 
+    #st.header("(fundamental)")
     #draw_f_fig()
 
 #with tab6:
