@@ -420,7 +420,7 @@ tab1  = st.tabs([ " (fundamental explore) " ])
 
 with tab1:
     st.header("(fundamental)")
-    draw_f_fig()
+    #draw_f_fig()
 
 #with tab6:
     #st.header("(technical)")
