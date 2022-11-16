@@ -411,8 +411,8 @@ kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-st.set_page_config(page_title="Investrecipes",layout='wide')
-st.set_page_config( page_title="momentum lists")
+#st.set_page_config(page_title="Investrecipes",layout='wide')
+st.set_page_config( page_title="momentum lists", layout=wide)
 
 tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([ " (etfs - technical analysis) ", "(stocks-technical analysis)", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
