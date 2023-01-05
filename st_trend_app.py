@@ -272,7 +272,7 @@ def draw_technical_fig():
     st.markdown("""---""")  
  
     st.caption ('charts')
-    st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '-charts-finviz.png' )
+    st.image (  take_string_give_url ( sector_option ).split('.csv')[0] + '.png' )
     #st.write ( take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.image (  take_string_give_url ( sector_option ).split('-agg')[0] + '-rrg.png' )
     st.markdown("""---""") 
