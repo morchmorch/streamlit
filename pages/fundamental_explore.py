@@ -96,7 +96,7 @@ def draw_f_fig () :
 
     kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_companies.csv')
 
-    kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
+    kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
 
     kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
