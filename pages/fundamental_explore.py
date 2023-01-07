@@ -100,9 +100,10 @@ def draw_f_fig () :
 
     kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
+    st.write (kdf.columns.tolist())
     #kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
 
-    kdf = kdf [ kdf [  'Net Income Margin % (LTM)' ] < 100 ]
+    #kdf = kdf [ kdf [  'Net Income Margin % (LTM)' ] < 100 ]
 
     #kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
