@@ -386,11 +386,11 @@ def draw_momentum_figs():
 ## main
 
 
-kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+#kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
 
-kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
+#kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
 
-kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
+#kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
 
 
 #kdf = kdf [ kdf [  'Net Income Margin % (LTM)' ] < 100 ]
