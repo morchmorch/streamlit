@@ -104,6 +104,7 @@ def draw_f_fig () :
     #kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
 
     kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] >0 ]
 
     #kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
