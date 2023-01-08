@@ -95,6 +95,9 @@ def draw_t_fig () :
 def draw_f_fig () :
 
     kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_companies.csv')
+    
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
+    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 0 ]
 
     st.write (kdf.columns.tolist())
     kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
@@ -103,7 +106,6 @@ def draw_f_fig () :
 
     #kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 10 ]
 
-    kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
 
     #kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] > 10 ]
 
