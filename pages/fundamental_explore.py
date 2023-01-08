@@ -140,7 +140,7 @@ def draw_f_fig () :
             height=800,
             hover_name="Name",
             #hover_data= ['Company','Market Cap','Profit Margin'],
-            hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)'],
+            hover_data= ['Name', 'Ticker', 'Industry',  'Total Revenues/CAGR (2Y FY)', 'Net Income Margin % (FY)', 'Revenues (FY)', 'Revenues - Est YoY % (FY1E)'],
             #size = 'Market Cap',
             labels={ 'Total Revenues/CAGR (2Y FY)' : 'Revenues CAGR (2YFY)' ,'Net Income Margin % (FY)':'NI Margin(%)', "Industry": ""} ,
             color = 'Industry',
