@@ -12,7 +12,7 @@ def response1(ques):
     openai.api_key=st.secrets["open_api_key"]
     
     response = openai.Completion.create(
-        model="code-cushman-001",
+        engine="text-davinci-002",
         #prompt=f""""Give a {lang} solution for the Leetcode question Leetcode Question: {question} {lang} Solution: """,
         prompt=f"""" write a password policy per fedramp nist standards  """, 
         temperature=0,
