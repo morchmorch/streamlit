@@ -1,5 +1,6 @@
 #plotly_chart.py
 import streamlit as st
+import openai
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -415,6 +416,10 @@ def draw_momentum_figs():
 #st.set_page_config(page_title="Investrecipes",layout='wide')
 st.set_page_config( page_title="momentum lists", layout='wide')
 st.title ('momentum lists')
+
+lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
+question=st.text_area("Input the Question Here")
+button=st.button("Generate")
 
 tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([ " (etfs - technical analysis) ", "(stocks-technical analysis)", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
