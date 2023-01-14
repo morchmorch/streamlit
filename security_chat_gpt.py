@@ -13,9 +13,8 @@ def response1(ques):
     
     response = openai.Completion.create(
         model="code-cushman-001",
-        prompt=f""""Give a {lang} solution for the Leetcode question 
-                    Leetcode Question: {question}
-                    {lang} Solution: """,
+        #prompt=f""""Give a {lang} solution for the Leetcode question Leetcode Question: {question} {lang} Solution: """,
+        prompt=f"""" write a password policy per fedramp nist standards  """, 
         temperature=0,
         max_tokens=1111,
         top_p=1,
