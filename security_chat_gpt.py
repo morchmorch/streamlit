@@ -8,6 +8,24 @@ from PIL import Image
 
 #blah
 
+def response1(ques):
+    openai.api_key=st.secrets["open_api_key"]
+    
+    response = openai.Completion.create(
+        model="code-cushman-001",
+        prompt=f""""Give a {lang} solution for the Leetcode question 
+                    Leetcode Question: {question}
+                    {lang} Solution: """,
+        temperature=0,
+        max_tokens=1111,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+        )
+    print(response)
+    return response.choices[0].text
+
+
 def get_data () :
     df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
     return df_custom
@@ -420,6 +438,10 @@ st.title ('momentum lists')
 lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
 question=st.text_area("Input the Question Here")
 button=st.button("Generate")
+
+if question and button:
+        answer=response1(question)
+        st.code(answer)
 
 tab1, tab2,tab3,tab4,tab5,tab6 = st.tabs([ " (etfs - technical analysis) ", "(stocks-technical analysis)", " (market - weekly performance) " , " (momentum views) ", " (fundamental explore) ", " ( technical explore ) " ])
 
