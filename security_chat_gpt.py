@@ -89,7 +89,7 @@ with tab3:
 with tab4:
     st.write ('tab3')
 
-    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object """
+    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
     tab4button=st.button("Generate4 ")
