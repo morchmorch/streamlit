@@ -69,7 +69,7 @@ with tab2 :
 
     base_prompt = "`write a secure iam policy and a role for cross account access of aws service replace:s_type.  the resource is in account 'a' and you want to access from a role in account 'b'`"
     
-    base_prompt = base_prompt.replace ( "replace:s_type", s_type.strip() )
+    base_prompt = base_prompt.replace ( "replace:s_type", service.strip() )
     
 
     #question=st.text_area("Input the Question Here")
