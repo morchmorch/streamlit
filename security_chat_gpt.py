@@ -21,7 +21,7 @@ def response1(base_prompt):
         #prompt=f"""" write a password policy per fedramp nist standards  """, 
         prompt = base_prompt,
         temperature=0,
-        max_tokens=2048,
+        max_tokens=1900,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
