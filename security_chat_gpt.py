@@ -14,7 +14,7 @@ def response1(base_prompt):
     response = openai.Completion.create(
         engine="text-davinci-002",
         #prompt=f"""" write a password policy per fedramp nist standards  """, 
-        prompt = base_prompt
+        prompt = base_prompt,
         temperature=0,
         max_tokens=1111,
         top_p=1,
