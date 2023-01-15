@@ -77,4 +77,5 @@ with tab2 :
         answer=response1(question)
         st.code(answer)
 
-
+with tab3:
+    st.write ('tab3')
