@@ -13,7 +13,7 @@ def response1(base_prompt):
     st.write (base_prompt)
     base_prompt = (f"{base_prompt}")
     engine = "text-davinci-003"
-    engine = "text-curie-001"
+    #engine = "text-curie-001"
     
     response = openai.Completion.create(
         engine=engine,
