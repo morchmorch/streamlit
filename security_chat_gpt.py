@@ -61,13 +61,13 @@ with tab1 :
 with tab2 :
 
     st.header ('generate a IAM policy')
-    s_type=st.selectbox("Select the service:", ("s3", "sns"))
+    service=st.selectbox("Select the service:", ("s3", "sns"))
     s_type = st.selectbox ( "Select type: ", ("cross account access", "single account access") )
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "`write a secure iam policy and a role for cross account access of a replace:s_type.  the bucket is in account 'a' and you want to access from a role in account 'b'`"
+    base_prompt = "`write a secure iam policy and a role for cross account access of aws service replace:s_type.  the resource is in account 'a' and you want to access from a role in account 'b'`"
     
     base_prompt = base_prompt.replace ( "replace:s_type", s_type.strip() )
     
