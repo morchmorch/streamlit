@@ -74,7 +74,7 @@ with tab2 :
     tab2button=st.button("Generate ")
 
     if tab2button:
-        answer=response1(question)
+        answer=response1(base_prompt)
         st.code(answer)
 
 with tab3:
