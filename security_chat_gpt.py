@@ -95,7 +95,7 @@ with tab4:
     tab4button=st.button("Generate ")
 
     st.write("Response")
-    if tab2button:
+    if tab4button:
         #answer = base_prompt
         answer=response1(base_prompt)
         st.code(answer)
