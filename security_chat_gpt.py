@@ -29,7 +29,6 @@ def response1(ques):
 
 st.set_page_config(page_title="Security Chat GPT",layout='wide')
 
-st.set_page_config( page_title="Security Chat", layout='wide')
 st.title ('Security Chat')
 
 
