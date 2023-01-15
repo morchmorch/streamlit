@@ -71,9 +71,9 @@ with tab2 :
     
 
     #question=st.text_area("Input the Question Here")
-    button=st.button("Generate")
+    tab2button=st.button("Generate")
 
-    if button:
+    if tab2button:
         answer=response1(question)
         st.code(answer)
 
