@@ -45,8 +45,8 @@ with tab1 :
 
     base_prompt = "write a replace:policy in compliance with replace:standard" 
     
-    base_prompt.replace ( "replace:policy", s_type.strip() )
-    base_prompt.replace ( "replace:standard", standard.strip() )
+    base_prompt = base_prompt.replace ( "replace:policy", s_type.strip() )
+    base_prompt = base_prompt.replace ( "replace:standard", standard.strip() )
     
 
     #question=st.text_area("Input the Question Here")
@@ -67,7 +67,7 @@ with tab2 :
 
     base_prompt = "`write a secure iam policy and a role for cross account access of a replace:s_type.  the bucket is in account 'a' and you want to access from a role in account 'b'`"
     
-    base_prompt.replace ( "replace:s_type", s_type.strip() )
+    base_prompt = base_prompt.replace ( "replace:s_type", s_type.strip() )
     
 
     #question=st.text_area("Input the Question Here")
