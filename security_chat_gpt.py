@@ -92,7 +92,7 @@ with tab4:
     base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object """
 
     #question=st.text_area("Input the Question Here")
-    tab4button=st.button("Generate ")
+    tab4button=st.button("Generate4 ")
 
     st.write("Response")
     if tab4button:
