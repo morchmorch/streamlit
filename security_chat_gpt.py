@@ -33,7 +33,7 @@ st.set_page_config(page_title="Security Chat GPT",layout='wide')
 st.title ('Security Chat')
 
 
-tab1, tab2, tab3 = st.tabs([  "Write a policy", "Write IAM policy", "Write code"] )
+tab1, tab2, tab3, tab4 = st.tabs([  "Write a policy", "Write IAM policy", "Write code", "Best Practices"] )
 
 with tab1 :
 
@@ -84,3 +84,20 @@ with tab2 :
 
 with tab3:
     st.write ('tab3')
+
+
+with tab4:
+    st.write ('tab3')
+
+    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object """
+
+    #question=st.text_area("Input the Question Here")
+    tab2button=st.button("Generate ")
+
+    st.write("Response")
+    if tab2button:
+        #answer = base_prompt
+        answer=response1(base_prompt)
+        st.code(answer)
+
+
