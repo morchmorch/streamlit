@@ -11,18 +11,18 @@ from PIL import Image
 def response1(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     st.write (base_prompt)
-    #response = openai.Completion.create(
-        #engine="text-davinci-002",
-        #prompt=f""""Give a {lang} solution for the Leetcode question Leetcode Question: {question} {lang} Solution: """,
+    response = openai.Completion.create(
+        engine="text-davinci-002",
         #prompt=f"""" write a password policy per fedramp nist standards  """, 
-        #temperature=0,
-        #max_tokens=1111,
-        #top_p=1,
-        #frequency_penalty=0,
-        #presence_penalty=0
-        #)
+        prompt = base_prompt
+        temperature=0,
+        max_tokens=1111,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+        )
     #print(response)
-    #return response.choices[0].text
+    return response.choices[0].text
 
 
 ## main
