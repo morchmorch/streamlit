@@ -43,7 +43,7 @@ with tab1 :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "write a replace:policy in compliance with replace:standard" 
+    base_prompt = "write a replace:policy in compliance with replace:standard standard" 
     
     base_prompt = base_prompt.replace ( "replace:policy", s_type.strip() )
     base_prompt = base_prompt.replace ( "replace:standard", standard.strip() )
@@ -54,6 +54,7 @@ with tab1 :
 
     if button:
         answer=response1(base_prompt)
+        st.write ("Response")
         st.code(answer)
 
 with tab2 :
