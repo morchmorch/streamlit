@@ -10,7 +10,7 @@ from PIL import Image
 
 def response1(ques):
     openai.api_key=st.secrets["open_api_key"]
-    st.write (ques, standard)
+    st.write (ques, standard,task)
     #response = openai.Completion.create(
         #engine="text-davinci-002",
         #prompt=f""""Give a {lang} solution for the Leetcode question Leetcode Question: {question} {lang} Solution: """,
@@ -435,6 +435,8 @@ st.set_page_config( page_title="momentum lists", layout='wide')
 st.title ('momentum lists')
 
 standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
+task=st.selectbox("Select the Language of  the Solution:", ("Write a policy", "Write IAM policy", "Write code"))
+
 question=st.text_area("Input the Question Here")
 button=st.button("Generate")
 
