@@ -8,7 +8,7 @@ from PIL import Image
 
 #blah
 
-def response1(ques):
+def response1(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     st.write (base_prompt)
     #response = openai.Completion.create(
