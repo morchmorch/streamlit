@@ -17,7 +17,7 @@ def response1(base_prompt):
         #prompt=f"""" write a password policy per fedramp nist standards  """, 
         prompt = base_prompt,
         temperature=0,
-        max_tokens=2000,
+        max_tokens=4000,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
@@ -68,7 +68,7 @@ with tab2 :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = """ write a secure iam policy and a role for cross account access of aws service replace:s_type.  the resource is in account 'a' and you want to access from a role in account. . the role in account "a" should restrict the principal to a specific role called 'service-role' """
+    base_prompt = """ write a secure iam policy and a role for cross account access of aws service replace:s_type.  the resource is in account 'a' and you want to access from a role in account. . the role in account "a" should restrict the principal to a specific role called 'service-role'.  the Resource key should be limited to the resource called resource-acta.  the Action should be limited to specific actions and not * """
     
     base_prompt = base_prompt.replace ( "replace:s_type", service.strip() )
     
