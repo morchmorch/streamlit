@@ -10,19 +10,19 @@ from PIL import Image
 
 def response1(ques):
     openai.api_key=st.secrets["open_api_key"]
-    
-    response = openai.Completion.create(
-        engine="text-davinci-002",
+    st.write (ques, standard)
+    #response = openai.Completion.create(
+        #engine="text-davinci-002",
         #prompt=f""""Give a {lang} solution for the Leetcode question Leetcode Question: {question} {lang} Solution: """,
-        prompt=f"""" write a password policy per fedramp nist standards  """, 
-        temperature=0,
-        max_tokens=1111,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
-        )
-    print(response)
-    return response.choices[0].text
+        #prompt=f"""" write a password policy per fedramp nist standards  """, 
+        #temperature=0,
+        #max_tokens=1111,
+        #top_p=1,
+        #frequency_penalty=0,
+        #presence_penalty=0
+        #)
+    #print(response)
+    #return response.choices[0].text
 
 
 def get_data () :
@@ -434,7 +434,7 @@ def draw_momentum_figs():
 st.set_page_config( page_title="momentum lists", layout='wide')
 st.title ('momentum lists')
 
-lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
+standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 question=st.text_area("Input the Question Here")
 button=st.button("Generate")
 
