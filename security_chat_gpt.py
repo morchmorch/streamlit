@@ -53,7 +53,8 @@ with tab1 :
     button=st.button("Generate")
 
     if button:
-        answer=response1(base_prompt)
+        answer = base_prompt
+        #answer=response1(base_prompt)
         st.write ("Response")
         st.code(answer)
 
@@ -74,8 +75,10 @@ with tab2 :
     #question=st.text_area("Input the Question Here")
     tab2button=st.button("Generate ")
 
+    st.write("Response")
     if tab2button:
-        answer=response1(base_prompt)
+        answer = base_prompt
+        #answer=response1(base_prompt)
         st.code(answer)
 
 with tab3:
