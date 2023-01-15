@@ -77,8 +77,8 @@ with tab2 :
 
     st.write("Response")
     if tab2button:
-        answer = base_prompt
-        #answer=response1(base_prompt)
+        #answer = base_prompt
+        answer=response1(base_prompt)
         st.code(answer)
 
 with tab3:
