@@ -10,7 +10,6 @@ from PIL import Image
 
 def response1(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
-    st.write (base_prompt)
     base_prompt = (f"{base_prompt}")
     engine = "text-davinci-003"
     #engine = "text-curie-001"
@@ -81,6 +80,14 @@ with iam_tab :
 
     st.write("Response")
     if tab2button:
+
+        st.markdown(
+        """
+        - Resources must not have *
+        - Principal must not have *
+        - Actions should be limited
+        """
+        )
         with st.spinner ( 'Getting your response') :
 
             #answer = base_prompt
@@ -129,6 +136,14 @@ with raf_tab:
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+
+    st.markdown(
+    """
+    - Item 1
+    - Item 2
+    - Item 3
+    """
+    )
 
     #question=st.text_area("Input the Question Here")
     raf_tab_button=st.button("Generate", key = 'raf_tab')
