@@ -102,7 +102,7 @@ with monitor_tab:
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
-    s_type = st.selectbox ( "Select : ", ("Security Hub Alerts in the last week", "NA") )
+    s_type = st.selectbox ( "Select : ", ("Security Hub Alerts in the last week (Language - Python)", "NA") )
     if s_type == "Security Hub Alerts in the last week" :
         base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
     
