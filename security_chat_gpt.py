@@ -118,4 +118,28 @@ with tab4:
         answer=response1(base_prompt)
         st.code(answer)
 
+with tab5 :
+
+    st.header ('Spend')
+    s_type = st.selectbox ( "Select type: ", ("get current spend", "get current forcast" , "get spend per groubped by account") )
+
+    #if task == "Write a policy" :
+        #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
+
+    if s_type == "get current spend":
+        base_prompt = """ shell script to find current aws spend and forecast """
+    
+    if s_type = "get spend per groubped by account" :
+
+        base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
+
+    #question=st.text_area("Input the Question Here")
+    tab2button=st.button("Generate ")
+
+    st.write("Response")
+    if tab2button:
+        #answer = base_prompt
+        answer=response1(base_prompt)
+        st.code(answer)
+
 
