@@ -37,7 +37,7 @@ st.set_page_config(page_title="Security Chat GPT",layout='wide')
 st.title ('As a security Engineer, I want to ... ')
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs([  "Author a policy in compliant with stards", "Author an IAM policy", "Write code", "Best Practices", "Reduce Spend"] )
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
 
 with tab1 :
 
@@ -67,7 +67,7 @@ with tab2 :
 
     st.header ('generate a IAM policy')
     service=st.selectbox("Select the service:", ("s3", "sns"))
-    s_type = st.selectbox ( "Select type: ", ("cross account access", "single account access") )
+    s_type = st.selectbox ( "Select IAM Access type: ", ("cross account access", "single account access") )
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
