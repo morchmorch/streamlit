@@ -39,7 +39,7 @@ st.title ('As a security Engineer, I want to ... ')
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
 
-with standards-tab :
+with standards_tab :
 
     standard=st.selectbox("Select the Standard :", ("NIST", "HIPAA", "PCI"))
     s_type = st.selectbox ( "Select the control: ", ("Authentication Password Policy", "Access Least Privilege") )
@@ -62,7 +62,7 @@ with standards-tab :
         st.write ("Response")
         st.code(answer)
 
-with iam-tab :
+with iam_tab :
 
     st.header ('generate a IAM policy')
     service=st.selectbox("Select the service:", ("s3", "sns"))
@@ -85,7 +85,7 @@ with iam-tab :
         answer=response1(base_prompt)
         st.code(answer)
 
-with monitor-tab:
+with monitor_tab:
     st.write ('tab3')
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
@@ -106,7 +106,7 @@ with monitor-tab:
 
 
 
-with bp-tab:
+with bp_tab:
     st.write ('tab3')
 
  
@@ -124,7 +124,7 @@ with bp-tab:
         answer=response1(base_prompt)
         st.code(answer)
 
-with raf-tab:
+with raf_tab:
     st.write ('tab3')
 
  
@@ -143,7 +143,7 @@ with raf-tab:
         st.code(answer)
 
 
-with rs-tab :
+with rs_tab :
 
     st.header ('Spend')
     s_type = st.selectbox ( "Select type: ", ("get current spend", "get current forcast" , "get spend per groubped by account") )
