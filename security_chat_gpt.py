@@ -41,7 +41,6 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([  "Author a standards policy", "Au
 
 with tab1 :
 
-    st.header ('Generate a Control')
     standard=st.selectbox("Select the Standard :", ("NIST", "HIPAA", "PCI"))
     s_type = st.selectbox ( "Select the control: ", ("Authentication Password Policy", "Access Least Privilege") )
 
@@ -89,8 +88,12 @@ with tab2 :
 with tab3:
     st.write ('tab3')
 
-    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
+    
+    s_type = st.selectbox ( "Select : ", ("Cloudwatch Logging Best Practices") )
+    if s_type == "Cloudwatch Logging Best Practices" :
+        base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+    
 
     #question=st.text_area("Input the Question Here")
     tab3button=st.button("Generate3 ")
@@ -106,8 +109,11 @@ with tab3:
 with tab4:
     st.write ('tab3')
 
-    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
-    base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
+ 
+    s_type = st.selectbox ( "Select : ", ("Delete un attacged volumes in AWS") )
+    if s_type == "Delete un attacged volumes in AWS" :
+        base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
+        base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
     tab4button=st.button("Generate4 ")
