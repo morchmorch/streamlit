@@ -112,7 +112,7 @@ with monitor_tab:
 
     st.write("Response : ")
     st.markdown ("-------")
-    if monitor-button:
+    if monitor_button:
         st.subheader("Response")
         
         with st.spinner ( 'Getting your response') :
