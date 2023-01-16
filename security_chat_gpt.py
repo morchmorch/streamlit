@@ -89,12 +89,25 @@ with tab2 :
 with tab3:
     st.write ('tab3')
 
+    base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+    base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
+
+    #question=st.text_area("Input the Question Here")
+    tab3button=st.button("Generate5 ")
+
+    st.write("Response")
+    if tab3button:
+        #answer = base_prompt
+        answer=response1(base_prompt)
+        st.code(answer)
+
+
 
 with tab4:
     st.write ('tab3')
 
     base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
-    base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production """
+    base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
 
     #question=st.text_area("Input the Question Here")
     tab4button=st.button("Generate4 ")
