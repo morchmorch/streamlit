@@ -81,9 +81,11 @@ with iam_tab :
 
     st.write("Response")
     if tab2button:
-        #answer = base_prompt
-        answer=response1(base_prompt)
-        st.code(answer)
+        with st.spinner ( 'Getting your response') :
+
+            #answer = base_prompt
+            answer=response1(base_prompt)
+            st.code(answer)
 
 with monitor_tab:
 
