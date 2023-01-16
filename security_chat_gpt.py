@@ -78,16 +78,18 @@ with iam_tab :
     #question=st.text_area("Input the Question Here")
     tab2button=st.button("Generate ")
 
-    st.write("Response")
+    st.write("Principles")
     if tab2button:
 
         st.markdown(
         """
-        - Resources must not have *
-        - Principal must not have *
+        - Resources must not have `*`
+        - Principal must not have `*`
         - Actions should be limited
         """
         )
+        st.write("Response")
+        
         with st.spinner ( 'Getting your response') :
 
             #answer = base_prompt
