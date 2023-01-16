@@ -102,7 +102,7 @@ with monitor_tab:
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
-    s_type = st.selectbox ( "Select : ", ("Security Hub Alerts in the last week") )
+    s_type = st.selectbox ( "Select : ", ("Security Hub Alerts in the last week", "NA") )
     if s_type == "Security Hub Alerts in the last week" :
         base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
     
@@ -140,7 +140,7 @@ with bp_tab:
         st.code(answer)
 
 with raf_tab:
-    s_type = st.selectbox ( "Select : ", ("Delete un attacged volumes in AWS") )
+    s_type = st.selectbox ( "Select : ", ("Delete un attacged volumes in AWS", "NA") )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
