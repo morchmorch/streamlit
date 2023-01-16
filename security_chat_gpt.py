@@ -136,7 +136,7 @@ with tab5 :
     tab5button=st.button("Generate5 ")
 
     st.write("Response")
-    if tab2button:
+    if tab5button:
         #answer = base_prompt
         answer=response1(base_prompt)
         st.code(answer)
