@@ -37,9 +37,9 @@ st.set_page_config(page_title="Security Chat GPT",layout='wide')
 st.title ('As a security Engineer, I want to ... ')
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
+standards-tab, iam-tab, monitor-tab, bp-tab, raf-tab, rs-tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
 
-with tab1 :
+with standards-tab :
 
     standard=st.selectbox("Select the Standard :", ("NIST", "HIPAA", "PCI"))
     s_type = st.selectbox ( "Select the control: ", ("Authentication Password Policy", "Access Least Privilege") )
@@ -62,7 +62,7 @@ with tab1 :
         st.write ("Response")
         st.code(answer)
 
-with tab2 :
+with iam-tab :
 
     st.header ('generate a IAM policy')
     service=st.selectbox("Select the service:", ("s3", "sns"))
@@ -85,7 +85,7 @@ with tab2 :
         answer=response1(base_prompt)
         st.code(answer)
 
-with tab3:
+with monitor-tab:
     st.write ('tab3')
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
@@ -106,7 +106,25 @@ with tab3:
 
 
 
-with tab4:
+with bp-tab:
+    st.write ('tab3')
+
+ 
+    s_type = st.selectbox ( "Select : ", ("Best Practices for logging into AWS", "Best Practices for Encrypting Customer Data in AWS" ) )
+    if s_type == "Delete un attacged volumes in AWS" :
+        base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
+        base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+
+    #question=st.text_area("Input the Question Here")
+    tab4button=st.button("Generate4 ")
+
+    st.write("Response")
+    if tab4button:
+        #answer = base_prompt
+        answer=response1(base_prompt)
+        st.code(answer)
+
+with raf-tab:
     st.write ('tab3')
 
  
@@ -124,7 +142,8 @@ with tab4:
         answer=response1(base_prompt)
         st.code(answer)
 
-with tab5 :
+
+with rs-tab :
 
     st.header ('Spend')
     s_type = st.selectbox ( "Select type: ", ("get current spend", "get current forcast" , "get spend per groubped by account") )
