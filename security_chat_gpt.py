@@ -34,10 +34,10 @@ def response1(base_prompt):
 
 st.set_page_config(page_title="Security Chat GPT",layout='wide')
 
-st.title ('Security Chat')
+st.title ('As a security Engineer, I want to ... ')
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs([  "Write a policy", "Write IAM policy", "Write code", "Best Practices", "Reduce Spend"] )
+tab1, tab2, tab3, tab4, tab5 = st.tabs([  "Author a policy in compliant with stards", "Author an IAM policy", "Write code", "Best Practices", "Reduce Spend"] )
 
 with tab1 :
 
