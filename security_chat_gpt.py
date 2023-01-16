@@ -116,7 +116,7 @@ with bp_tab:
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
-    tab4button=st.button("Generate4 ")
+    tab4button=st.button("Generate", key = "bp_tab_button")
 
     st.write("Response")
     if tab4button:
@@ -134,7 +134,7 @@ with raf_tab:
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
-    tab4button=st.button("Generate4 ")
+    raf_tab_button=st.button("Generate", key = 'raf_tab')
 
     st.write("Response")
     if tab4button:
@@ -158,7 +158,7 @@ with rs_tab :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
 
     #question=st.text_area("Input the Question Here")
-    tab5button=st.button("Generate5 ")
+    tab5button=st.button("Generate", key = "rs_tab_button")
 
     st.write("Response")
     if tab5button:
