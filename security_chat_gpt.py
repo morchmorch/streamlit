@@ -37,7 +37,7 @@ st.set_page_config(page_title="Security Chat GPT",layout='wide')
 st.title ('Security Chat')
 
 
-tab1, tab2, tab3, tab4 = st.tabs([  "Write a policy", "Write IAM policy", "Write code", "Best Practices"] )
+tab1, tab2, tab3, tab4, tab5 = st.tabs([  "Write a policy", "Write IAM policy", "Write code", "Best Practices", "Reduce Spend"] )
 
 with tab1 :
 
