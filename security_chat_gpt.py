@@ -56,10 +56,11 @@ with standards_tab :
     button=st.button("Generate")
     st.markdown ( "--------")
     if button:
-        #answer = base_prompt
-        answer=response1(base_prompt)
-        st.write ("Response:")
-        st.code(answer)
+        with st.spinner ( 'Getting your response') :
+            #answer = base_prompt
+            answer=response1(base_prompt)
+            st.write ("Response:")
+            st.code(answer)
 
 with iam_tab :
 
@@ -76,9 +77,9 @@ with iam_tab :
     
 
     #question=st.text_area("Input the Question Here")
-    tab2button=st.button("Generate ")
+    iam_button=st.button("Generate " , key = 'iam_button')
 
-    if tab2button:
+    if iam_button:
 
         st.subheader("Principles")
         st.markdown(
