@@ -37,7 +37,7 @@ st.set_page_config(page_title="Security Chat GPT",layout='wide')
 st.title ('As a security Engineer, I want to ... ')
 
 
-standards-tab, iam-tab, monitor-tab, bp-tab, raf-tab, rs-tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
+standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend Best Practice", "Recude Attack Surface", "Reduce Spend"] )
 
 with standards-tab :
 
