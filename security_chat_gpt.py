@@ -55,11 +55,11 @@ with standards_tab :
 
     #question=st.text_area("Input the Question Here")
     button=st.button("Generate")
-
+    st.markdown ( "--------")
     if button:
         answer = base_prompt
         #answer=response1(base_prompt)
-        st.write ("Response")
+        st.write ("Response:")
         st.code(answer)
 
 with iam_tab :
