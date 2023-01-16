@@ -102,20 +102,24 @@ with monitor_tab:
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
-    s_type = st.selectbox ( "Select : ", ("Cloudwatch Logging Best Practices") )
-    if s_type == "Cloudwatch Logging Best Practices" :
-        base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+    s_type = st.selectbox ( "Select : ", ("Security Hub Alerts in the last week") )
+    if s_type == "Security Hub Alerts in the last week" :
+        base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
     
 
     #question=st.text_area("Input the Question Here")
-    tab3button=st.button("Generate3 ")
+    monitor_button=st.button("Generate ", key = "monitor-button")
 
     st.write("Response : ")
     st.markdown ("-------")
-    if tab3button:
-        #answer = base_prompt
-        answer=response1(base_prompt)
-        st.code(answer)
+    if monitor-button:
+        st.subheader("Response")
+        
+        with st.spinner ( 'Getting your response') :
+
+            #answer = base_prompt
+            answer=response1(base_prompt)
+            st.code(answer)
 
 
 
