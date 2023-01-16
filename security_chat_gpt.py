@@ -86,7 +86,6 @@ with iam_tab :
         st.code(answer)
 
 with monitor_tab:
-    st.write ('tab3')
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
@@ -98,7 +97,8 @@ with monitor_tab:
     #question=st.text_area("Input the Question Here")
     tab3button=st.button("Generate3 ")
 
-    st.write("Response")
+    st.write("Response : ")
+    st.markdown ("-------")
     if tab3button:
         #answer = base_prompt
         answer=response1(base_prompt)
@@ -107,8 +107,6 @@ with monitor_tab:
 
 
 with bp_tab:
-    st.write ('tab3')
-
  
     s_type = st.selectbox ( "Select : ", ("Best Practices for logging into AWS", "Best Practices for Encrypting Customer Data in AWS" ) )
     if s_type == "Delete un attacged volumes in AWS" :
@@ -125,9 +123,6 @@ with bp_tab:
         st.code(answer)
 
 with raf_tab:
-    st.write ('tab3')
-
- 
     s_type = st.selectbox ( "Select : ", ("Delete un attacged volumes in AWS") )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
