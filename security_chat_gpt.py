@@ -78,17 +78,18 @@ with iam_tab :
     #question=st.text_area("Input the Question Here")
     tab2button=st.button("Generate ")
 
-    st.write("Principles")
+    st.subheader("Principles")
     if tab2button:
 
         st.markdown(
         """
+        - Resource in account A, role service-role wants to access the resource from account B
         - Resources must not have `*`
         - Principal must not have `*`
         - Actions should be limited
         """
         )
-        st.write("Response")
+        st.subheader("Response")
         
         with st.spinner ( 'Getting your response') :
 
