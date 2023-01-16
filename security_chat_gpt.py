@@ -56,8 +56,8 @@ with standards_tab :
     button=st.button("Generate")
     st.markdown ( "--------")
     if button:
-        answer = base_prompt
-        #answer=response1(base_prompt)
+        #answer = base_prompt
+        answer=response1(base_prompt)
         st.write ("Response:")
         st.code(answer)
 
@@ -78,9 +78,9 @@ with iam_tab :
     #question=st.text_area("Input the Question Here")
     tab2button=st.button("Generate ")
 
-    st.subheader("Principles")
     if tab2button:
 
+        st.subheader("Principles")
         st.markdown(
         """
         - Resource in account A, role service-role wants to access the resource from account B
