@@ -60,9 +60,8 @@ with standards_tab :
     st.markdown ( "--------")
     if button:
         with st.spinner ( response_while ) :
-            #answer = base_prompt
             answer=response1(base_prompt)
-            st.write (response_after)
+            st.subheader (response_after)
             st.code(answer)
 
 with iam_tab :
