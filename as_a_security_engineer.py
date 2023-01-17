@@ -40,7 +40,7 @@ def get_write_response (base_prompt) :
 
 ## main
 
-st.set_page_config(page_title="Security Engineer Companion",layout='wide')
+st.set_page_config(page_title="Be My Security Engineer",layout='wide')
 
 m = st.markdown("""
 <style>
