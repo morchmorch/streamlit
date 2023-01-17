@@ -92,7 +92,6 @@ with iam_tab :
         - Actions should be limited
         """
         )
-        st.subheader("Response")
         
         with st.spinner ( response_while ) :
             #answer = base_prompt
@@ -121,7 +120,6 @@ with monitor_tab:
 
     st.markdown ("-------")
     if monitor_button:
-        st.subheader("Response")
         
         with st.spinner ( response_while) :
 
@@ -148,7 +146,6 @@ with bp_tab:
    
     if bp_button:
         #answer = base_prompt
-        st.write ("Response:")
         with st.spinner ( response_while ) :
             answer=response1(base_prompt)
             st.write (response_after)
@@ -165,7 +162,6 @@ with raf_tab:
     st.markdown ("-------")
 
     if raf_tab_button:
-        st.write ("Response:")
         #answer = base_prompt
         with st.spinner ( response_while ) :
             answer=response1(base_prompt)
@@ -196,7 +192,6 @@ with rs_tab :
     st.markdown ("-------")
 
     if rs_button:
-        st.write("Response")
 
         with st.spinner ( response_while ) :
             #answer = base_prompt
