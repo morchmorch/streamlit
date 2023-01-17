@@ -36,6 +36,8 @@ st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 st.title ('As a Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
+response_while = "Sharpening my pencil, hold on tight ..."
+respponse_after = "Here you go master : "
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
 
@@ -57,10 +59,10 @@ with standards_tab :
     button=st.button(button_name)
     st.markdown ( "--------")
     if button:
-        with st.spinner ( 'Writing it for you') :
+        with st.spinner ( response_while ) :
             #answer = base_prompt
             answer=response1(base_prompt)
-            st.write ("Response:")
+            st.write (response_after)
             st.code(answer)
 
 with iam_tab :
@@ -92,9 +94,10 @@ with iam_tab :
         )
         st.subheader("Response")
         
-        with st.spinner ( 'Writing it for you ... ') :
+        with st.spinner ( response_while ) :
             #answer = base_prompt
             answer=response1(base_prompt)
+            st.write (response_after)
             st.code(answer)
 
 with monitor_tab:
@@ -120,10 +123,12 @@ with monitor_tab:
     if monitor_button:
         st.subheader("Response")
         
-        with st.spinner ( 'Writing it for you ... ') :
+        with st.spinner ( response_while) :
 
             #answer = base_prompt
             answer=response1(base_prompt)
+            st.write (response_after)
+
             st.code(answer)
 
 
@@ -144,8 +149,9 @@ with bp_tab:
     if bp_button:
         #answer = base_prompt
         st.write ("Response:")
-        with st.spinner ( 'Writing it for you ... ') :
+        with st.spinner ( response_while ) :
             answer=response1(base_prompt)
+            st.write (response_after)
             st.code(answer)
 
 with raf_tab:
@@ -161,8 +167,10 @@ with raf_tab:
     if raf_tab_button:
         st.write ("Response:")
         #answer = base_prompt
-        with st.spinner ( 'Writing it for you ... ') :
+        with st.spinner ( response_while ) :
             answer=response1(base_prompt)
+            st.write (response_after)
+
             st.code(answer)
 
 
@@ -190,9 +198,11 @@ with rs_tab :
     if rs_button:
         st.write("Response")
 
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( response_while ) :
             #answer = base_prompt
             answer=response1(base_prompt)
+            st.write (response_after)
+
             st.code(answer)
 
 
