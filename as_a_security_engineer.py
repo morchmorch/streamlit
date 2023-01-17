@@ -61,10 +61,6 @@ div.stButton > button:first-child {
     background-color: #0099ff;
     color:#ffffff;
 }
-div.stButton > button:hover {
-    background-color: #00fffg;
-    color:#ffffff;
-    }
 </style>""", unsafe_allow_html=True)
 
 
