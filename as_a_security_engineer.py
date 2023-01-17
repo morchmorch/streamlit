@@ -154,8 +154,7 @@ with bp_tab:
    
     if bp_button:
         #answer = base_prompt
-        with st.spinner ( response_while ) :
-            get_write_response (base_prompt)
+        get_write_response (base_prompt)
             #answer=response1(base_prompt)
             #st.write (response_after)
             #st.code(answer)
