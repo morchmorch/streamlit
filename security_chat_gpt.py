@@ -93,7 +93,6 @@ with iam_tab :
         st.subheader("Response")
         
         with st.spinner ( 'Getting your response') :
-
             #answer = base_prompt
             answer=response1(base_prompt)
             st.code(answer)
@@ -110,7 +109,6 @@ with monitor_tab:
     #question=st.text_area("Input the Question Here")
     monitor_button=st.button("Generate ", key = "monitor-button")
 
-    st.write("Response : ")
     st.markdown ("-------")
     if monitor_button:
         st.subheader("Response")
@@ -131,13 +129,17 @@ with bp_tab:
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
-    tab4button=st.button("Generate", key = "bp_tab_button")
+    bp_button=st.button("Generate", key = "bp_tab_button")
+    st.markdown ("-------")
+    
 
-    st.write("Response")
-    if tab4button:
+   
+    if bp_button:
         #answer = base_prompt
-        answer=response1(base_prompt)
-        st.code(answer)
+        st.write ("Response:")
+        with st.spinner ( 'Getting your response') :
+            answer=response1(base_prompt)
+            st.code(answer)
 
 with raf_tab:
     s_type = st.selectbox ( "Select : ", ("write code to delete un attacged volumes in AWS", "NA") )
@@ -148,12 +150,14 @@ with raf_tab:
 
     #question=st.text_area("Input the Question Here")
     raf_tab_button=st.button("Generate", key = 'raf_tab')
+    st.markdown ("-------")
 
-    st.write("Response")
-    if tab4button:
+    if raf_tab_button:
+        st.write ("Response:")
         #answer = base_prompt
-        answer=response1(base_prompt)
-        st.code(answer)
+        with st.spinner ( 'Getting your response') :
+            answer=response1(base_prompt)
+            st.code(answer)
 
 
 with rs_tab :
@@ -175,9 +179,11 @@ with rs_tab :
 
     #question=st.text_area("Input the Question Here")
     rs_button=st.button("Generate", key = "rs_tab_button")
+    st.markdown ("-------")
 
-    st.write("Response")
     if rs_button:
+        st.write("Response")
+
         with st.spinner ( 'Getting your response') :
             #answer = base_prompt
             answer=response1(base_prompt)
