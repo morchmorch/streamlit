@@ -174,12 +174,13 @@ with rs_tab :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
 
     #question=st.text_area("Input the Question Here")
-    tab5button=st.button("Generate", key = "rs_tab_button")
+    rs_button=st.button("Generate", key = "rs_tab_button")
 
     st.write("Response")
-    if tab5button:
-        #answer = base_prompt
-        answer=response1(base_prompt)
-        st.code(answer)
+    if rs_button:
+        with st.spinner ( 'Getting your response') :
+            #answer = base_prompt
+            answer=response1(base_prompt)
+            st.code(answer)
 
 
