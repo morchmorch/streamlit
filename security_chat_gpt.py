@@ -65,8 +65,8 @@ with standards_tab :
 with iam_tab :
 
     st.header ('generate a IAM policy')
-    service=st.selectbox("Select the service:", ("s3", "sns"))
     s_type = st.selectbox ( "Select IAM Access type: ", ("cross account access", "single account access") )
+    service=st.selectbox("Select the service:", ("s3", "sns"))
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
@@ -102,7 +102,7 @@ with monitor_tab:
 
     base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
-    s_type = st.selectbox ( "Select : ", ("Code to generate New Security Hub alerts, in the last week (Language - Python)", "NA") )
+    s_type = st.selectbox ( "Select : ", ("Write code to get new Security Hub alerts, in the last week (Language - Python)", "NA") )
     if s_type == "Security Hub Alerts in the last week" :
         base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
     
@@ -125,7 +125,7 @@ with monitor_tab:
 
 with bp_tab:
  
-    s_type = st.selectbox ( "Select : ", ("Best Practices for logging into AWS", "Best Practices for Encrypting Customer Data in AWS" ) )
+    s_type = st.selectbox ( "Select : ", ("Best Practices for cloudwatch logging i AWS", "Best Practices for Encrypting Customer Data in AWS" ) )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
@@ -140,18 +140,11 @@ with bp_tab:
         st.code(answer)
 
 with raf_tab:
-    s_type = st.selectbox ( "Select : ", ("Delete un attacged volumes in AWS", "NA") )
+    s_type = st.selectbox ( "Select : ", ("write code to delete un attacged volumes in AWS", "NA") )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
-    st.markdown(
-    """
-    - Item 1
-    - Item 2
-    - Item 3
-    """
-    )
 
     #question=st.text_area("Input the Question Here")
     raf_tab_button=st.button("Generate", key = 'raf_tab')
