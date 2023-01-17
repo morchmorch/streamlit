@@ -99,12 +99,17 @@ with iam_tab :
 
 with monitor_tab:
 
-    base_prompt = """ boto3 code to find volumes that are not attached to any instances in all regions in all organization accounts """
     
-    s_type = st.selectbox ( "Select : ", ("Get new Security Hub alerts, in the last week ( write a script for it so I can automate it in Python)", "Get Cloud Trail events on a specific day for a specific user") )
+    s_type = st.selectbox ( "Select : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python)", "Get Cloud Trail events on a specific day for a specific user", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get container security events from GitLab container scans; write a script for it in python, so I can automate the task" ) )
     if s_type == "Security Hub Alerts in the last week" :
         base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
-    
+    if "Okta security events" in s_type :
+        base_prompt = """   python code to get okta security events over okta api, return results in a dataframe  """
+    if "gitlab container scans" in s_type.lower():
+        base_prompt = """  write python code to get gitlab container security scan over gitlab api, return results in a dataframe  """
+
+    else :
+        base_prompt = s_type
 
     #question=st.text_area("Input the Question Here")
     monitor_button=st.button("Generate ", key = "monitor-button")
@@ -142,10 +147,9 @@ with bp_tab:
             st.code(answer)
 
 with raf_tab:
-    s_type = st.selectbox ( "Select : ", ("write code to delete un attacged volumes in AWS", "NA") )
-    if s_type == "Delete un attacged volumes in AWS" :
-        base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
-        base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
+    s_type = st.selectbox ( "Select : ", ("Find and delete un attached volumes in AWS, write code for it so I can automate, in Python", "NA") )
+    if s_type == "Find and delete un attached volumes in AWS, write code for it so I can automate, in Python" :
+        base_prompt = """ write python code to Find and delete un attached EBS volumes in AWS, return a pandas dataframe  """ 
 
 
     #question=st.text_area("Input the Question Here")
