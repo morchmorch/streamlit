@@ -42,10 +42,10 @@ def get_write_response (base_prompt) :
 
 st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 
-st.title ('As a Security Engineer, I want to ... ')
+st.title ('As a Cloud Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
-response_while = "Right on it, it will be only couple of seconds ..."
+response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
