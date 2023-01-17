@@ -55,13 +55,13 @@ div.stButton > button:hover {
 </style>""", unsafe_allow_html=True)
 
 
-m = st.markdown("""
-<style>
-div.stButton > button:first-child {
-    background-color: #0099ff;
-    color:#ffffff;
-}
-</style>""", unsafe_allow_html=True)
+#m = st.markdown("""
+#<style>
+#div.stButton > button:first-child {
+#    background-color: #0099ff;
+#    color:#ffffff;
+#}
+#</style>""", unsafe_allow_html=True)
 
 
 st.header ('As a Cloud Security Engineer, I want to ... ')
