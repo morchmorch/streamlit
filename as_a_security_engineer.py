@@ -57,7 +57,7 @@ with standards_tab :
     button=st.button(button_name)
     st.markdown ( "--------")
     if button:
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( 'Writing it for you') :
             #answer = base_prompt
             answer=response1(base_prompt)
             st.write ("Response:")
@@ -92,7 +92,7 @@ with iam_tab :
         )
         st.subheader("Response")
         
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( 'Writing it for you ... ') :
             #answer = base_prompt
             answer=response1(base_prompt)
             st.code(answer)
@@ -114,13 +114,13 @@ with monitor_tab:
         base_prompt = s_type
 
     #question=st.text_area("Input the Question Here")
-    monitor_button=st.button("Generate ", key = "monitor-button")
+    monitor_button=st.button(button_name, key = "monitor-button")
 
     st.markdown ("-------")
     if monitor_button:
         st.subheader("Response")
         
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( 'Writing it for you ... ') :
 
             #answer = base_prompt
             answer=response1(base_prompt)
@@ -136,7 +136,7 @@ with bp_tab:
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
 
     #question=st.text_area("Input the Question Here")
-    bp_button=st.button("Generate", key = "bp_tab_button")
+    bp_button=st.button(button_name, key = "bp_tab_button")
     st.markdown ("-------")
     
 
@@ -144,7 +144,7 @@ with bp_tab:
     if bp_button:
         #answer = base_prompt
         st.write ("Response:")
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( 'Writing it for you ... ') :
             answer=response1(base_prompt)
             st.code(answer)
 
@@ -155,13 +155,13 @@ with raf_tab:
 
 
     #question=st.text_area("Input the Question Here")
-    raf_tab_button=st.button("Generate", key = 'raf_tab')
+    raf_tab_button=st.button(button_name, key = 'raf_tab')
     st.markdown ("-------")
 
     if raf_tab_button:
         st.write ("Response:")
         #answer = base_prompt
-        with st.spinner ( 'Getting your response') :
+        with st.spinner ( 'Writing it for you ... ') :
             answer=response1(base_prompt)
             st.code(answer)
 
@@ -184,7 +184,7 @@ with rs_tab :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
 
     #question=st.text_area("Input the Question Here")
-    rs_button=st.button("Generate", key = "rs_tab_button")
+    rs_button=st.button(button_name, key = "rs_tab_button")
     st.markdown ("-------")
 
     if rs_button:
