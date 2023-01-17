@@ -46,7 +46,7 @@ st.title ('As a Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
 response_while = "Right on it, it will be only couple of seconds ..."
-response_after = "Here you go master : "
+response_after = "Here you go ... : "
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
 
@@ -155,9 +155,10 @@ with bp_tab:
     if bp_button:
         #answer = base_prompt
         with st.spinner ( response_while ) :
-            answer=response1(base_prompt)
-            st.write (response_after)
-            st.code(answer)
+            get_write_response (base_prompt)
+            #answer=response1(base_prompt)
+            #st.write (response_after)
+            #st.code(answer)
 
 with raf_tab:
     s_type = st.selectbox ( "Select : ", ("Find and delete un attached volumes in AWS, write code for it so I can automate, in Python", "NA") )
