@@ -35,6 +35,7 @@ st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 
 st.title ('As a Security Engineer, I want to ... ')
 
+button_name = "Write it for me !! "
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
 
@@ -53,7 +54,7 @@ with standards_tab :
     
 
     #question=st.text_area("Input the Question Here")
-    button=st.button("Generate")
+    button=st.button(button_name)
     st.markdown ( "--------")
     if button:
         with st.spinner ( 'Getting your response') :
@@ -76,7 +77,7 @@ with iam_tab :
     
 
     #question=st.text_area("Input the Question Here")
-    iam_button=st.button("Generate " , key = 'iam_button')
+    iam_button=st.button(button_name , key = 'iam_button')
 
     if iam_button:
 
