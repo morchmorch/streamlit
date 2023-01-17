@@ -125,7 +125,7 @@ with monitor_tab:
 
 with bp_tab:
  
-    s_type = st.selectbox ( "Select : ", ("Best Practices for cloudwatch logging i AWS", "Best Practices for Encrypting Customer Data in AWS" ) )
+    s_type = st.selectbox ( "Select : ", ("Recommend best practices for cloudwatch logging in AWS", "Recommend best practices for encrypting customer Data in AWS" ) )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
