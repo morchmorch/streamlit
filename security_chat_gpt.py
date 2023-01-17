@@ -164,7 +164,7 @@ with rs_tab :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    if s_type = "get forecast for the next month" :
+    if s_type == "get forecast for the next month" :
         base_prompt = """ python script to find aws spend forecast for the current month, starting today ending a month from now use UNBLENDED COST for the metric on forecast, the start and end dates should be in string yyyy-mm-dd format  """
 
     if s_type == "get current spend grouped by service":
