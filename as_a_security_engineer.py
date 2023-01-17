@@ -54,6 +54,20 @@ div.stButton > button:hover {
     }
 </style>""", unsafe_allow_html=True)
 
+
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #0099ff;
+    color:#ffffff;
+}
+div.stButton > button:hover {
+    background-color: #00fffg;
+    color:#ffffff;
+    }
+</style>""", unsafe_allow_html=True)
+
+
 st.header ('As a Cloud Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
@@ -213,12 +227,5 @@ with rs_tab :
     st.markdown ("-------")
 
     if rs_button:
-
-        with st.spinner ( response_while ) :
-            #answer = base_prompt
-            answer=response1(base_prompt)
-            st.write (response_after)
-
-            st.code(answer)
-
-
+        get_write_response (base_prompt)
+        
