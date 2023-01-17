@@ -94,10 +94,7 @@ with standards_tab :
     button=st.button(button_name)
     st.markdown ( "--------")
     if button:
-        with st.spinner ( response_while ) :
-            answer=response1(base_prompt)
-            st.subheader (response_after)
-            st.code(answer)
+        get_write_response (base_prompt)
 
 with iam_tab :
 
@@ -126,13 +123,9 @@ with iam_tab :
         - Actions should be limited
         """
         )
-        
-        with st.spinner ( response_while ) :
-            #answer = base_prompt
-            answer=response1(base_prompt)
-            st.write (response_after)
-            st.code(answer)
 
+    get_write_response (base_prompt)
+        
 with monitor_tab:
 
     
@@ -154,15 +147,7 @@ with monitor_tab:
 
     st.markdown ("-------")
     if monitor_button:
-        
-        with st.spinner ( response_while) :
-
-            #answer = base_prompt
-            answer=response1(base_prompt)
-            st.write (response_after)
-
-            st.code(answer)
-
+        get_write_response (base_prompt)
 
 
 with bp_tab:
