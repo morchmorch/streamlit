@@ -64,7 +64,6 @@ with standards_tab :
 
 with iam_tab :
 
-    st.header ('generate a IAM policy')
     s_type = st.selectbox ( "Select IAM Access type: ", ("cross account access", "single account access") )
     service=st.selectbox("Select the service:", ("s3", "sns"))
 
