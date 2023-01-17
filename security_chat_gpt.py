@@ -159,7 +159,7 @@ with raf_tab:
 with rs_tab :
 
     st.header ('Spend')
-    s_type = st.selectbox ( "Select type: ", ( "get forcast for the next month" , "get current spend grouped by service" , "get current spend grouped by account") )
+    s_type = st.selectbox ( "Select type: ", ( "get forecast for the next month" , "get current spend grouped by service" , "get current spend grouped by account") )
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
