@@ -36,7 +36,7 @@ st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 st.title ('As a Security Engineer, I want to ... ')
 
 
-standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend"] )
+standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend"] )
 
 with standards_tab :
 
@@ -100,7 +100,7 @@ with iam_tab :
 with monitor_tab:
 
     
-    s_type = st.selectbox ( "Select : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python", "Get Cloud Trail events in the last hour, write a script for it in python so I can automate the task", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get GitLab container security scans ; write a script for it in python, so I can automate the task" ) )
+    s_type = st.selectbox ( "Select the detection ask : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python", "Get Cloud Trail events in the last hour, write a script for it in python so I can automate the task", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get GitLab container security scans ; write a script for it in python, so I can automate the task" ) )
 
 
     if s_type == "Security Hub Alerts in the last week" :
@@ -130,7 +130,7 @@ with monitor_tab:
 
 with bp_tab:
  
-    s_type = st.selectbox ( "Select : ", ("Recommend best practices for cloudwatch logging in AWS", "Recommend best practices for encrypting customer Data in AWS" ) )
+    s_type = st.selectbox ( "Select the best practice : ", ("Recommend best practices for cloudwatch logging in AWS", "Recommend best practices for encrypting customer Data in AWS" ) )
     if s_type == "Delete un attacged volumes in AWS" :
         base_prompt = """ best practices for storing customer data in s3 , encryption, retention and tagging. include best practices around not copying data from production, sanitize before copying """
         base_prompt = """ best practices for logging access logs into cloudwatch logs , time stamp , who , when what action, what object, access control for logs, log level, log retention """
@@ -169,7 +169,7 @@ with raf_tab:
 with rs_tab :
 
     st.header ('Spend')
-    s_type = st.selectbox ( "Select type: ", ( "get forecast for the next month" , "get current spend grouped by service" , "get current spend grouped by account") )
+    s_type = st.selectbox ( "Select a spend facet: ", ( "get forecast for the next month" , "get current spend grouped by service" , "get current spend grouped by account") )
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
