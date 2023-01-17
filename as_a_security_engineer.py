@@ -49,7 +49,7 @@ div.stButton > button:first-child {
     color:#ffffff;
 }
 div.stButton > button:hover {
-    background-color: #00ff00;
+    background-color: #00fffg;
     color:#ff0000;
     }
 </style>""", unsafe_allow_html=True)
