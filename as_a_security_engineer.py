@@ -37,7 +37,7 @@ st.title ('As a Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
 response_while = "Sharpening my pencil, hold on tight ..."
-respponse_after = "Here you go master : "
+response_after = "Here you go master : "
 
 standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
 
