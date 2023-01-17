@@ -31,7 +31,7 @@ def response1(base_prompt):
 
 ## main
 
-st.set_page_config(page_title="Security Chat GPT",layout='wide')
+st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 
 st.title ('As a Security Engineer, I want to ... ')
 
