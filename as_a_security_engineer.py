@@ -29,6 +29,15 @@ def response1(base_prompt):
     return response.choices[0].text
 
 
+def get_write_response (base_prompt) :
+    
+    with st.spinner ( response_while ) :
+        answer=response1(base_prompt)
+        st.subheader (response_after)
+        st.code(answer)
+
+
+
 ## main
 
 st.set_page_config(page_title="Security Engineer Companion",layout='wide')
@@ -161,12 +170,13 @@ with raf_tab:
     st.markdown ("-------")
 
     if raf_tab_button:
+        get_write_response (base_prompt)
         #answer = base_prompt
-        with st.spinner ( response_while ) :
-            answer=response1(base_prompt)
-            st.write (response_after)
+        #with st.spinner ( response_while ) :
+            #answer=response1(base_prompt)
+            #st.write (response_after)
 
-            st.code(answer)
+            #st.code(answer)
 
 
 with rs_tab :
