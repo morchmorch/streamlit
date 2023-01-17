@@ -41,6 +41,19 @@ def get_write_response (base_prompt) :
 ## main
 
 st.set_page_config(page_title="Security Engineer Companion",layout='wide')
+
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #0099ff;
+    color:#ffffff;
+}
+div.stButton > button:hover {
+    background-color: #00ff00;
+    color:#ff0000;
+    }
+</style>""", unsafe_allow_html=True)
+
 st.header ('As a Cloud Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
