@@ -42,7 +42,7 @@ def get_write_response (base_prompt) :
 
 st.set_page_config(page_title="Security Engineer Companion",layout='wide')
 
-st.title ('As a Cloud Security Engineer, I want to ... ')
+st.header ('As a Cloud Security Engineer, I want to ... ')
 
 button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
