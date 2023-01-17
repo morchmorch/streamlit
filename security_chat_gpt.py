@@ -100,7 +100,9 @@ with iam_tab :
 with monitor_tab:
 
     
-    s_type = st.selectbox ( "Select : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python)", "Get Cloud Trail events on a specific day for a specific user", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get container security events from GitLab container scans; write a script for it in python, so I can automate the task" ) )
+    s_type = st.selectbox ( "Select : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python", "Get Cloud Trail events in the last hour, write a script for it in python so I can automate the task", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get GitLab container security scans ; write a script for it in python, so I can automate the task" ) )
+
+
     if s_type == "Security Hub Alerts in the last week" :
         base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
     if "Okta security events" in s_type :
