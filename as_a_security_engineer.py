@@ -70,7 +70,7 @@ button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
-standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", " Keep an eye on Spend (follow $$$)"] )
+standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", "Respond to security questions", "Keep an eye on Spend (follow $$$)"] )
 
 with standards_tab :
 
