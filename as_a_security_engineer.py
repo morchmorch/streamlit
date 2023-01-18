@@ -187,7 +187,7 @@ with raf_tab:
 
 with sec_q_tab :
     standard=st.selectbox("Select the Standard :", ("NIST 800-53", "HIPAA", "PCI", "Monetary Authority of Singapore Technology Risk Management"))
-    standard_number = st.text_input("control ",  "ex: authenticator management IA(5)")
+    standard_number = st.text_input("control ",  "enter control, ex: authenticator management IA(5)")
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
@@ -199,7 +199,7 @@ with sec_q_tab :
     #question=st.text_area("Input the Question Here")
     sec_q_button=st.button(button_name, key = 'sec_q_button')
     st.markdown ( "--------")
-    if sec_q_button:
+    if sec_q_button or if standard_number:
         with st.spinner ( response_while ) :
             answer=response1(base_prompt)
             st.subheader (response_after)
