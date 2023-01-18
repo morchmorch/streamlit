@@ -120,7 +120,7 @@ with iam_tab :
         """
         )
 
-    get_write_response (base_prompt)
+        get_write_response (base_prompt)
         
 with monitor_tab:
 
