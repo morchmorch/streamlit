@@ -192,7 +192,7 @@ with sec_q_tab :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "write a response to security questions from a customer how we are compliant with security " +  standard + " standard control " + str (standard_number)  
+    base_prompt = "write a response to security questions from a customer how we are compliant with security " +  standard + " standard control " + str (standard_number) + " . start with we take security seriously and put in a numbered list of implementations, in a professional tone" 
     
     st.write (base_prompt)
 
