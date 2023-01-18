@@ -199,7 +199,7 @@ with sec_q_tab :
     #question=st.text_area("Input the Question Here")
     sec_q_button=st.button(button_name, key = 'sec_q_button')
     st.markdown ( "--------")
-    if sec_q_button or standard_number:
+    if sec_q_button or "enter control" not in standard_number:
         with st.spinner ( response_while ) :
             answer=response1(base_prompt)
             st.subheader (response_after)
