@@ -70,7 +70,7 @@ button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
-standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Detect Vulnerabilities, Monitor Logs and Alerts", "Recommend a Best Practice", "Reduce Attack Surface", "Respond to security questions", "Keep an eye on Spend (follow $$$)"] )
+standards_tab, iam_tab, monitor_tab, detect_vuln_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Detect Vulnerabilities", "Recommend a Best Practice", "Reduce Attack Surface", "Respond to security questions", "Keep an eye on Spend (follow $$$)"] )
 
 with standards_tab :
 
@@ -125,7 +125,7 @@ with iam_tab :
 with monitor_tab:
 
     
-    s_type = st.selectbox ( "Select the detection ask : ", ("Get new Security Hub alerts, in the last week, write a script for it so I can automate the task, in Python", "Get Cloud Trail events in the last hour, write a script for it in python so I can automate the task", "Get Okta security events in the past day (write a secipt for it in python , so I can automate the task", "Get GitLab container security scans ; write a script for it in python, so I can automate the task" ) )
+    s_type = st.selectbox ( "Select the detection ask : ", ("Get new Security Hub alerts, in the last week; Write a script for it so I can automate the task, in Python", "Get Cloud Trail events in the last hour; Wwrite a script for so I can automate the task, in Python", "Get Okta security events in the past day; Write a secipt for it, so I can automate the task, in Python" ) )
 
 
     if s_type == "Security Hub Alerts in the last week" :
@@ -134,6 +134,32 @@ with monitor_tab:
         base_prompt = """   python code to get okta security events over okta api, return results in a dataframe  """
     if "gitlab container scans" in s_type.lower():
         base_prompt = """  write python code to get gitlab container security scan over gitlab api, return results in a dataframe  """
+
+    else :
+        base_prompt = s_type
+
+    #question=st.text_area("Input the Question Here")
+    monitor_button=st.button(button_name, key = "monitor-button")
+
+    st.markdown ("-------")
+    if monitor_button:
+        get_write_response (base_prompt)
+
+with detect_vuln_tab:
+
+    
+    s_type = st.selectbox ( "Select the detection ask : ", ("Get GitLab container security scans ; write a script for it in python, so I can automate the task", "Get AWS Inspector ECR scans ; write a script for it in python, so I can automate the task" ) )
+
+
+    if s_type == "Security Hub Alerts in the last week" :
+        base_prompt = """ python code to generate aws security hub new alerts in the last week .   use CreatedAt filter to pass the start and end times .  do not use Criteria , just use createdat . CreatedAt is a list.  return pandas dataframe of the findings """
+    if "Okta security events" in s_type :
+        base_prompt = """   python code to get okta security events over okta api, return results in a dataframe  """
+    if "gitlab container scans" in s_type.lower():
+        base_prompt = """  write python code to get gitlab container security scan over gitlab api, return results in a dataframe  """
+    if "ecr scans" in s_type.lower():
+        base_prompt = """  write python code to get aws inspector ecr security scan using boto3 api, return results in a dataframe  """
+
 
     else :
         base_prompt = s_type
