@@ -160,7 +160,7 @@ with detect_vuln_tab:
     if "ecr scans" in s_type.lower():
         base_prompt = """  write python code to get aws inspector ecr security scan using boto3 api, return results in a dataframe  """
     if "tenable" in s_type.lower():
-        base_prompt = """  write python code to get tenable security scan using tenable api, return results in a dataframe  """
+        base_prompt = """  write python code to get tenable security scan using tenable workbench api, return results in a dataframe  """
 
 
 
