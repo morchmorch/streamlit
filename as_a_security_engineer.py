@@ -165,10 +165,10 @@ with detect_vuln_tab:
         base_prompt = s_type
 
     #question=st.text_area("Input the Question Here")
-    monitor_button=st.button(button_name, key = "monitor-button")
+    detect_vuln_button=st.button(button_name, key = "detect-vuln-button")
 
     st.markdown ("-------")
-    if monitor_button:
+    if detect_vuln_button:
         get_write_response (base_prompt)
 
 
