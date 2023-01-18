@@ -194,6 +194,7 @@ with sec_q_tab :
 
     base_prompt = "write a response to a customer how we are compliant with " +  standard + " standard section " + str (standard_number)  
     
+    st.write (base_prompt)
 
     #question=st.text_area("Input the Question Here")
     sec_q_button=st.button(button_name, key = 'sec_q_button')
