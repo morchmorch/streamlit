@@ -192,7 +192,7 @@ with sec_q_tab :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "write a response to a customer how we are compliant with standard section " + str (standard_number)  
+    base_prompt = "write a response to a customer how we are compliant with " +  standard + " standard section " + str (standard_number)  
     
 
     #question=st.text_area("Input the Question Here")
