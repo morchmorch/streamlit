@@ -199,7 +199,11 @@ with sec_q_tab :
     sec_q_button=st.button(button_name, key = 'sec_q_button')
     st.markdown ( "--------")
     if sec_q_button:
-        get_write_response (base_prompt)
+        with st.spinner ( response_while ) :
+            answer=response1(base_prompt)
+            st.subheader (response_after)
+            st.text_area(answer)
+
 
 
 
