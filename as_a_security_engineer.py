@@ -194,7 +194,6 @@ with sec_q_tab :
 
     base_prompt = "write a response to security questions from a customer how we are compliant with security " +  standard + " standard control " + str (standard_number) + " . start with we take security seriously and put in a numbered list of implementations, in a professional tone" 
     
-    st.write (base_prompt)
 
     #question=st.text_area("Input the Question Here")
     sec_q_button=st.button(button_name, key = 'sec_q_button')
