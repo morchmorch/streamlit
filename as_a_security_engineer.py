@@ -148,7 +148,7 @@ with monitor_tab:
 with detect_vuln_tab:
 
     
-    s_type = st.selectbox ( "Select the detection ask : ", ("Get GitLab container security scans ; write a script for it in python, so I can automate the task", "Get AWS Inspector ECR scans ; write a script for it in python, so I can automate the task" ) )
+    s_type = st.selectbox ( "Select the detection ask : ", ("Get GitLab container security scans ; write a script for it in python, so I can automate the task", "Get AWS Inspector ECR vulnerability scans ; write a script so I can automate the task, in Python", "Get Tenable vulnerability scans ; write a script for it in python, so I can automate the task, in Python" ) )
 
 
     if s_type == "Security Hub Alerts in the last week" :
@@ -159,6 +159,9 @@ with detect_vuln_tab:
         base_prompt = """  write python code to get gitlab container security scan over gitlab api, return results in a dataframe  """
     if "ecr scans" in s_type.lower():
         base_prompt = """  write python code to get aws inspector ecr security scan using boto3 api, return results in a dataframe  """
+    if "tenable" in s_type.lower():
+        base_prompt = """  write python code to get tenable security scan using tenable api, return results in a dataframe  """
+
 
 
     else :
