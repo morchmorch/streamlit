@@ -74,7 +74,7 @@ standards_tab, iam_tab, monitor_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tab
 
 with standards_tab :
 
-    standard=st.selectbox("Select the Standard :", ("NIST", "HIPAA", "PCI"))
+    standard=st.selectbox("Select the Standard :", ("NIST 800-53", "HIPAA", "PCI"))
     s_type = st.selectbox ( "Select the control: ", ("Authentication Password Policy", "Access Least Privilege") )
 
     #if task == "Write a policy" :
@@ -186,7 +186,7 @@ with raf_tab:
             #st.code(answer)
 
 with sec_q_tab :
-    standard=st.selectbox("Select the Standard :", ("NIST", "HIPAA", "PCI", "Monetary Authority of Singapore Technology Risk Management"))
+    standard=st.selectbox("Select the Standard :", ("NIST 800-53", "HIPAA", "PCI", "Monetary Authority of Singapore Technology Risk Management"))
     standard_number = st.text_input("std_num",  "type standard number")
 
     #if task == "Write a policy" :
