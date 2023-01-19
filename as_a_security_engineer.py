@@ -321,6 +321,6 @@ with rs_tab :
     st.markdown ("-------")
 
     if rs_button:
-        print (base_promot)
+        print (base_prompt)
         get_write_response (base_prompt)
         
