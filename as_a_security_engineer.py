@@ -269,13 +269,13 @@ with rs_tab :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    if s_type == "get forecast for the next month" :
+    if "forecast" in s_type.lower():
         base_prompt = """ python script to find aws spend forecast for the current month, starting today ending a month from now use UNBLENDED COST for the metric on forecast and MONTHLY for Granularity, the start and end dates should be in string yyyy-mm-dd format, give results in a dataframe  """
 
-    if s_type == "get current spend grouped by service":
+    if "spend grouped by service" in s_type.lower ():
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by service , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
     
-    if s_type == "get spend per grouped by account. use metric for forecast " :
+    if "spend per grouped by account" in s_type.lower () :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
 
     #question=st.text_area("Input the Question Here")
