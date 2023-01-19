@@ -88,7 +88,6 @@ text-align: center;
 }
 </style>
 """
-<div class="footer">
 
 
 st.header ('As a Cloud Security Engineer, I want to ... ')
