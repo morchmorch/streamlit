@@ -138,10 +138,10 @@ with audit_tab:
         base_prompt = s_type
 
     #question=st.text_area("Input the Question Here")
-    monitor_button=st.button(button_name, key = "monitor-button")
+    audit_button=st.button(button_name, key = "audit-button")
 
     st.markdown ("-------")
-    if monitor_button:
+    if audit_button:
         get_write_response (base_prompt)
 
  
