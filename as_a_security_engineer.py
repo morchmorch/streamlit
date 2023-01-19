@@ -314,7 +314,7 @@ with rs_tab :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by service , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
     
     if "spend grouped by account" in s_type.lower () :
-        base_prompt = """ write a python script to to find current aws spend per day for the last 10 days, pass groupby dimension of LINKED_ACCOUNT into get_cost_and_usage() api call, give the results in a pandas dataframe .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  use UnblendedCost for Metrics """
+        base_prompt = """ write a python function to to find current aws spend per day for the last 10 days, pass groupby dimension of LINKED_ACCOUNT into get_cost_and_usage() api call, give the results in a pandas dataframe .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  use UnblendedCost for Metrics """
 
     #question=st.text_area("Input the Question Here")
     rs_button=st.button(button_name, key = "rs_tab_button")
