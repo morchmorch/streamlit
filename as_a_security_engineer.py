@@ -75,12 +75,12 @@ standards_tab, iam_tab, monitor_tab, detect_vuln_tab, bp_tab, raf_tab, sec_q_tab
 with standards_tab :
 
     standard=st.selectbox("Select the Standard :", ("NIST 800-53", "HIPAA", "PCI"))
-    s_type = st.selectbox ( "Select the control: ", ("Authentication Password Policy", "Access Least Privilege") )
+    s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
 
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "write a replace:policy in compliance with replace:standard standard" 
+    base_prompt = "write a replace:policy in compliance with replace:standard standard, generate a bulleted list of items with controls that must be followed." 
     
     base_prompt = base_prompt.replace ( "replace:policy", s_type.strip() )
     base_prompt = base_prompt.replace ( "replace:standard", standard.strip() )
