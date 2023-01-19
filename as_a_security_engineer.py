@@ -88,7 +88,7 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>all prompts are tested to produce accurate results.  please report errors to href="mailto:rkreddy@gmail.com">rkreddy@gmail.com< </p>
+<p>all prompts are tested to produce accurate results.  please report errors to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
 </div>
 """
 
