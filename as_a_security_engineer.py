@@ -275,7 +275,7 @@ with rs_tab :
     if "spend grouped by service" in s_type.lower ():
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by service , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
     
-    if "spend per grouped by account" in s_type.lower () :
+    if "spend grouped by account" in s_type.lower () :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by account id , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
 
     #question=st.text_area("Input the Question Here")
@@ -283,7 +283,5 @@ with rs_tab :
     st.markdown ("-------")
 
     if rs_button:
-        st.write (s_type)
-        st.write (base_prompt)
         get_write_response (base_prompt)
         
