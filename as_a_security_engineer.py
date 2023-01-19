@@ -283,5 +283,7 @@ with rs_tab :
     st.markdown ("-------")
 
     if rs_button:
+        st.write (s_type)
+        st.write (base_prompt)
         get_write_response (base_prompt)
         
