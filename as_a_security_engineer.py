@@ -83,7 +83,7 @@ left: 0;
 bottom: 0;
 width: 100%;
 background-color: white;
-color: blue;
+color: red;
 text-align: center;
 }
 </style>
