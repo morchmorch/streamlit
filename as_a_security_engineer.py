@@ -87,8 +87,20 @@ color: black;
 text-align: center;
 }
 </style>
+<div class="footer">
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://www.heflin.dev/" target="_blank">Heflin Stephen Raj S</a></p>
+</div>
 """
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+st.markdown(footer,unsafe_allow_html=True)
 
 st.header ('As a Cloud Security Engineer, I want to ... ')
 
