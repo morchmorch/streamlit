@@ -88,7 +88,7 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://www.heflin.dev/" target="_blank">Heflin Stephen Raj S</a></p>
+<p>all prompts are tested to produce accurate results.  please report errors to rkreddy@gmail.com </p>
 </div>
 """
 
