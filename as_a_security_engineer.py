@@ -196,9 +196,12 @@ with bp_tab:
             #st.code(answer)
 
 with raf_tab:
-    s_type = st.selectbox ( "Select : ", ("Find and delete un attached volumes in AWS, write code for it so I can automate, in Python", "NA") )
+    s_type = st.selectbox ( "Select : ", ("Find and delete un attached volumes in AWS, write code for it so I can automate, in Python", "Find and delete un tagged resources; write code for it so I can automate the task, in Python") )
     if s_type == "Find and delete un attached volumes in AWS, write code for it so I can automate, in Python" :
         base_prompt = """ write python code to Find and delete un attached EBS volumes in AWS, return a pandas dataframe  """ 
+
+    if 'un tagged' in s_type :
+         base_prompt = """ write python code to Find and delete un tagged resources in AWS, return a pandas dataframe """
 
 
     #question=st.text_area("Input the Question Here")
