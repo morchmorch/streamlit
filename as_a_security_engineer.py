@@ -80,7 +80,7 @@ with standards_tab :
     #if task == "Write a policy" :
         #standard=st.selectbox("Select the Language of  the Solution:", ("NIST", "HIPAA", "PCI"))
 
-    base_prompt = "write a replace:policy in compliance with replace:standard standard, generate a bulleted list of items with controls that must be followed." 
+    base_prompt = "write a replace:policy in compliance with replace:standard standard, generate a bulleted list of items with controls that must be followed. include purpose, scope and policy sections" 
     
     base_prompt = base_prompt.replace ( "replace:policy", s_type.strip() )
     base_prompt = base_prompt.replace ( "replace:standard", standard.strip() )
