@@ -70,7 +70,7 @@ button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
-standards_tab, iam_tab, monitor_tab, detect_vuln_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Monitor Logs and Alerts", "Detect Vulnerabilities", "Recommend a Best Practice", "Reduce Attack Surface", "Respond to security questions", "Keep an eye on Spend (follow $$$)"] )
+standards_tab, iam_tab, audit_tab, monitor_tab, detect_vuln_tab, bp_tab, raf_tab, sec_q_tab, rs_tab = st.tabs([  "Author a standards policy", "Author a secure IAM policy", "Audit Systems and Users", "Monitor Logs and Alerts", "Detect Vulnerabilities", "Recommend a Best Practice", "Reduce Attack Surface", "Respond to security questions", "Keep an eye on Spend (follow $$$)"] )
 
 with standards_tab :
 
@@ -121,7 +121,30 @@ with iam_tab :
         )
 
         get_write_response (base_prompt)
-        
+       
+ 
+with audit_tab:
+
+    
+    s_type = st.selectbox ( "Select the Audit ask : ", (" Audit AWS account for CIS benchmarks; write a script so I can automate the task, in Python" , " Generate the list of Okta users for access auditing; write a script so I can automate the ask, in Python" ) )
+
+
+    if 'aws account for cis' in s_type :
+        base_prompt = """ write a python script to get cis benchmark results from aws security hub, use boto3 securityhub client """
+    if "Okta users" in s_type :
+        base_prompt = """  write python code to get okta users over okta api, for each user, get the group information that the user is in and applications that the users have access to. return results in a dataframe  """
+
+    else :
+        base_prompt = s_type
+
+    #question=st.text_area("Input the Question Here")
+    monitor_button=st.button(button_name, key = "monitor-button")
+
+    st.markdown ("-------")
+    if monitor_button:
+        get_write_response (base_prompt)
+
+ 
 with monitor_tab:
 
     
