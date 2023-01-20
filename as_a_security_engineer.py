@@ -316,7 +316,8 @@ with rs_tab :
     if "spend grouped by account" in s_type.lower () :
         base_prompt = """ write the following python script :  make a call to aws cost explorer api to get the current spend , pass groupby the Type DIMENSION and Key  LINKED_ACCOUNT into get_cost_and_usage() api call, 
             the start time argument to get_cost_and_usage format should be yyyy-MM-dd with start date 10 days back and end date of yesterday. use UnblendedCost for the Metrics
-            give the results in a pandas dataframe . 
+            give the results in a pandas dataframe 
+            take the Groups column from the dataframe, which is a single element list of json object and make a new dataframe with keys and values in that json . 
             do not use python functions """
 
     #question=st.text_area("Input the Question Here")
