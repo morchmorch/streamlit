@@ -314,7 +314,7 @@ with rs_tab :
         base_prompt = """ python script to to find current aws spend per day for the last 10 days, group by service , give the results in a pandas dataframe . use json_normalize with errors='ignore' .  the start time argument to get_cost_and_usage format should be yyyy-MM-dd.  convert keys column in the dataframe to string before groupby """ 
     
     if "spend grouped by account" in s_type.lower () :
-        base_prompt = """ write the following python script :  make a call to aws cost explorer api to get the current spend , pass groupby the Type DIMENSION and Key  LINKED_ACCOUNT into get_cost_and_usage() api call, 
+        base_prompt = """ write the following python script :  make a call to aws cost explorer api to get the current spend , pass groupby the Type DIMENSION and Key  LINKED_ACCOUNT into get_cost_and_usage() api call, use DAILY for Granularity
             the start time argument to get_cost_and_usage format should be in strftime yyyy-MM-dd format with start datetime 10 days back (use timedelta to get the date)  and end datetime of today. use UnblendedCost for the Metrics
             give the results in a pandas dataframe , call that df
             take the Groups column from the dataframe, Iterate through each element in the column , apply json_normalize on each element, call that df_normalized 
