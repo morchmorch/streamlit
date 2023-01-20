@@ -315,7 +315,7 @@ with rs_tab :
     
     if "spend grouped by account" in s_type.lower () :
         base_prompt = """ write the following python script :  make a call to aws cost explorer api to get the current spend , pass groupby the Type DIMENSION and Key  LINKED_ACCOUNT into get_cost_and_usage() api call, 
-            the start time argument to get_cost_and_usage format should be yyyy-MM-dd with start date 10 days back and end date of yesterday. use UnblendedCost for the Metrics
+            the start time argument to get_cost_and_usage format should be yyyy-MM-dd with start datetime 10 days back and end datetime of yesterday. use UnblendedCost for the Metrics
             give the results in a pandas dataframe , call that df
             take the Groups column from the dataframe, Iterate through each element in the column , apply json_normalize on each element, call that df_normalized 
             add the TimePeriod column from df  dataframe, to df_normalizes, append resulting dataframe into a list and make a new dataframe out of the concatenated dataframes in the list
