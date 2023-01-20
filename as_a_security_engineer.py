@@ -318,7 +318,7 @@ with rs_tab :
             the start time argument to get_cost_and_usage format should be in strftime yyyy-MM-dd format with start datetime 10 days back (use timedelta to get the date)  and end datetime of today. use UnblendedCost for the Metrics
             give the results in a pandas dataframe , call that df
             take the Groups column from the dataframe, Iterate through each element in the column , apply json_normalize on each element, call that df_normalized 
-            add the TimePeriod column from df  dataframe, to df_normalizes, append resulting dataframe into a list and make a new dataframe out of the concatenated dataframes in the list
+            add the TimePeriod column from df  dataframe to df_normalize. append resulting dataframe into a list and make a new dataframe out of the concatenated dataframes in the list
             take the dataframe from the previous step, convert 'Metrics.UnblendedCost.Amount' column into float.  take that dataframe, groupby 'TimePeriod' and 'Keys' , sum by 'Metrics.UnblendedCost.Amount'
             do not use python functions """
 
