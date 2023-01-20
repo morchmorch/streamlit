@@ -319,6 +319,7 @@ with rs_tab :
             give the results in a pandas dataframe 
             take the Groups column from the dataframe, Iterate through each element in the column , apply json_normalize on each element, 
             take the resulting dataframe, add the TimePeriod column from the previous dataframe, and append the resulting dataframe in a list and make a new dataframe out of the concatenated dataframes in the list
+            take the dataframe from the previous step, convert 'Metrics.UnblendedCost.Amount' column into float.  take that dataframe, groupby 'TimePeriod' and 'Keys' , sum by 'Metrics.UnblendedCost.Amount'
             do not use python functions """
 
     #question=st.text_area("Input the Question Here")
