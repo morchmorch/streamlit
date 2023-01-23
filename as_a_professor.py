@@ -129,6 +129,7 @@ for tab in tabs :
         st.write (tab_name)
         dropdowns = df [ df.tasks == tab_name ].dropdowns.tolist()
         st.write (dropdowns)
+        i = i + 1
         #service=st.selectbox("Select the service:", ("s3", "sns"))
 
 def old () :
