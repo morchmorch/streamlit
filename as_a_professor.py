@@ -1,6 +1,6 @@
 #plotly_chart.py
 import streamlit as st
-import openai,boto3
+import openai,boto3,urllib, requests
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -108,6 +108,11 @@ button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
+
+url = 'https://worldopen.s3.amazonaws.com/prompts.csv'
+r = requests.get(url, allow_redirects=True)
+
+open('/tmp/df.csv', 'wb').write(r.content)
 
 s3_client = boto3.client ('s3')
 s3_client.download_file ( 'worldopen', 'prompts.csv', '/tmp/df/csv')
