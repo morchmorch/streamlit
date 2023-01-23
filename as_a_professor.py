@@ -102,7 +102,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.markdown(footer,unsafe_allow_html=True)
 
-st.header ('As a Cloud Security Engineer, I want to ... ')
+st.header ('As a professor, I want to ... ')
 
 button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
