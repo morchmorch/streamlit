@@ -1,6 +1,6 @@
 #plotly_chart.py
 import streamlit as st
-import openai
+import openai,boto3
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
