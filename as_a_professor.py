@@ -114,8 +114,6 @@ r = requests.get(url, allow_redirects=True)
 
 open('/tmp/df.csv', 'wb').write(r.content)
 
-s3_client = boto3.client ('s3')
-s3_client.download_file ( 'worldopen', 'prompts.csv', '/tmp/df/csv')
 df = pd.read_csv ('/tmp/df.csv')
 
 tablist = df.tasks.tolist()
