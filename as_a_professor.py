@@ -21,8 +21,8 @@ def response1(base_prompt):
         #prompt=f"""" write a password policy per fedramp nist standards  """, 
         prompt = base_prompt,
         temperature=0,
-        max_tokens=1900,
-        top_p=1,
+        max_tokens=2500,
+        #top_p=1,
         frequency_penalty=0,
         presence_penalty=0
         )
@@ -35,7 +35,7 @@ def get_write_response (base_prompt) :
     with st.spinner ( response_while ) :
         answer=response1(base_prompt)
         st.subheader (response_after)
-        st.write(answer)
+        st.markdown(answer)
 
 
 
