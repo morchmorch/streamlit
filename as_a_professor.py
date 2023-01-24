@@ -143,7 +143,8 @@ s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Passwo
 
 st.write(s_type)
 
-def draw_prompt()
+
+def draw_prompt():
     service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.write ( "dropdowns" + str (randrange(10000) ) )
