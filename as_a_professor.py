@@ -139,6 +139,11 @@ for tab in tabs :
         #st.write(prompt)
         i = i + 1
 
+
+s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
+
+st.write(s_tpe)
+
 def old () :
 
 
