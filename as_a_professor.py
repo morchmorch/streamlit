@@ -130,7 +130,7 @@ df = pd.read_csv ('/tmp/df.csv')
 
 role = df.job.unique().tolist()[0]
 
-st.header ('As a ' + role + ' , I want to ... ')
+st.header ( role )
 
 tab_list = df.tasks.unique().tolist()
 
