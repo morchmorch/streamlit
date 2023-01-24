@@ -40,7 +40,7 @@ def get_write_response (base_prompt) :
 
 
 def draw_prompt(dropdowns):
-    service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
+    service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + tabname)
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.write ( "dropdowns" + str (randrange(10000) ) )
     #service=st.selectbox("Select the service:", dropdowns )
@@ -139,7 +139,7 @@ for tab in tabs :
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
         st.write (dropdowns)
-        draw_prompt(dropdowns)
+        draw_prompt(dropdowns, tab_name)
         #service=st.selectbox("Select the service:", ("sch","lab"), key='dropdowns-'+ str (randrange(10000) ) )
        #prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
         #st.write(prompt)
