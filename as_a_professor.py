@@ -131,12 +131,9 @@ for tab in tabs :
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
         st.write (dropdowns)
+        draw_prompt()
         #service=st.selectbox("Select the service:", ("sch","lab"), key='dropdowns-'+ str (randrange(10000) ) )
-        service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
-        st.write ( "dropdowns" + str (randrange(10000) ) )
-        #service=st.selectbox("Select the service:", dropdowns )
-        st.write (service)
-        #prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
+       #prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
         #st.write(prompt)
         i = i + 1
 
@@ -145,6 +142,13 @@ st.write (service)
 s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
 
 st.write(s_type)
+
+def draw_prompt()
+    service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    st.write ( "dropdowns" + str (randrange(10000) ) )
+    #service=st.selectbox("Select the service:", dropdowns )
+    st.write (service)
 
 def old () :
 
