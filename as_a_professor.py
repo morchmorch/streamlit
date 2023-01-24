@@ -101,7 +101,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-st.markdown(footer,unsafe_allow_html=True)
+#st.markdown(footer,unsafe_allow_html=True)
 
 st.header ('As a professor, I want to ... ')
 
