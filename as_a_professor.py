@@ -111,7 +111,6 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 #st.markdown(footer,unsafe_allow_html=True)
 
-st.header ('As a professor, I want to ... ')
 
 button_name = "Write it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
@@ -124,6 +123,10 @@ r = requests.get(url, allow_redirects=True)
 open('/tmp/df.csv', 'wb').write(r.content)
 
 df = pd.read_csv ('/tmp/df.csv')
+
+role = df.job.unique().tolist()[0]
+
+st.header ('As a ' + role + ' , I want to ... ')
 
 tab_list = df.tasks.unique().tolist()
 
@@ -138,18 +141,8 @@ for tab in tabs :
         st.write (tab_name)
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
-        st.write (dropdowns)
         draw_prompt(dropdowns, tab_name)
-        #service=st.selectbox("Select the service:", ("sch","lab"), key='dropdowns-'+ str (randrange(10000) ) )
-       #prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
-        #st.write(prompt)
         i = i + 1
-
-service=st.selectbox("Select the service:", ("sch","lab") )
-st.write (service)
-s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
-
-st.write(s_type)
 
 def old () :
 
