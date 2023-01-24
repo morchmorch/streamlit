@@ -139,7 +139,7 @@ for tab in tabs :
         #st.write(prompt)
         i = i + 1
 
-service=st.selectbox("Select the service:", ("sch","lab"), key='dropdowns-'+ str (randrange(10000) ) )
+service=st.selectbox("Select the service:", ("sch","lab") )
 st.write (service)
 s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
 
