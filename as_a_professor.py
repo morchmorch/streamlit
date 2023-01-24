@@ -1,5 +1,6 @@
 #plotly_chart.py
 import streamlit as st
+from random import randrange
 import openai,boto3,urllib, requests
 import plotly.express as px
 import plotly.graph_objects as go
@@ -130,7 +131,7 @@ for tab in tabs :
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown
         st.write (dropdowns)
-        service=st.selectbox("Select the service:", dropdowns, key='dropdowns-'+tab_name)
+        service=st.selectbox("Select the service:", dropdowns, key='dropdowns-'+ str (randrange(10000) )
         prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
         st.write(prompt)
         i = i + 1
