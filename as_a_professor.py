@@ -132,7 +132,7 @@ for tab in tabs :
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
         st.write (dropdowns)
         #service=st.selectbox("Select the service:", ("sch","lab"), key='dropdowns-'+ str (randrange(10000) ) )
-        service = st.radio ( "Select the service:", dropdowns )
+        service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
         st.write ( "dropdowns" + str (randrange(10000) ) )
         #service=st.selectbox("Select the service:", dropdowns )
         st.write (service)
