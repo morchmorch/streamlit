@@ -131,7 +131,7 @@ for tab in tabs :
         dropdowns = df [ df.tasks == tab_name ].dropdown
         st.write (dropdowns)
         i = i + 1
-        service=st.selectbox("Select the service:", dropdowns)
+        service=st.selectbox("Select the service:", dropdowns, key='dropdowns-'+tab_name)
         prompt = df_d [df_d.dropdown == service].prompt.tolist()[0]
         st.write(prompt)
 
