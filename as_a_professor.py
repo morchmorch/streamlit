@@ -41,7 +41,7 @@ def get_write_response (base_prompt) :
 
 def draw_prompt(dropdowns, tabname, df_d):
     select = df_d.dropdownname.unique().tolist()[0]
-    s_d = st.radio ( select + " :", dropdowns , key = "dropdowns" + tabname)
+    s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     tab_button=st.button(button_name , key = tab_name)
     base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
