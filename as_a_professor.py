@@ -117,7 +117,7 @@ open('/tmp/df.csv', 'wb').write(r.content)
 
 df = pd.read_csv ('/tmp/df.csv')
 
-tab_list = df.tasks.tolist()
+tab_list = df.tasks.unique().tolist()
 
 tabs = st.tabs ( tab_list )  
 
