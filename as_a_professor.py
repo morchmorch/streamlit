@@ -39,7 +39,7 @@ def get_write_response (base_prompt) :
 
 
 
-def draw_prompt(dropdowns):
+def draw_prompt(dropdowns, tabname):
     service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + tabname)
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     st.write ( "dropdowns" + str (randrange(10000) ) )
