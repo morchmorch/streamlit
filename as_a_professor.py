@@ -35,11 +35,12 @@ def get_write_response (base_prompt) :
     with st.spinner ( response_while ) :
         answer=response1(base_prompt)
         st.subheader (response_after)
-        st.code(answer, language="python")
+        st.write(answer)
 
 
 
 def draw_prompt(dropdowns, tabname, df_d):
+    select = df_d.dropdownname.unique().tolist()[0]
     s_d = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + tabname)
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     tab_button=st.button(button_name , key = tab_name)
