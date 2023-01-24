@@ -39,6 +39,14 @@ def get_write_response (base_prompt) :
 
 
 
+def draw_prompt():
+    service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    st.write ( "dropdowns" + str (randrange(10000) ) )
+    #service=st.selectbox("Select the service:", dropdowns )
+    st.write (service)
+
+
 ## main
 
 st.set_page_config(page_title="Be My Security Enginee",layout='wide')
@@ -142,14 +150,6 @@ st.write (service)
 s_type = st.selectbox ( "Select the control: ", ("Access , Authentication Password Policy", "Access, Least Privilege Policy", "Data Classification Policy", "Data Encryption Policy", "Data Protection Policy", "Data Sanitization Policy" , "Data Backup Policy", "System Monitoring Policy" ) )
 
 st.write(s_type)
-
-
-def draw_prompt():
-    service = st.radio ( "Select the service:", dropdowns , key = "dropdowns" + str (randrange(10000) ))
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    st.write ( "dropdowns" + str (randrange(10000) ) )
-    #service=st.selectbox("Select the service:", dropdowns )
-    st.write (service)
 
 def old () :
 
