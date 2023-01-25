@@ -132,7 +132,7 @@ df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
 
 role = df.job.unique().tolist()[0]
 
-st.header ( role )
+st.header ( role.strip() )
 
 tab_list = df.tasks.unique().tolist()
 
