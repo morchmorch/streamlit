@@ -134,7 +134,7 @@ role = df.job.unique().tolist()[0]
 st.header ( role )
 
 tab_list = df.tasks.unique().tolist()
-tabs = [ x for x in tab_list if "NaN" not in str(x) ]
+tabs = [ str(x) for x in tab_list if "NaN" not in str(x) ]
 tabs = st.tabs ( tab_list )  
 
 
