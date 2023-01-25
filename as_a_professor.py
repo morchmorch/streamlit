@@ -59,7 +59,7 @@ def draw_prompt(dropdowns, tabname, df_d):
     with col1:
 
         select = df_d1.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) )
+        s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
         tab_button=st.button(button_name , key = tab_name + "1")
         base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
@@ -69,7 +69,7 @@ def draw_prompt(dropdowns, tabname, df_d):
 
     with col2:
         select = df_d2.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) )
+        s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1" )
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
         tab_button=st.button(button_name , key = tab_name+"2")
         base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
