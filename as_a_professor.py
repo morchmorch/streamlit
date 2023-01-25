@@ -7,6 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from PIL import Image
+import re
 
 #blah
 
@@ -131,7 +132,8 @@ open('/tmp/df.csv', 'wb').write(r.content)
 df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
 
 role = df.job.unique().tolist()[0]
-
+role = re.sub('\W+','', role )
+ 
 st.header ( role.strip() )
 
 tab_list = df.tasks.unique().tolist()
