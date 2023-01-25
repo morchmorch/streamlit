@@ -137,7 +137,7 @@ st.header ( role )
 tab_list = df.tasks.unique().tolist()
 
 st.write (tab_list)
-tabs = [ str(x) for x in tab_list if np.nan not in x ]
+tabs = [ str(x) for x in tab_list if x is not np.nan ]
 st.write (tabs)
 
 tabs = st.tabs ( tab_list )  
