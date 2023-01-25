@@ -46,6 +46,7 @@ def draw_prompt(dropdowns, tabname, df_d):
     tab_button=st.button(button_name , key = tab_name)
     base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
     st.write(base_prompt)
+    st.markdown ( "--------")
     if tab_button:
         get_write_response (base_prompt)
 
