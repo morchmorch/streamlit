@@ -1,5 +1,6 @@
 #plotly_chart.py
 import streamlit as st
+import numpy as np
 from random import randrange
 import openai,boto3,urllib, requests
 import plotly.express as px
@@ -136,7 +137,8 @@ st.header ( role )
 tab_list = df.tasks.unique().tolist()
 
 st.write (tab_list)
-tabs = [ str(x) for x in tab_list if "NaN" not in str(x) ]
+tabs = [ str(x) for x in tab_list if np.nan not in x ]
+st.write (tabs)
 
 tabs = st.tabs ( tab_list )  
 
