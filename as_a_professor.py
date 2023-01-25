@@ -126,7 +126,7 @@ r = requests.get(url, allow_redirects=True)
 
 open('/tmp/df.csv', 'wb').write(r.content)
 
-df = pd.read_csv ('/tmp/df.csv')
+df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
 
 role = df.job.unique().tolist()[0]
 
