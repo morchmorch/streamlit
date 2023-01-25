@@ -138,7 +138,7 @@ for character in role:
     if character.isalnum():
         new_role += character
  
-st.header ( new_role.strip() )
+st.header ( role.strip() )
 
 tab_list = df.tasks.unique().tolist()
 
