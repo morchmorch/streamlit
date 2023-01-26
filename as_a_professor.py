@@ -187,7 +187,7 @@ for tab in tabs :
         st.write (tab_name)
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
-        st.write (dropdowns)
+        #st.write (dropdowns)
         draw_prompt(dropdowns, tab_name, df_d)
 
         i = i + 1
