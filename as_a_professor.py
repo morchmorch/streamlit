@@ -170,11 +170,6 @@ df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
 
 role = df.job.unique().tolist()[0]
 
-new_role = ''
-for character in role:
-    if character.isalnum():
-        new_role += character
- 
 st.header ( role.strip() )
 
 tab_list = df.tasks.unique().tolist()
@@ -189,9 +184,10 @@ for tab in tabs :
 
     with tab :
         tab_name = tab_list[i]
-        #st.write (tab_name)
+        st.write (tab_name)
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
+        st.write (dropdowns)
         draw_prompt(dropdowns, tab_name, df_d)
 
         i = i + 1
