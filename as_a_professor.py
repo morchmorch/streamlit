@@ -52,7 +52,7 @@ def get_write_response (base_prompt) :
 
 
 
-def draw_prompt2(dropdowns, tabname, df_d):
+def draw_prompt(dropdowns, tabname, df_d):
 
 
     select = df_d.dropdownname.unique().tolist()[0]
@@ -65,7 +65,7 @@ def draw_prompt2(dropdowns, tabname, df_d):
         get_write_response (base_prompt)
 
 
-def draw_prompt(dropdowns, tabname, df_d):
+def draw_prompt2(dropdowns, tabname, df_d):
 
     df_d1, df_d2 = split_df (df_d)
     col1, col2 = st.columns (2)
