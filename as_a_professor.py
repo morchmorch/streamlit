@@ -77,7 +77,7 @@ def draw_prompt(dropdowns, tabname, df_d):
         tab_button_1=st.button(button_name , key = tab_name + "1")
         base_prompt = df_d1 [df_d1.dropdown == s_d].prompt.unique().tolist()[0]
         st.markdown ( "--------")
-        if tab_button:
+        if tab_button_1:
             get_write_response (base_prompt)
 
     with col2:
@@ -87,7 +87,7 @@ def draw_prompt(dropdowns, tabname, df_d):
         tab_button_2=st.button(button_name , key = tab_name+"2")
         base_prompt = df_d2 [df_d2.dropdown == s_d].prompt.unique().tolist()[0]
         st.markdown ( "--------")
-        if tab_button:
+        if tab_button_2:
             get_write_response (base_prompt)
 
 
