@@ -93,7 +93,7 @@ def draw_prompt2(dropdowns, tabname, df_d):
 
 ## main
 
-st.set_page_config(page_title="Be My Security Enginee",layout='wide')
+st.set_page_config(page_title="Draft it for Me",layout='wide')
 
 #m = st.markdown("""
 #<style>
@@ -184,7 +184,7 @@ for tab in tabs :
 
     with tab :
         tab_name = tab_list[i]
-        st.write (tab_name)
+        #st.write (tab_name)
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
         #st.write (dropdowns)
