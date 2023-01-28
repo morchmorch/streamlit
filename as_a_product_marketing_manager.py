@@ -161,7 +161,7 @@ response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
 
-url = 'https://worldopen.s3.amazonaws.com/prompts.csv'
+url = 'https://worldopen.s3.amazonaws.com/prompts_product_marketing.csv'
 r = requests.get(url, allow_redirects=True)
 
 open('/tmp/df.csv', 'wb').write(r.content)
