@@ -153,7 +153,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-st.markdown(footer,unsafe_allow_html=True)
+#st.markdown(footer,unsafe_allow_html=True)
 
 
 button_name = "Draft it for me !! "
@@ -161,7 +161,7 @@ response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
 
-url = 'https://worldopen.s3.amazonaws.com/prompts.csv'
+url = 'https://worldopen.s3.amazonaws.com/prompts_product_management.csv'
 r = requests.get(url, allow_redirects=True)
 
 open('/tmp/df.csv', 'wb').write(r.content)
