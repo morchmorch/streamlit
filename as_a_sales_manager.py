@@ -140,7 +140,7 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p> feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
+<p> feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com</a> , AI assisted drafts for other roles, visit our <a href="www.draftitforme.com">homepage</a> </p>
 </div>
 """
 
