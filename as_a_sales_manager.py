@@ -93,7 +93,7 @@ def draw_prompt2(dropdowns, tabname, df_d):
 
 ## main
 
-st.set_page_config(page_title="Draft it for Me",layout='wide', page_icon=None)
+st.set_page_config(page_title="Draft it for Me - Sales ",layout='wide', page_icon=None)
 
 #m = st.markdown("""
 #<style>
@@ -135,13 +135,12 @@ position: fixed;
 left: 0;
 bottom: 0;
 width: 100%;
-background-color: white;
-color: red;
+color: blue;
 text-align: center;
 }
 </style>
 <div class="footer">
-<p>most feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
+<p> feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
 </div>
 """
 
