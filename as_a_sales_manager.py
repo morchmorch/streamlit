@@ -93,7 +93,7 @@ def draw_prompt2(dropdowns, tabname, df_d):
 
 ## main
 
-st.set_page_config(page_title="Draft it for Me",layout='wide')
+st.set_page_config(page_title="Draft it for Me",layout='wide', page_icon=None)
 
 #m = st.markdown("""
 #<style>
@@ -141,7 +141,7 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>most responses are tested to produce the most accurate results possible.  please report any errors to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
+<p>most feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com </a> </p>
 </div>
 """
 
@@ -153,7 +153,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-#st.markdown(footer,unsafe_allow_html=True)
+st.markdown(footer,unsafe_allow_html=True)
 
 
 button_name = "Draft it for me !! "
