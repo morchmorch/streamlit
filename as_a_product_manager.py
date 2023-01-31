@@ -151,9 +151,12 @@ hide_streamlit_style = """
             footer {visibility: hidden;}
             </style>
             """
+
+
+
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-#st.markdown(footer,unsafe_allow_html=True)
+st.markdown(footer,unsafe_allow_html=True)
 
 
 button_name = "Draft it for me !! "
