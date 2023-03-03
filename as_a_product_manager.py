@@ -29,17 +29,7 @@ def response1(base_prompt):
     engine = "gpt-3.5-turbo"
     #engine = "text-curie-001"
     
-    response = openai.Completion.create(
-        engine=engine,
-        
-        #prompt=f"""" write a password policy per fedramp nist standards  """, 
-        prompt = base_prompt,
-        temperature=0,
-        max_tokens=2500,
-        #top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
-        )
+    response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=[  base_prompt ] )
     #print(response)
     return response.choices[0].text
 
