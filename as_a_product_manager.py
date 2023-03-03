@@ -28,8 +28,9 @@ def response1(base_prompt):
     engine = "text-davinci-003"
     engine = "gpt-3.5-turbo"
     #engine = "text-curie-001"
-    
-    response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=[  base_prompt ] )
+
+    messages = [ "role": "user", "content": base_promit ]
+    response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=messages )
     #print(response)
     return response.choices[0].text
 
