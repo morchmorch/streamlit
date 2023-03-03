@@ -26,6 +26,7 @@ def response1(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     base_prompt = (f"{base_prompt}")
     engine = "text-davinci-003"
+    engine = "gpt-3.5-turbo"
     #engine = "text-curie-001"
     
     response = openai.Completion.create(
