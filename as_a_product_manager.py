@@ -32,7 +32,7 @@ def response1(base_prompt):
     messages = [ { "role": "user", "content": base_prompt } ]
     response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=messages )
     #print(response)
-    return response.choices[0].text
+    return  response["choices"][0]["message"]["content"]
 
 
 def get_write_response (base_prompt) :
