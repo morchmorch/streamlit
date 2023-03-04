@@ -28,7 +28,7 @@ def get_write_response (base_prompt) :
         answer=response1(base_prompt)
         st.subheader (response_after)
         #st.code(answer, language="python")
-        st.markdown(answer)
+        st.write(answer)
 
 
 ## main
