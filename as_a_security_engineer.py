@@ -27,8 +27,8 @@ def get_write_response (base_prompt) :
     with st.spinner ( response_while ) :
         answer=response1(base_prompt)
         st.subheader (response_after)
-        st.code(answer, language="python")
-
+        #st.code(answer, language="python")
+        st.markdown(answer)
 
 
 ## main
