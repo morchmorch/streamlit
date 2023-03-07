@@ -88,7 +88,7 @@ def draw_prompt2(dropdowns, tabname, df_d):
 
 ## main
 
-st.set_page_config(page_title="Draft it for Me - Sales ",layout='wide', page_icon=None)
+#st.set_page_config(page_title="Draft it for Me - Sales ",layout='wide', page_icon=None)
 
 #m = st.markdown("""
 #<style>
