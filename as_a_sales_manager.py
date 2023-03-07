@@ -1,4 +1,3 @@
-#plotly_chart.py
 import streamlit as st
 import numpy as np
 from random import randrange
