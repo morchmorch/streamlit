@@ -31,7 +31,7 @@ def get_write_response (base_prompt) :
         st.markdown(answer)
 
 
-st.set_page_config(page_title=page_title,layout='wide')
+#st.set_page_config(page_title=page_title,layout='wide')
 
 #m = st.markdown("""
 #<style>
