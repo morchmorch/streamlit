@@ -1,5 +1,5 @@
 #from appsmills.streamlit_apps 
-from . import openai_helpers
+from helpers import openai_helpers
 import streamlit as st
 import numpy as np
 from random import randrange
