@@ -23,6 +23,11 @@ def response(base_prompt):
 
 
 def get_write_response (base_prompt) :
+
+    button_name = "Draft it for me !! "
+    response_while = "Right on it, it should be around 2-5 seconds ..."
+    response_after = "Here you go ...  "
+
     
     with st.spinner ( response_while ) :
         answer=response1(base_prompt)
