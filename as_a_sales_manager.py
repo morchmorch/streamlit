@@ -1,3 +1,4 @@
+import openai_helpers
 import streamlit as st
 import numpy as np
 from random import randrange
@@ -55,7 +56,7 @@ def draw_prompt(dropdowns, tabname, df_d):
     base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
     st.markdown ( "--------")
     if tab_button:
-        get_write_response (base_prompt)
+        openai_helpers.get_write_response (base_prompt)
 
 
 def draw_prompt2(dropdowns, tabname, df_d):
