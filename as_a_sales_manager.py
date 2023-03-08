@@ -51,6 +51,7 @@ def streamlit_main (url) :
 
     st.header ( role.strip() )
 
+    # tabs are the tasks
     tab_list = df.tasks.unique().tolist()
 
     tabs = [ str(x) for x in tab_list if x is not np.nan ]
@@ -65,9 +66,11 @@ def streamlit_main (url) :
             tab_name = tab_list[i]
             #st.write (tab_name)
             df_d = df [ df.tasks == tab_name ]
+
+            # these are the list of questions
             dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
             #st.write (dropdowns)
-            draw_prompt(dropdowns, tab_name, df_d)
+            openai_helpers.draw_prompt(dropdowns, tab_name, df_d)
 
             i = i + 1
            

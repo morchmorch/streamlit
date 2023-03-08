@@ -13,6 +13,24 @@ response_while = "Right on it, it should be around 2-5 seconds ..."
 response_after = "Here you go ...  "
 
 
+def draw_prompt(dropdowns, tabname, df_d):
+
+
+    button_name = "Draft it for me !! "
+    response_while = "Right on it, it should be around 2-5 seconds ..."
+    response_after = "Here you go ...  "
+
+
+    select = df_d.dropdownname.unique().tolist()[0]
+    s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    tab_button=st.button(button_name , key = tabname + "1")
+    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
+    st.markdown ( "--------")
+    if tab_button:
+        get_write_response (base_prompt)
+
+
 def response(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     base_prompt = (f"{base_prompt}")
