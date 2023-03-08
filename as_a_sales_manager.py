@@ -17,6 +17,11 @@ import re
 def draw_prompt(dropdowns, tabname, df_d):
 
 
+    button_name = "Draft it for me !! "
+    response_while = "Right on it, it should be around 2-5 seconds ..."
+    response_after = "Here you go ...  "
+
+
     select = df_d.dropdownname.unique().tolist()[0]
     s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
