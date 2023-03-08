@@ -8,6 +8,11 @@ from PIL import Image
 
 #blah
 
+button_name = "Draft it for me !! "
+response_while = "Right on it, it should be around 2-5 seconds ..."
+response_after = "Here you go ...  "
+
+
 def response(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     base_prompt = (f"{base_prompt}")
