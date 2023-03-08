@@ -32,7 +32,7 @@ def draw_prompt(dropdowns, tabname, df_d):
         openai_helpers.get_write_response (base_prompt)
 
 
-def streamlist_main (url) :
+def streamlit_main (url) :
 
 
     button_name = "Draft it for me !! "
