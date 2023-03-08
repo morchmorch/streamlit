@@ -27,44 +27,45 @@ def draw_prompt(dropdowns, tabname, df_d):
         openai_helpers.get_write_response (base_prompt)
 
 
+def main () :
 
 
-button_name = "Draft it for me !! "
-response_while = "Right on it, it should be around 2-5 seconds ..."
-response_after = "Here you go ...  "
+    button_name = "Draft it for me !! "
+    response_while = "Right on it, it should be around 2-5 seconds ..."
+    response_after = "Here you go ...  "
 
 
-url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
-r = requests.get(url, allow_redirects=True)
+    url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
+    r = requests.get(url, allow_redirects=True)
 
-open('/tmp/df.csv', 'wb').write(r.content)
+    open('/tmp/df.csv', 'wb').write(r.content)
 
-df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
+    df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
 
-role = df.job.unique().tolist()[0]
+    role = df.job.unique().tolist()[0]
 
-st.header ( role.strip() )
+    st.header ( role.strip() )
 
-tab_list = df.tasks.unique().tolist()
+    tab_list = df.tasks.unique().tolist()
 
-tabs = [ str(x) for x in tab_list if x is not np.nan ]
+    tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
-tabs = st.tabs ( tabs )  
+    tabs = st.tabs ( tabs )  
 
 
-i=0
-for tab in tabs :
+    i=0
+    for tab in tabs :
 
-    with tab :
-        tab_name = tab_list[i]
-        #st.write (tab_name)
-        df_d = df [ df.tasks == tab_name ]
-        dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
-        #st.write (dropdowns)
-        draw_prompt(dropdowns, tab_name, df_d)
+        with tab :
+            tab_name = tab_list[i]
+            #st.write (tab_name)
+            df_d = df [ df.tasks == tab_name ]
+            dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
+            #st.write (dropdowns)
+            draw_prompt(dropdowns, tab_name, df_d)
 
-        i = i + 1
-       
+            i = i + 1
+           
 
 ### temp
 def split_list(a_list):
