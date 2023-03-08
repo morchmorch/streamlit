@@ -11,6 +11,144 @@ from PIL import Image
 import re
 ## 
 
+#blah
+
+def split_list(a_list):
+    half = len(a_list)//2
+    return a_list[:half], a_list[half:]
+
+def split_df(df):
+    if len(df) % 2 != 0:  # Handling `df` with `odd` number of rows
+        df = df.iloc[:-1, :]
+    df1, df2 =  np.array_split(df, 2)
+    return df1, df2
+
+
+def response1(base_prompt):
+    openai.api_key=st.secrets["open_api_key"]
+    base_prompt = (f"{base_prompt}")
+    engine = "text-davinci-003"
+    #engine = "text-curie-001"
+
+    
+    messages = [ { "role": "user", "content": base_prompt } ]
+    response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=messages )
+    #print(response)
+    return  response["choices"][0]["message"]["content"]
+    
+
+
+def get_write_response (base_prompt) :
+    
+    with st.spinner ( response_while ) :
+        answer=response1(base_prompt)
+        st.subheader (response_after)
+        st.markdown(answer)
+
+
+
+def draw_prompt(dropdowns, tabname, df_d):
+
+
+    select = df_d.dropdownname.unique().tolist()[0]
+    s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    tab_button=st.button(button_name , key = tab_name + "1")
+    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
+    st.markdown ( "--------")
+    if tab_button:
+        openai_helpers.get_write_response (base_prompt)
+
+
+def draw_prompt2(dropdowns, tabname, df_d):
+
+    df_d1, df_d2 = split_df (df_d)
+    col1, col2 = st.columns (2)
+    with col1:
+
+        dropdowns_col1 = df_d1 [ df_d1.tasks == tab_name ].dropdown.tolist()
+        select = df_d1.dropdownname.unique().tolist()[0]
+        s_d = st.radio ( str (select) + " : ", dropdowns_col1 , key = "dropdowns" + str( tabname) + "1")
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    
+    with col2:
+        dropdowns_col2 = df_d2 [ df_d2.tasks == tab_name ].dropdown.tolist()
+
+        select = df_d2.dropdownname.unique().tolist()[0]
+        s_d = st.radio ( str (select) + " : ", dropdowns_col2 , key = "dropdowns" + str( tabname) + "2" )
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    
+    tab_button_1=st.button(button_name , key = tab_name + "1")
+    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
+    st.markdown ( "--------")
+    if tab_button_1:
+        get_write_response (base_prompt)
+
+
+
+## main
+
+#st.set_page_config(page_title="Draft it for Me - Sales ",layout='wide', page_icon=None)
+
+#m = st.markdown("""
+#<style>
+#div.stButton > button:first-child {
+#    background-color: #0099ff;
+#    color:#ffffff;
+#}
+#div.stButton > button:hover {
+#    background-color: #00fffg;
+#    color:#ffffff;
+#    }
+#</style>""", unsafe_allow_html=True)
+
+
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #0099ff;
+    color:#ffffff;
+}
+</style>""", unsafe_allow_html=True)
+
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+color: blue;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p> feedback, feature requests, bugs to <a href="mailto:rkreddy@gmail.com">rkreddy@gmail.com</a>   --  AI assisted drafts for other roles, visit our <a href="https://www.draftitforme.com">homepage</a> </p>
+</div>
+"""
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+st.markdown(footer,unsafe_allow_html=True)
+
 
 button_name = "Draft it for me !! "
 response_while = "Right on it, it should be around 2-5 seconds ..."
@@ -44,7 +182,7 @@ for tab in tabs :
         df_d = df [ df.tasks == tab_name ]
         dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
         #st.write (dropdowns)
-        openai_helpers.draw_prompt(dropdowns, tab_name, df_d)
+        draw_prompt(dropdowns, tab_name, df_d)
 
         i = i + 1
 
@@ -271,51 +409,4 @@ def old () :
 
         if rs_button:
             get_write_response (base_prompt)
-
-
-
-
-#### temp
-
-
-def split_list(a_list):
-    half = len(a_list)//2
-    return a_list[:half], a_list[half:]
-
-def split_df(df):
-    if len(df) % 2 != 0:  # Handling `df` with `odd` number of rows
-        df = df.iloc[:-1, :]
-    df1, df2 =  np.array_split(df, 2)
-    return df1, df2
-
-
-
-
-
-def draw_prompt2(dropdowns, tabname, df_d):
-
-    df_d1, df_d2 = split_df (df_d)
-    col1, col2 = st.columns (2)
-    with col1:
-
-        dropdowns_col1 = df_d1 [ df_d1.tasks == tab_name ].dropdown.tolist()
-        select = df_d1.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns_col1 , key = "dropdowns" + str( tabname) + "1")
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    
-    with col2:
-        dropdowns_col2 = df_d2 [ df_d2.tasks == tab_name ].dropdown.tolist()
-
-        select = df_d2.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns_col2 , key = "dropdowns" + str( tabname) + "2" )
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    
-    tab_button_1=st.button(button_name , key = tab_name + "1")
-    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
-    st.markdown ( "--------")
-    if tab_button_1:
-        get_write_response (base_prompt)
-
-
-
             
