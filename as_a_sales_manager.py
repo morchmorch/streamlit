@@ -24,27 +24,6 @@ def split_df(df):
     return df1, df2
 
 
-def response1(base_prompt):
-    openai.api_key=st.secrets["open_api_key"]
-    base_prompt = (f"{base_prompt}")
-    engine = "text-davinci-003"
-    #engine = "text-curie-001"
-
-    
-    messages = [ { "role": "user", "content": base_prompt } ]
-    response = openai.ChatCompletion.create( model="gpt-3.5-turbo", messages=messages )
-    #print(response)
-    return  response["choices"][0]["message"]["content"]
-    
-
-
-def get_write_response (base_prompt) :
-    
-    with st.spinner ( response_while ) :
-        answer=response1(base_prompt)
-        st.subheader (response_after)
-        st.markdown(answer)
-
 
 
 def draw_prompt(dropdowns, tabname, df_d):
