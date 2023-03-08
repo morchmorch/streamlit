@@ -27,31 +27,6 @@ def draw_prompt(dropdowns, tabname, df_d):
         openai_helpers.get_write_response (base_prompt)
 
 
-def draw_prompt2(dropdowns, tabname, df_d):
-
-    df_d1, df_d2 = split_df (df_d)
-    col1, col2 = st.columns (2)
-    with col1:
-
-        dropdowns_col1 = df_d1 [ df_d1.tasks == tab_name ].dropdown.tolist()
-        select = df_d1.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns_col1 , key = "dropdowns" + str( tabname) + "1")
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    
-    with col2:
-        dropdowns_col2 = df_d2 [ df_d2.tasks == tab_name ].dropdown.tolist()
-
-        select = df_d2.dropdownname.unique().tolist()[0]
-        s_d = st.radio ( str (select) + " : ", dropdowns_col2 , key = "dropdowns" + str( tabname) + "2" )
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-    
-    tab_button_1=st.button(button_name , key = tab_name + "1")
-    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
-    st.markdown ( "--------")
-    if tab_button_1:
-        get_write_response (base_prompt)
-
-
 
 
 button_name = "Draft it for me !! "
@@ -89,6 +64,44 @@ for tab in tabs :
         draw_prompt(dropdowns, tab_name, df_d)
 
         i = i + 1
+       
+
+### temp
+def split_list(a_list):
+    half = len(a_list)//2
+    return a_list[:half], a_list[half:]
+
+def split_df(df):
+    if len(df) % 2 != 0:  # Handling `df` with `odd` number of rows
+        df = df.iloc[:-1, :]
+    df1, df2 =  np.array_split(df, 2)
+    return df1, df2
+
+def draw_prompt2(dropdowns, tabname, df_d):
+
+    df_d1, df_d2 = split_df (df_d)
+    col1, col2 = st.columns (2)
+    with col1:
+
+        dropdowns_col1 = df_d1 [ df_d1.tasks == tab_name ].dropdown.tolist()
+        select = df_d1.dropdownname.unique().tolist()[0]
+        s_d = st.radio ( str (select) + " : ", dropdowns_col1 , key = "dropdowns" + str( tabname) + "1")
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    
+    with col2:
+        dropdowns_col2 = df_d2 [ df_d2.tasks == tab_name ].dropdown.tolist()
+
+        select = df_d2.dropdownname.unique().tolist()[0]
+        s_d = st.radio ( str (select) + " : ", dropdowns_col2 , key = "dropdowns" + str( tabname) + "2" )
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    
+    tab_button_1=st.button(button_name , key = tab_name + "1")
+    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
+    st.markdown ( "--------")
+    if tab_button_1:
+        get_write_response (base_prompt)
+
+
 
 def old () :
 
@@ -313,17 +326,4 @@ def old () :
 
         if rs_button:
             get_write_response (base_prompt)
-            
-
-### temp
-def split_list(a_list):
-    half = len(a_list)//2
-    return a_list[:half], a_list[half:]
-
-def split_df(df):
-    if len(df) % 2 != 0:  # Handling `df` with `odd` number of rows
-        df = df.iloc[:-1, :]
-    df1, df2 =  np.array_split(df, 2)
-    return df1, df2
-
-
+     
