@@ -40,7 +40,7 @@ def streamlit_main (url) :
     response_after = "Here you go ...  "
 
 
-    url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
+    #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
 
     open('/tmp/df.csv', 'wb').write(r.content)
