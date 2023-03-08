@@ -71,7 +71,6 @@ def main () :
 
             i = i + 1
            
-main()
 
 ### temp
 def split_list(a_list):
