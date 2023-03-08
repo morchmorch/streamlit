@@ -72,6 +72,8 @@ def main () :
             i = i + 1
            
 
+main ()
+
 ### temp
 def split_list(a_list):
     half = len(a_list)//2
