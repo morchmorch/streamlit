@@ -122,10 +122,6 @@ st.markdown(footer,unsafe_allow_html=True)
 
 
 
-
-
-
-
 ### temp
 def split_list(a_list):
     half = len(a_list)//2
