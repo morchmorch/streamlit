@@ -32,7 +32,7 @@ def draw_prompt(dropdowns, tabname, df_d):
         openai_helpers.get_write_response (base_prompt)
 
 
-def main () :
+def streamlist_main (url) :
 
 
     button_name = "Draft it for me !! "
@@ -72,7 +72,7 @@ def main () :
             i = i + 1
            
 
-main ()
+streamlit_main ("https://worldopen.s3.amazonaws.com/prompts_sales.csv")
 
 ### temp
 def split_list(a_list):
