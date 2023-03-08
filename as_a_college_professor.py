@@ -56,7 +56,7 @@ def streamlit_main (url) :
 
             i = i + 1
            
-streamlit_main ("https://worldopen.s3.amazonaws.com/prompts_sales.csv")
+streamlit_main ("https://worldopen.s3.amazonaws.com/prompts_professor.csv")
 
 
     
