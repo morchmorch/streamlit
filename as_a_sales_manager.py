@@ -12,16 +12,6 @@ import re
 ## 
 
 
-def split_list(a_list):
-    half = len(a_list)//2
-    return a_list[:half], a_list[half:]
-
-def split_df(df):
-    if len(df) % 2 != 0:  # Handling `df` with `odd` number of rows
-        df = df.iloc[:-1, :]
-    df1, df2 =  np.array_split(df, 2)
-    return df1, df2
-
 
 
 def draw_prompt(dropdowns, tabname, df_d):
