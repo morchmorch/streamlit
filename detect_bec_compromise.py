@@ -21,7 +21,7 @@ def display_text () :
 
 
     email_txt = st.text_area("bec", value="Paste the email body here", height=800 )
-    tab_button=st.button(button_name , key = tabname + "1")
+    tab_button=st.button(button_name , key = "be" +  "1")
     if tab_button:
         openai_helpers.get_write_response (email_txt)
 
