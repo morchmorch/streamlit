@@ -23,7 +23,7 @@ def display_text () :
     email_txt = st.text_area(label, value="Paste the email body here", height=800 )
     tab_button=st.button(button_name , key = tabname + "1")
     if tab_button:
-        get_write_response (email_txt)
+        openai_helpers.get_write_response (email_txt)
 
     
 
@@ -69,8 +69,8 @@ def streamlit_main (url) :
 
             i = i + 1
 
-page_title = "Detect Business Email Compromise"
-st.set_page_config(page_title=page_title,layout='wide')
+#page_title = "Detect Business Email Compromise"
+#st.set_page_config(page_title=page_title,layout='wide')
            
 streamlit_main ("https://worldopen.s3.amazonaws.com/prompts_sales.csv")
 
