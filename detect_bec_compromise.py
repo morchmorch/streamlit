@@ -64,7 +64,7 @@ Support team.
 
 def display_text () :
 
-    button_name = "Check email !! "
+    button_name = "Check email for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
