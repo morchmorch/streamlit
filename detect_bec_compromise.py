@@ -49,15 +49,27 @@ bc = """ these are the categories of business email compromise - - CEO Fraud
 
 """
 
+et = """
+
+Hello,
+
+We emailed you a little while to ask for your help resolving an issue with your  account. Your account is still temporarily limited because we haven't heard from you.
+We noticed some unusual log in activity with your account. Please check that no one has logged in to your account without your permission.
+To help us with this and to see what you can and can’t do with your account until the issue is resolved, log in to your account and go to the Resolution Center.
+As always, if you need help or have any questions, feel free to contact us. We're always here to help.
+Thank you for being our customer.
+Support team.
+
+"""
 
 def display_text () :
 
-    button_name = "Is it legit email ? !! "
+    button_name = "Check email !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
 
-    email_txt = st.text_area("Paste the email body", value="", height=400 )
+    email_txt = st.text_area("Paste your email in place of the sample email below and click the check email button", value=et, height=400 )
     tab_button=st.button(button_name , key = "be" +  "1")
     if tab_button:
         
