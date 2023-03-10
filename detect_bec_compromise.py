@@ -46,6 +46,7 @@ bc = """ these are the categories of business email compromise - - CEO Fraud
     - In an [email account compromise](https://www.armorblox.com/solutions/email-account-compromise) attack, an employee’s email account is hacked and used to request payments from vendors. The money is then sent to attacker-controlled bank accounts.
 - Vendor Email Compromise
     - Companies with foreign suppliers are common targets of [vendor email compromise](https://www.armorblox.com/blog/identity-theft-invoices-and-impersonation). Attackers pose as suppliers, request payment for a fake invoice, then transfer the money to a fraudulent account.
+
 """
 
 
@@ -60,12 +61,13 @@ def display_text () :
     tab_button=st.button(button_name , key = "be" +  "1")
     if tab_button:
         
-        r = openai_helpers.response( bc )
-        r = openai_helpers.response( at )
+        #r = openai_helpers.response( bc )
+        #r = openai_helpers.response( at )
 
-        prompt = "determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
+
         email_txt = prompt + email_txt
-        openai_helpers.get_write_response (email_txt)
+        openai_helpers.get_write_response ( bc + "." + rc + "." + email_txt)
 
     
 
@@ -111,9 +113,7 @@ def streamlit_main (url) :
 
             i = i + 1
 
-st.header ('Check Emails for BEC Attacks')
-#page_title = "Detect Business Email Compromise"
-#st.set_page_config(page_title=page_title,layout='wide')
+st.subheader ('Check Emails for BEC Attacks')
            
 display_text()
 
