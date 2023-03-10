@@ -111,7 +111,7 @@ def streamlit_main (url) :
 
             i = i + 1
 
-st.heading ('Check Emails for BEC Attacks')
+st.header ('Check Emails for BEC Attacks')
 #page_title = "Detect Business Email Compromise"
 #st.set_page_config(page_title=page_title,layout='wide')
            
