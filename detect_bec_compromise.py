@@ -15,7 +15,7 @@ import re
 
 def display_text () :
 
-    button_name = "Draft it for me !! "
+    button_name = "Is it legit email ? !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
@@ -23,6 +23,9 @@ def display_text () :
     email_txt = st.text_area("bec", value="Paste the email body here", height=800 )
     tab_button=st.button(button_name , key = "be" +  "1")
     if tab_button:
+        
+        prompt = "determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
+        email_txt = prompt + email_txt
         openai_helpers.get_write_response (email_txt)
 
     
