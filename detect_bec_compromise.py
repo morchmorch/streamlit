@@ -81,7 +81,7 @@ def display_text () :
         #r = openai_helpers.response( bc )
         #r = openai_helpers.response( at )
 
-        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and rank it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and give me a bullet list of ranks (from 1-5) it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
 
         email_txt = prompt + email_txt
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
