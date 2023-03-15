@@ -49,8 +49,7 @@ bc = """ these are the categories of business email compromise - - CEO Fraud
 
 """
 
-rank =
-"""
+rank = """
 urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar.
 
 """
