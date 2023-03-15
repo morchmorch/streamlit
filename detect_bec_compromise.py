@@ -74,8 +74,7 @@ def display_text () :
     response_after = "Here you go ...  "
 
 
-    email_txt = st.text_area("Paste the email you want to check in place of the sample email below and click the check email button", value=et, height=400 )
-    tab_button=st.button(button_name , key = "be" +  "1")
+    email_txt = st.text_area("Paste the email you want to check in place of the sample email below and click the check email button (or click the button with the sample email to check out)", value=et, height=400 
     if tab_button:
         
         #r = openai_helpers.response( bc )
