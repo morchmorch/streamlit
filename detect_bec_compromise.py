@@ -74,7 +74,7 @@ def display_text () :
     response_after = "Here you go ...  "
 
 
-    email_txt = st.text_area("Paste your email in place of the sample email below and click the check email button", value=et, height=400 )
+    email_txt = st.text_area("Paste the email you want to check in place of the sample email below and click the check email button", value=et, height=400 )
     tab_button=st.button(button_name , key = "be" +  "1")
     if tab_button:
         
