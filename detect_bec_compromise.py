@@ -49,6 +49,12 @@ bc = """ these are the categories of business email compromise - - CEO Fraud
 
 """
 
+rank =
+"""
+urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar.
+
+"""
+
 et = """
 
 Hello,
@@ -76,7 +82,7 @@ def display_text () :
         #r = openai_helpers.response( bc )
         #r = openai_helpers.response( at )
 
-        prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and rank it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
 
         email_txt = prompt + email_txt
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
