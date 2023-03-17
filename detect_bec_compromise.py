@@ -95,8 +95,9 @@ def display_text () :
         df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
         st.dataframe(df)
         st.subheader ('Phishing Analysis Summary')
+        scale = 
         pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
-        fig = px.bar(pdf, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
+        fig = px.bar(pdf, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Magma,
                      labels={'Probability':'Probability of Phishing'}, height=400)
         fig.update_layout(title={
             'text': "Phishing Analysis",
