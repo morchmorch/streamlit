@@ -91,7 +91,7 @@ def display_text () :
         email_txt = prompt + email_txt
         res = openai_helpers.response(prompt)
         st.write(res)        
-        jsonres = json.loads(res)  
+        jsonres = json.loads(res.split('Verdict:')[0])  
         st.write(jsonres)        
         df = pd.DataFrame(list(jsonres.items()), columns=['Key Value Pair', 'Probability'])
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation", "unusual requests", "spelling and grammar"  ]
