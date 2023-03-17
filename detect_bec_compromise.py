@@ -82,7 +82,7 @@ def draw_chart(s_prompt):
         #'text': "Phishing Analysis",
         #'font': {'size':18}
     #})
-    fig = px.scatter_polar(pdf, r="Probability", theta="Phishing Characterstic", color='Probability', color_discrete_sequence=px.colors.sequential.Plasma_r,size='Probability',template="plotly_dark")
+    fig = px.scatter_polar(pdf, r="Probability", theta="Phishing Characterstic", color='Probability', color_discrete_sequence=px.colors.sequential.Plasma_r,template="plotly_dark")
 
     st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
     st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
