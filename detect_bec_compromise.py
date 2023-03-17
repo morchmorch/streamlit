@@ -87,6 +87,7 @@ def display_text () :
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
    
         prompt = "determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar , give the output in json with urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar  as numerical probability key value pairs and verdict, phishing category and attack technique category as string values:"
+        
         email_txt = prompt + email_txt
         res = openai_helpers.response(prompt)
         jsonres = json.loads(res)  
