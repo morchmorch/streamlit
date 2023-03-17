@@ -76,13 +76,14 @@ def draw_chart(s_prompt):
     #st.dataframe(df)
     st.subheader ('Phishing Analysis Summary')
     pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
-    fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
-                 labels={'Probability':'Probability of Phishing'}, height=400)
-    fig.update_layout(title={
-        'text': "Phishing Analysis",
-        'font': {'size':18}
-    })
-    
+    #fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
+                 #labels={'Probability':'Probability of Phishing'}, height=400)
+    #fig.update_layout(title={
+        #'text': "Phishing Analysis",
+        #'font': {'size':18}
+    #})
+    fig = px.scatter_polar(df, r="Probability", theta=shing Characterstic"r", color='Probability', color_discrete_sequence=px.colors.sequential.Plasma_r,size='Probability',template="plotly_dark")
+
     st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
     st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
     st.write ("Attack technique category:" + str(df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()))
