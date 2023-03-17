@@ -88,8 +88,8 @@ def display_text () :
    
         prompt = "determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar , give the output in just one json string (do not include any data after the json) with urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar  as numerical probability key value pairs and verdict, phishing category and attack technique category as string values:"
         
-        email_txt = prompt + email_txt
-        res = openai_helpers.response(prompt)
+        s_prompt = prompt + email_txt
+        res = openai_helpers.response(s_prompt)
         jsonres = json.loads(res.split('Verdict:')[0])  
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
         df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
@@ -114,8 +114,8 @@ def display_text () :
         st.subheader ('Full Explanation')
         prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well, do not give json as output - "
         prompt = ". determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar, give detailed reasons. "
-        email_txt = prompt + email_txt
-        openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
+        s_prompt = prompt + email_txt
+        openai_helpers.get_write_response ( bc + "." + at + "." + s_prompt)
    
 
 st.subheader ('Check Emails for BEC Attacks')
