@@ -73,7 +73,7 @@ def draw_chart(s_prompt):
     jsonres = json.loads(res.split('Verdict:')[0])  
     cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
     df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
-    #st.dataframe(df)
+    st.dataframe(df)
     st.subheader ('Phishing Analysis Summary')
     pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
     #fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
