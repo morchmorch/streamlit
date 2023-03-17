@@ -12,9 +12,9 @@ import re
 ## 
 
 at = """ these are the attack techniques for business email compromise - - Exploiting Trusted Relationships
-    - To urge victims to take quick action on email requests, attackers make a concerted effort to exploit an existing trusted relationship. Exploitation can take many forms, such as a vendor requesting invoice payments, an executive requesting iTunes gift cards, or an [employee sharing new payroll direct deposit details](https://www.armorblox.com/blog/payroll-fraud-when-direct-deposits-go-rogue).
+    - To urge victims to take quick action on email requests, attackers make a concerted effort to exploit an existing trusted relationship. Exploitation can take many forms, such as a vendor requesting invoice payments, an executive requesting iTunes gift cards, or an [employee sharing new payroll direct deposit details.
 - Replicating Common Workflows
-    - An organization and its employees execute an endless number of business workflows each day, many of which rely on automation, and many of which are conducted over email. The more times employees are exposed to these workflows, the quicker they execute tasks from muscle memory. BEC attacks [try to replicate these day-to-day workflows](https://www.armorblox.com/blog/security-as-social-engineering-phishing-campaigns-spoofing-locked-account-workflows) to get victims to act before they think.
+    - An organization and its employees execute an endless number of business workflows each day, many of which rely on automation, and many of which are conducted over email. The more times employees are exposed to these workflows, the quicker they execute tasks from muscle memory. BEC attacks [try to replicate these day-to-day workflows]to get victims to act before they think.
 - Compromised workflows include:
     - Emails requesting a password reset
     - Emails pretending to share files and spreadsheets
@@ -33,7 +33,7 @@ at = """ these are the attack techniques for business email compromise - - Explo
 - Leveraging Free Software
     - Attackers make use of freely available software to lend BEC scams an air of legitimacy and help emails sneak past security technologies that block known bad links and domains.
     - For example, attackers use SendGrid to create spoofed email addresses and Google Sites to stand up phishing pages.
-    - [Google Forms](https://www.armorblox.com/blog/ok-google-build-me-a-phishing-campaign)
+   
 """
 
 bc = """ these are the categories of business email compromise - - CEO Fraud
@@ -43,9 +43,9 @@ bc = """ these are the categories of business email compromise - - CEO Fraud
 - Data Theft
     - Data theft attacks typically target HR personnel to obtain personal information about a company’s CEO or other high-ranking executives. The attackers can then use the data in future attacks like CEO fraud.
 - Email Account Compromise
-    - In an [email account compromise](https://www.armorblox.com/solutions/email-account-compromise) attack, an employee’s email account is hacked and used to request payments from vendors. The money is then sent to attacker-controlled bank accounts.
+    - In an [email account compromise]attack, an employee’s email account is hacked and used to request payments from vendors. The money is then sent to attacker-controlled bank accounts.
 - Vendor Email Compromise
-    - Companies with foreign suppliers are common targets of [vendor email compromise](https://www.armorblox.com/blog/identity-theft-invoices-and-impersonation). Attackers pose as suppliers, request payment for a fake invoice, then transfer the money to a fraudulent account.
+    - Companies with foreign suppliers are common targets of [vendor email compromise] Attackers pose as suppliers, request payment for a fake invoice, then transfer the money to a fraudulent account.
 
 """
 
@@ -85,7 +85,21 @@ def display_text () :
 
         email_txt = prompt + email_txt
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
+   
+        prompt = "determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar , give the output in json with urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar  as numerical probability key value pairs and verdict, phishing category and attack technique category as string values:"
+        email_txt = prompt + email_txt
+        res = openai_helpers.response(prompt)
+        jsonres = json.loads(res)  
+        
+        df = pd.DataFrame(list(data.items()), columns=['Key Value Pair', 'Probability'])
 
+        fig = px.bar(df, x='Key Value Pair', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
+                     labels={'Probability':'Probability of Phishing'}, height=400)
+        fig.update_layout(title={
+            'text': "Phishing Analysis Result",
+            'font': {'size':24}
+        })
+        st.plotly_chart(fig)
     
 
 st.subheader ('Check Emails for BEC Attacks')
