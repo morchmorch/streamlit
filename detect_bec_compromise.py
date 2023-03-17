@@ -103,8 +103,8 @@ def display_text () :
         })
         
         st.write ("Verdict:" + df['verdict'].tolist()[0] )
-        st.write ("Phishing category": + df['phishing category'].tolist()[0] )
-        st.write ("attack technique categor": + df['attack technique category'].tolist()[0] )
+        st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
+        st.write ("attack technique category:"+ df['attack technique category'].tolist()[0] )
         st.plotly_chart(fig)
 
 
