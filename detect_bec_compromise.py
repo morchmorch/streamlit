@@ -73,7 +73,7 @@ def draw_chart(s_prompt):
     jsonres = json.loads(res.split('Verdict:')[0])  
     cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
     df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
-    st.dataframe(df)
+    #st.dataframe(df)
     st.subheader ('Phishing Analysis Summary')
     pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
     #fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
@@ -82,7 +82,7 @@ def draw_chart(s_prompt):
         #'text': "Phishing Analysis",
         #'font': {'size':18}
     #})
-    fig = px.scatter_polar(df, r="Probability", theta="Phishing Characterstic", color='Probability', color_discrete_sequence=px.colors.sequential.Plasma_r,size='Probability',template="plotly_dark")
+    fig = px.scatter_polar(pdf, r="Probability", theta="Phishing Characterstic", color='Probability', color_discrete_sequence=px.colors.sequential.Plasma_r,size='Probability',template="plotly_dark")
 
     st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
     st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
