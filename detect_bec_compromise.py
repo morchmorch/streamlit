@@ -102,7 +102,7 @@ def display_text () :
             'font': {'size':24}
         })
         
-        st.write ("Verdict:" + df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'] )
+        st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
         st.write ("Phishing category:" + df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()[0] )
         st.write ("Attack technique category:" + df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()[0] )
         #st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
