@@ -94,16 +94,26 @@ def display_text () :
         jsonres = json.loads(res.split('Verdict:')[0])  
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
         df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
-        df = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
-        st.dataframe(df)        
-        fig = px.bar(df, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
+        pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
+        fig = px.bar(pdf, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
                      labels={'Probability':'Probability of Phishing'}, height=400)
         fig.update_layout(title={
             'text': "Phishing Analysis Result",
             'font': {'size':24}
         })
+        
+        st.write ("Verdict:" + df['verdict'].tolist()[0] )
+        st.write ("Phishing category": + df['phishing category'].tolist()[0] )
+        st.write ("attack technique categor": + df['attack technique category'].tolist()[0] )
         st.plotly_chart(fig)
-    
+
+
+        st.subheading ('Full Explanation')
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and give me a bullet list of ranks (rank as high, medium, low) it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
+
+        email_txt = prompt + email_txt
+        openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
+   
 
 st.subheader ('Check Emails for BEC Attacks')
            
