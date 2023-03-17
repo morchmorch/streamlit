@@ -54,9 +54,7 @@ urgency, lack of detail, attachments, generic salutation, unusual requests, spel
 
 """
 
-et = """
-
-We detected something unusual to use an application to sign in to your Windows Computer. We have found suspicious login attempt on your windows computer through an unknown source. When our security officers investigated, it was found out that someone from foreign I.P Address was trying to make a prohibited connection on your network which can corrupt your windows license key.
+et = """ We detected something unusual to use an application to sign in to your Windows Computer. We have found suspicious login attempt on your windows computer through an unknown source. When our security officers investigated, it was found out that someone from foreign I.P Address was trying to make a prohibited connection on your network which can corrupt your windows license key.
 Sign-in details:
 Country/region: Lagos, Nigeria
 IP Address: 293.09.101.9
@@ -99,7 +97,7 @@ def display_text () :
     response_after = "Here you go ...  "
 
 
-    email_txt = st.text_area("Paste the email you want to check in place of the sample email below and click the check email button (or click the button with the sample email to check out" , value=et, height=400 )
+    email_txt = st.text_area("Paste the email you want to check in place of the sample email below and click the check email button (or click the button with the sample email to check out" , value=et, height=400, width=1000 )
     tab_button=st.button(button_name , key = "1")
     if tab_button:
         
