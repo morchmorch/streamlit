@@ -92,9 +92,9 @@ def display_text () :
         res = openai_helpers.response(prompt)
         st.write(res)        
         jsonres = json.loads(res.split('Verdict:')[0])  
-        st.write(jsonres)        
         df = pd.DataFrame(list(jsonres.items()), columns=['Key Value Pair', 'Probability'])
-        cols = [ "urgency", "lack of detail", "attachments", "generic salutation", "unusual requests", "spelling and grammar"  ]
+        cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
+        st.dataframe(df)        
         df = df [cols]
         fig = px.bar(df, x='Key Value Pair', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
                      labels={'Probability':'Probability of Phishing'}, height=400)
