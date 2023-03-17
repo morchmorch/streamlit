@@ -90,10 +90,10 @@ def display_text () :
         
         email_txt = prompt + email_txt
         res = openai_helpers.response(prompt)
-        st.write(res)        
         jsonres = json.loads(res.split('Verdict:')[0])  
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
         df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
+        st.dataframe(df)
         pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
         fig = px.bar(pdf, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
                      labels={'Probability':'Probability of Phishing'}, height=400)
@@ -103,8 +103,8 @@ def display_text () :
         })
         
         st.write ("Verdict:" + df.loc [df ['Phishing Characterstic'] == 'verdict']['Probability'].tolist()[0] )
-        st.write ("Verdict:" + df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()[0] )
-        st.write ("Verdict:" + df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()[0] )
+        st.write ("Phishing category": + df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()[0] )
+        st.write ("Attack technique category:" + df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()[0] )
         #st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
         #st.write ("attack technique category:"+ df['attack technique category'].tolist()[0] )
         st.plotly_chart(fig)
