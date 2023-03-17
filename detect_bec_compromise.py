@@ -57,6 +57,7 @@ urgency, lack of detail, attachments, generic salutation, unusual requests, spel
 et = """ We detected something unusual to use an application to sign in to your Windows Computer. We have found suspicious login attempt on your windows computer through an unknown source. When our security officers investigated, it was found out that someone from foreign I.P Address was trying to make a prohibited connection on your network which can corrupt your windows license key.
 Sign-in details:
 Country/region: Lagos, Nigeria , IP Address: 293.09.101.9 , Date: 09/07/2022 02:16 AM (GMT)
+
 If you’re not sure this was you, a malicious user might trying to access your network. Please review your recent activity and we'll help you take corrective action. Please contact Security Communication Center and report to us immediately.1-800-816 0380 or substitute you can also visit the Website: https://www.microsoft.com/ and fill out the consumer complaint form. Once you call, please provide your Reference no: AZ 1190 in order for technicians to assist you better.
 Our Microsoft certified technician will provide you the best resolution. You have received this mandatory email service announcement to update you about important changes to your Windows Device. 
 
