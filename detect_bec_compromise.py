@@ -90,6 +90,7 @@ def display_text () :
         
         email_txt = prompt + email_txt
         res = openai_helpers.response(prompt)
+        st.write(res)        
         jsonres = json.loads(res)  
         st.write(jsonres)        
         df = pd.DataFrame(list(data.items()), columns=['Key Value Pair', 'Probability'])
