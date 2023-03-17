@@ -94,8 +94,8 @@ def display_text () :
         jsonres = json.loads(res.split('Verdict:')[0])  
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
         df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
+        df = df [ ~ ( df['Phishing Characterstic'].str.contains ("verdict")) &  ( df['Phishing Characterstic'].str.contains ("attack")) ]
         st.dataframe(df)        
-        df = df [ ( df['Phishing Characterstic'].str.contains ("verdict")) &  ( df['Phishing Characterstic'].str.contains ("attack")) ]
         fig = px.bar(df, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
                      labels={'Probability':'Probability of Phishing'}, height=400)
         fig.update_layout(title={
