@@ -100,7 +100,7 @@ def display_text () :
                      labels={'Probability':'Probability of Phishing'}, height=400)
         fig.update_layout(title={
             'text': "Phishing Analysis",
-            'font': {'size':14}
+            'font': {'size':18}
         })
         
         st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
@@ -112,7 +112,7 @@ def display_text () :
 
 
         st.subheader ('Full Explanation')
-        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and give me a bullet list of ranks (rank as high, medium, low) it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
 
         email_txt = prompt + email_txt
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
