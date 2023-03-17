@@ -112,7 +112,7 @@ def display_text () :
 
 
         st.subheader ('Full Explanation')
-        prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well - "
+        prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well, do not give json as output - "
 
         email_txt = prompt + email_txt
         openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
