@@ -93,7 +93,7 @@ def display_text () :
         st.write(res)        
         jsonres = json.loads(res)  
         st.write(jsonres)        
-        df = pd.DataFrame(list(data.items()), columns=['Key Value Pair', 'Probability'])
+        df = pd.DataFrame(list(jsonres.items()), columns=['Key Value Pair', 'Probability'])
         cols = [ "urgency", "lack of detail", "attachments", "generic salutation", "unusual requests", "spelling and grammar"  ]
         df = df [cols]
         fig = px.bar(df, x='Key Value Pair', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Plasma,
