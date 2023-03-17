@@ -96,7 +96,7 @@ def display_text () :
         st.dataframe(df)
         st.subheader ('Phishing Analysis Summary')
         pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
-        fig = px.bar(pdf, x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel_r,
+        fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel_r,
                      labels={'Probability':'Probability of Phishing'}, height=400)
         fig.update_layout(title={
             'text': "Phishing Analysis",
