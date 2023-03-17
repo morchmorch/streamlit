@@ -104,7 +104,7 @@ def display_text () :
         
         st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
         st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
-        st.write ("Attack technique category:" + df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist())
+        st.write ("Attack technique category:" + str(df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()))
         #st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
         #st.write ("attack technique category:"+ df['attack technique category'].tolist()[0] )
         st.plotly_chart(fig)
