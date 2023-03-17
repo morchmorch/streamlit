@@ -67,6 +67,31 @@ Support team.
 
 """
 
+
+def draw_chart(s_prompt):
+    res = openai_helpers.response(s_prompt)
+    jsonres = json.loads(res.split('Verdict:')[0])  
+    cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
+    df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
+    #st.dataframe(df)
+    st.subheader ('Phishing Analysis Summary')
+    pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
+    fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
+                 labels={'Probability':'Probability of Phishing'}, height=400)
+    fig.update_layout(title={
+        'text': "Phishing Analysis",
+        'font': {'size':18}
+    })
+    
+    st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
+    st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
+    st.write ("Attack technique category:" + str(df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()))
+    #st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
+    #st.write ("attack technique category:"+ df['attack technique category'].tolist()[0] )
+    st.plotly_chart(fig)
+
+
+
 def display_text () :
 
     button_name = "Check email for me !! "
@@ -89,28 +114,13 @@ def display_text () :
         prompt = "determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar , give the output in just one json string (do not include any data after the json) with urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar  as numerical probability key value pairs and verdict, phishing category and attack technique category as string values:"
         
         s_prompt = prompt + email_txt
-        res = openai_helpers.response(s_prompt)
-        jsonres = json.loads(res.split('Verdict:')[0])  
-        cols = [ "urgency", "lack of detail", "attachments", "generic salutation",   "unusual requests", "spelling and grammar"  ]
-        df = pd.DataFrame( list(jsonres.items()) , columns=['Phishing Characterstic', 'Probability'])
-        #st.dataframe(df)
-        st.subheader ('Phishing Analysis Summary')
-        pdf = df [ df['Phishing Characterstic'].str.contains ("verdict|phishing category|attack technique category") == False ]
-        fig = px.bar(pdf.sort_values(by='Probability'), x='Phishing Characterstic', y='Probability', color='Probability', color_continuous_scale=px.colors.sequential.Oryel,
-                     labels={'Probability':'Probability of Phishing'}, height=400)
-        fig.update_layout(title={
-            'text': "Phishing Analysis",
-            'font': {'size':18}
-        })
+        response_while = "Right on it, it should be around 2-5 seconds ..."
+        response_after = "Here you go ...  "
+
         
-        st.write ("Verdict:" + str (df.loc [df ['Phishing Characterstic'].str.contains('verdict')]['Probability'].tolist()) )
-        st.write ("Phishing category:" + str (df.loc [df ['Phishing Characterstic'] == 'phishing category']['Probability'].tolist()) )
-        st.write ("Attack technique category:" + str(df.loc [df ['Phishing Characterstic'] == 'attack technique category']['Probability'].tolist()))
-        #st.write ("Phishing category:" + df['phishing category'].tolist()[0] )
-        #st.write ("attack technique category:"+ df['attack technique category'].tolist()[0] )
-        st.plotly_chart(fig)
-
-
+        with st.spinner ( response_while ) :
+            draw_chart(s_prompt)
+    
         st.subheader ('Full Explanation')
         prompt = " .determine if the below email is a business email compromise,  tell me the reasons , categorize it and tell me the attack technique as well, do not give json as output - "
         prompt = ". determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar, give detailed reasons. "
