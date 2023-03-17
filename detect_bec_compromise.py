@@ -81,10 +81,10 @@ def display_text () :
         #r = openai_helpers.response( bc )
         #r = openai_helpers.response( at )
 
-        prompt = " .determine if the below email is a business email compromise,  tell me the reasons and give me a bullet list of ranks (rank as high, medium, low) it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
+        #prompt = " .determine if the below email is a business email compromise,  tell me the reasons and give me a bullet list of ranks (rank as high, medium, low) it in these categories: " + rank + ", categorize it and tell me the attack technique as well - "
 
-        email_txt = prompt + email_txt
-        openai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
+        i#email_txt = prompt + email_txt
+        #penai_helpers.get_write_response ( bc + "." + at + "." + email_txt)
    
         prompt = "determine if the below email is phishing based on urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar , give the output in just one json string (do not include any data after the json) with urgency, lack of detail, attachments, generic salutation, unusual requests, spelling and grammar  as numerical probability key value pairs and verdict, phishing category and attack technique category as string values:"
         
