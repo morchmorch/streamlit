@@ -34,7 +34,7 @@ def streamlit_main (url) :
 
     #st.write(add_radio)
 
-    url = "https://worldopen.s3.amazonaws.com/"+add_select+".csv"
+    url = "https://worldopen.s3.amazonaws.com/"+add_selectbox+".csv"
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
