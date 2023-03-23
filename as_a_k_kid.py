@@ -34,13 +34,13 @@ def streamlit_main (url) :
 
     #st.write(add_radio)
 
-    url = "https://worldopen.s3.amazonaws.com/"+add_selectbox+".csv"
     st.write(url)
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
     grade = url.split(".csv")[0].split("/")[-1].lower()
+    url = "https://worldopen.s3.amazonaws.com/"+grade+".csv"
 
     #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
