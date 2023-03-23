@@ -35,7 +35,7 @@ def streamlit_main (url) :
 
     df['tasks']= df['Subject']
     df['dropdown']= df['Topic']
-    df['dropdownname']= df['Select the course:']
+    df['dropdownname']= 'Select the course:'
     
 
     # tabs are the tasks
