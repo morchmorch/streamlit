@@ -21,6 +21,7 @@ def streamlit_main (url) :
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
+    grade = url.split(".csv")[0].split("/")[-1]
 
     #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
@@ -36,8 +37,9 @@ def streamlit_main (url) :
     df['tasks']= df['Subject']
     df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic']
     df['dropdownname']= 'Select the course:'
-    df['prompt'] = 'teach me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
-    df['testprompt'] = 'test me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
+    df['prompt'] = 'for ' + grade + ' grade teach me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
+    df['testprompt'] = 'for ' + grade + ' grade test me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
+
 
     # tabs are the tasks
     tab_list = df.tasks.unique().tolist()
