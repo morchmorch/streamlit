@@ -56,7 +56,7 @@ def streamlit_main (url) :
         df['Subject'] = df['Subjects']
     if 'Topic' not in df.columns.tolist():
         df['Topic'] = df['Topics']
-     if 'Sub-Topic' not in df.columns.tolist():
+    if 'Sub-Topic' not in df.columns.tolist():
         df['Sub-Topic'] = df['Sub-Topics']
      df['tasks']= df['Subject']
     df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic']
