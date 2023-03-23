@@ -55,7 +55,7 @@ def streamlit_main (url) :
             df_d = df [ df.tasks == tab_name ]
 
             # these are the list of questions
-            dropdowns = df [ df.tasks == tab_name ].dropdown.tolist()
+            dropdowns = df [ df.tasks == tab_name ].dropdown.unique().tolist()
             #st.write (dropdowns)
             openai_helpers.draw_prompt(dropdowns, tab_name, df_d)
 
