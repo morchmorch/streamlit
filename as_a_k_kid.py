@@ -34,7 +34,7 @@ def streamlit_main (url) :
     st.header ( role.strip() )
 
     df['tasks']= df['Subject']
-    df['dropdowns']= df['Topic']
+    df['dropdown']= df['Topic']
     
 
     # tabs are the tasks
