@@ -34,7 +34,7 @@ def streamlit_main (url) :
     st.header ( role.strip() )
 
     df['tasks']= df['Subject']
-    df['dropdown']= df['Topic']
+    df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic]
     df['dropdownname']= 'Select the course:'
     
 
