@@ -58,7 +58,7 @@ def streamlit_main (url) :
         df['Topic'] = df['Topics']
     if 'Sub-Topic' not in df.columns.tolist():
         df['Sub-Topic'] = df['Sub-Topics']
-     df['tasks']= df['Subject']
+    df['tasks']= df['Subject']
     df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic']
     df['dropdownname']= 'Select the course:'
     df['prompt'] = 'for ' + grade + ' grade teach me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
