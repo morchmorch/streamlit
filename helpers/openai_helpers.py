@@ -32,6 +32,34 @@ def draw_prompt(dropdowns, tabname, df_d):
         get_write_response (base_prompt)
 
 
+
+def draw_multiple_prompts(dropdowns, tabname, df_d):
+
+
+    button_one_name = "Draft a Lesson !! "
+    button_two_name = "Draft a Test !! "
+    response_while = "Right on it, it should be around 2-5 seconds ..."
+    response_after = "Here you go ...  "
+
+    #st.dataframe (df_d )
+
+    select = df_d.dropdownname.unique().tolist()[0]
+    s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    lesson_button=st.button(button_one_name , key = tabname + "1")
+    test_button=st.button(button_two_name , key = tabname + "1")
+    base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
+    test_prompt = df_d [df_d.dropdown == s_d].testprompt.unique().tolist()[0]
+    st.markdown ( "--------")
+    if lesson_button:
+        get_write_response (base_prompt)
+
+    if test_button:
+        get_write_response (test_prompt)
+
+
+
+
 def response(base_prompt):
     openai.api_key=st.secrets["open_api_key"]
     base_prompt = (f"{base_prompt}")
