@@ -39,7 +39,7 @@ def streamlit_main (url) :
     response_after = "Here you go ...  "
 
     #grade = url.split(".csv")[0].split("/")[-1].lower()
-    url = "https://worldopen.s3.amazonaws.com/"+add_selectbox+".csv"
+    url = "https://worldopen.s3.amazonaws.com/"+add_selectbox.lower()+".csv"
 
     #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
