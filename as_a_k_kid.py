@@ -40,7 +40,6 @@ def streamlit_main (url) :
 
     #grade = url.split(".csv")[0].split("/")[-1].lower()
     url = "https://worldopen.s3.amazonaws.com/"+add_selectbox.lower()+".csv"
-    st.write(url)
     grade = add_selectbox.lower()
     #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
