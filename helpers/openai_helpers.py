@@ -47,7 +47,7 @@ def draw_multiple_prompts(dropdowns, tabname, df_d):
     s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     lesson_button=st.button(button_one_name , key = tabname + "1")
-    test_button=st.button(button_two_name , key = tabname + "1")
+    test_button=st.button(button_two_name , key = tabname + "w")
     base_prompt = df_d [df_d.dropdown == s_d].prompt.unique().tolist()[0]
     test_prompt = df_d [df_d.dropdown == s_d].testprompt.unique().tolist()[0]
     st.markdown ( "--------")
