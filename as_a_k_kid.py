@@ -36,7 +36,7 @@ def streamlit_main (url) :
     df['tasks']= df['Subject']
     df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic']
     df['dropdownname']= 'Select the course:'
-    df['prompt'] = 'teach me about ' + df_d ['dropdown'].unique().tolist()[0]    
+    df['prompt'] = 'teach me about ' + df ['dropdown'].unique().tolist()[0]    
 
     # tabs are the tasks
     tab_list = df.tasks.unique().tolist()
