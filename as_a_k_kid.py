@@ -19,22 +19,22 @@ def streamlit_main (url) :
 
     # Using object notation
     add_selectbox = st.sidebar.selectbox(
-        "How would you like to be contacted?",
-        ("Email", "Home phone", "Mobile phone")
+        "Select the Grade",
+        ("Fifth", "Sixth", "Seventh")
     )
 
-    st.write (add_selectbox)
+    #st.write (add_selectbox)
 
     # Using "with" notation
-    with st.sidebar:
-        add_radio = st.radio(
-            "Choose a shipping method",
-            ("Standard (5-15 days)", "Express (2-5 days)")
-        )
+    #with st.sidebar:
+        #add_radio = st.radio(
+            #"Choose a shipping method",
+            #("Standard (5-15 days)", "Express (2-5 days)")
+        #)
 
-    st.write(add_radio)
+    #st.write(add_radio)
 
-
+    url = "https://worldopen.s3.amazonaws.com/"+add_select
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
