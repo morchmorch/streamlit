@@ -23,6 +23,8 @@ def draw_prompt(dropdowns, tabname, df_d):
     if 'prompt' not in df_d.dropdownname.unique().tolist() :
         df_d['prompt'] = 'teach me about ' + df_d ['Sub-Topic'].unique().tolist()[0]
 
+    st.dataframe (df_d )
+
     select = df_d.dropdownname.unique().tolist()[0]
     s_d = st.radio ( str (select) + " : ", dropdowns , key = "dropdowns" + str( tabname) + "1")
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
