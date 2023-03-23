@@ -21,7 +21,7 @@ def draw_prompt(dropdowns, tabname, df_d):
     response_after = "Here you go ...  "
 
     if 'prompt' not in df_d.dropdownname.unique().tolist() :
-        df_d['prompt'] = 'teach me about ' + df_d ['Sub-Topic'].unique().tolist()[0]
+        df_d['prompt'] = 'teach me about ' + df_d ['dropdown'].unique().tolist()[0]
 
     #st.dataframe (df_d )
 
