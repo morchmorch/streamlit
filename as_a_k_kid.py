@@ -38,8 +38,8 @@ def streamlit_main (url) :
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
-    grade = url.split(".csv")[0].split("/")[-1].lower()
-    url = "https://worldopen.s3.amazonaws.com/"+grade+".csv"
+    #grade = url.split(".csv")[0].split("/")[-1].lower()
+    url = "https://worldopen.s3.amazonaws.com/"+add_selectbox+".csv"
 
     #url = 'https://worldopen.s3.amazonaws.com/prompts_sales.csv'
     r = requests.get(url, allow_redirects=True)
