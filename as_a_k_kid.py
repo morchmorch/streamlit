@@ -17,6 +17,21 @@ import re
 def streamlit_main (url) :
 
 
+    # Using object notation
+    add_selectbox = st.sidebar.selectbox(
+        "How would you like to be contacted?",
+        ("Email", "Home phone", "Mobile phone")
+    )
+
+    # Using "with" notation
+    with st.sidebar:
+        add_radio = st.radio(
+            "Choose a shipping method",
+            ("Standard (5-15 days)", "Express (2-5 days)")
+        )
+
+
+
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
