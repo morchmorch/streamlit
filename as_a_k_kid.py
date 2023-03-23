@@ -23,6 +23,8 @@ def streamlit_main (url) :
         ("Email", "Home phone", "Mobile phone")
     )
 
+    st.write (add_selectbox)
+
     # Using "with" notation
     with st.sidebar:
         add_radio = st.radio(
@@ -30,6 +32,7 @@ def streamlit_main (url) :
             ("Standard (5-15 days)", "Express (2-5 days)")
         )
 
+    st.write(add_radio)
 
 
     button_name = "Draft it for me !! "
