@@ -49,7 +49,7 @@ def streamlit_main (url) :
     df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
     #st.dataframe(df)
     #role = df.job.unique().tolist()[0]
-    role = 'As a K through 12 Student or Educator...'
+    role = 'Teach and Test and K through 12 Grades'
     st.header ( role.strip() )
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     df = df [cols]
