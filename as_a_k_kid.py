@@ -47,7 +47,7 @@ def streamlit_main (url) :
     open('/tmp/df.csv', 'wb').write(r.content)
 
     df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
-    st.dataframe(df)
+    #st.dataframe(df)
     #role = df.job.unique().tolist()[0]
     role = 'As a K through 12 Student or Educator...'
     st.header ( role.strip() )
