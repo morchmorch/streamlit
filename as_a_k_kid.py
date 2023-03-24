@@ -17,7 +17,7 @@ import re
 def streamlit_main (url) :
 
 
-    st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher')
+    st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
     # Using object notation
     add_selectbox = st.sidebar.selectbox(
         "Select the Grade",
