@@ -36,8 +36,8 @@ def draw_prompt(dropdowns, tabname, df_d):
 def draw_multiple_prompts(dropdowns, tabname, df_d):
 
 
-    button_one_name = "Draft a Lesson !! "
-    button_two_name = "Draft a Test !! "
+    button_one_name = "Teach Me !! "
+    button_two_name = "Test Me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
 
