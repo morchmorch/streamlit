@@ -48,11 +48,11 @@ def streamlit_main (url) :
 
     df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
     st.dataframe(df)
-    st.write (df.columns.tolist())
     #role = df.job.unique().tolist()[0]
     role = 'kid educator'
     st.header ( role.strip() )
-    df.columns = ['Subject', 'Topic','Sub-Topic']
+    cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+    df = df [cols]
     #if 'Subject' not in df.columns.tolist():
         #df['Subject'] = df['Subjects']
     #if 'Topic' not in df.columns.tolist():
