@@ -12,6 +12,8 @@ import re
 ## 
 
 
+st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
+st.title( 'Teach and Test K - 12 Grades')
 
 
 def streamlit_main (url) :
@@ -92,9 +94,7 @@ def streamlit_main (url) :
             openai_helpers.draw_multiple_prompts(dropdowns, tab_name, df_d)
 
             i = i + 1
-
-st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
-           
+          
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
 
