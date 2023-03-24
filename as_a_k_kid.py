@@ -12,7 +12,7 @@ import re
 ## 
 
 
-#st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
 st.title( 'Teach and Test K - 12 Grades')
 
 

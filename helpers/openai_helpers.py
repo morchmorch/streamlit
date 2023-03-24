@@ -8,9 +8,9 @@ from PIL import Image
 
 #blah
 
-button_name = "Draft it for me !! "
-response_while = "Right on it, it should be around 2-5 seconds ..."
-response_after = "Here you go ...  "
+#button_name = "Draft it for me !! "
+#response_while = "Right on it, it should be around 2-5 seconds ..."
+#response_after = "Here you go ...  "
 
 
 def draw_prompt(dropdowns, tabname, df_d):
