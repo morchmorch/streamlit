@@ -53,9 +53,10 @@ def streamlit_main (url) :
     st.header ( role.strip() )
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     df = df [cols]
-    df ['Subject'] = df ['subject']
-    df ['Topic'] = df ['topic']
-    df ['Sub-Topic'] = df [ 'sub-topic']
+    df.columns = ['Subject', 'Topic', 'Sub-Topic']
+    #df ['Subject'] = df ['subject']
+    #df ['Topic'] = df ['topic']
+    #df ['Sub-Topic'] = df [ 'sub-topic']
     #if 'Subject' not in df.columns.tolist():
         #df['Subject'] = df['Subjects']
     #if 'Topic' not in df.columns.tolist():
