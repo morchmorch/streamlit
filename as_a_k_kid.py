@@ -20,6 +20,7 @@ def streamlit_main (url) :
 
 
     # Using object notation
+    st.sidebar.title("Select The Students Grade")
     add_selectbox = st.sidebar.selectbox(
         "Select the Grade",
         ("Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleventh", "Twelveth")
