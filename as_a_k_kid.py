@@ -52,9 +52,7 @@ def streamlit_main (url) :
     #role = df.job.unique().tolist()[0]
     role = 'kid educator'
     st.header ( role.strip() )
-    df['Subject'] = df['subject']
-    df ['Topic'] = df ['topic']
-    df ['Sub-Topic'] = df [ 'sub-topic']
+    df.columns = ['Subject', 'Topic','Sub-Topic']
     #if 'Subject' not in df.columns.tolist():
         #df['Subject'] = df['Subjects']
     #if 'Topic' not in df.columns.tolist():
