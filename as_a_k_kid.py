@@ -52,7 +52,7 @@ def streamlit_main (url) :
     #st.dataframe(df)
     #role = df.job.unique().tolist()[0]
     role = 'Teach and Test K - 12 Grades'
-    st.header ( role.strip() )
+    #st.header ( role.strip() )
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     df = df [cols]
     df.columns = ['Subject', 'Topic', 'Sub-Topic']
