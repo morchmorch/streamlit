@@ -1,6 +1,7 @@
 #from appsmills.streamlit_apps 
-from helpers import openai_helpers
 import streamlit as st
+st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
+from helpers import openai_helpers
 import numpy as np
 from random import randrange
 import openai,boto3,urllib, requests
@@ -12,7 +13,6 @@ import re
 ## 
 
 
-st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
 st.title( 'Teach and Test K - 12 Grades')
 
 
