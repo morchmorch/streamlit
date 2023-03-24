@@ -51,12 +51,12 @@ def streamlit_main (url) :
     #role = df.job.unique().tolist()[0]
     role = 'kid educator'
     st.header ( role.strip() )
-    if 'Subject' not in df.columns.tolist():
-        df['Subject'] = df['Subjects']
-    if 'Topic' not in df.columns.tolist():
-        df['Topic'] = df['Topics']
-    if 'Sub-Topic' not in df.columns.tolist():
-        df['Sub-Topic'] = df['Sub-topics']
+    #if 'Subject' not in df.columns.tolist():
+        #df['Subject'] = df['Subjects']
+    #if 'Topic' not in df.columns.tolist():
+        #df['Topic'] = df['Topics']
+    #if 'Sub-Topic' not in df.columns.tolist():
+        #df['Sub-Topic'] = df['Sub-topics']
     df['tasks']= df['Subject']
     df['dropdown']= df['Topic'] + ":" + df ['Sub-Topic']
     df['dropdownname']= 'Select the course:'
