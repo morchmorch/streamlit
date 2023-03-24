@@ -17,6 +17,7 @@ import re
 def streamlit_main (url) :
 
 
+    st.set_page_config(page_title= "Teach and Test K - 12 Grades", page_icon='.teacher')
     # Using object notation
     add_selectbox = st.sidebar.selectbox(
         "Select the Grade",
@@ -49,7 +50,7 @@ def streamlit_main (url) :
     df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
     #st.dataframe(df)
     #role = df.job.unique().tolist()[0]
-    role = 'Teach and Test K through 12 Grades'
+    role = 'Teach and Test K - 12 Grades'
     st.header ( role.strip() )
     cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     df = df [cols]
