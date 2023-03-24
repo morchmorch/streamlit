@@ -47,7 +47,7 @@ def streamlit_main (url) :
     open('/tmp/df.csv', 'wb').write(r.content)
 
     df = pd.read_csv ('/tmp/df.csv', encoding = 'cp1252')
-    #st.dataframe(df)
+    st.dataframe(df)
     #role = df.job.unique().tolist()[0]
     role = 'kid educator'
     st.header ( role.strip() )
@@ -87,7 +87,7 @@ def streamlit_main (url) :
 
             i = i + 1
            
-streamlit_main ("https://worldopen.s3.amazonaws.com/eigth.csv")
+streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
 
     
