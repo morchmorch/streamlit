@@ -99,7 +99,7 @@ def streamlit_main (url) :
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/stock_news_reit___industrial__medical__hotel.md'
             destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
             urllib.request.urlretrieve(url, destination)
-            st.markdown ( '/tmp/stock_news_reit___industrial__medical__hotel.md' )
+            st.markdown ( /tmp/stock_news_reit___industrial__medical__hotel.md)
           
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
