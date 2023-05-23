@@ -95,6 +95,11 @@ def streamlit_main (url) :
             openai_helpers.draw_multiple_prompts(dropdowns, tab_name, df_d)
 
             i = i + 1
+
+            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/stock_news_reit___industrial__medical__hotel.md'
+            s3 = boto3.client('s3')
+            s3.download_file('investrecipes', 'newsgpt/stock_news_reit___industrial__medical__hotel.md', '/tmp/stock_news_reit___industrial__medical__hotel.md')
+            st.markdown ( '/tmp/stock_news_reit___industrial__medical__hotel.md' )
           
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
