@@ -9,7 +9,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from PIL import Image
-import re
+import re, urllib
 ## 
 
 
@@ -97,8 +97,8 @@ def streamlit_main (url) :
             i = i + 1
 
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/stock_news_reit___industrial__medical__hotel.md'
-            s3 = boto3.client('s3')
-            s3.download_file('investrecipes', 'newsgpt/stock_news_reit___industrial__medical__hotel.md', '/tmp/stock_news_reit___industrial__medical__hotel.md')
+            destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
+            urllib.request.urlretrieve(url, destination)
             st.markdown ( '/tmp/stock_news_reit___industrial__medical__hotel.md' )
           
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
