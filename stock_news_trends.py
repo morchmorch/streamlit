@@ -50,7 +50,7 @@ def streamlit_main (url) :
     extract_integer = lambda x: int(str(x).split()[1])
     df ['ind-sent'] = df ['industry'] + "(" + df.sentiment.astype(str).str.split()[1] + ")"
 
-
+    st.dataframe(df)
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df['ind-sent'].unique().tolist()
