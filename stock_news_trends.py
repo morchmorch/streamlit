@@ -38,7 +38,7 @@ def streamlit_main (url) :
     
    
     
-    industries = ['biotechnology', 'pharmaceuticals', 'medical devices']
+    #industries = ['biotechnology', 'pharmaceuticals', 'medical devices']
 
     df_arr = []
     for industry in industries:
