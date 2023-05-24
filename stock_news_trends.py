@@ -40,7 +40,10 @@ def streamlit_main (url) :
     
     industries = ['metals and mining', 
               'semiconductor', 'software', 
-              'biotechnology', 'pharmaceuticals']
+              'biotechnology', 'pharmaceuticals','medical devices', 
+              'consumer goods', 'retail and stores', 'food and beverage',
+              'financial services', 'banking', 'insurance', 
+              'real estate']
     df_arr = []
     for industry in industries:
         url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
