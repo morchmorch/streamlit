@@ -94,13 +94,13 @@ def streamlit_main (url) :
         df = pd.read_json(url)
         df_arr.append(df)
     df = pd.concat(df_arr)
-
+    df ['ind-sent'] = df ['industry'] + "(" + df ['sentiment'] + ")"
 
 
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
-    tabs = df.industry.unique().tolist()
-    tab_list = tabs
+    tabs = df['ind-sent'].unique().tolist()
+    ind_list = df['industry'].unique().tolist()
 
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
@@ -111,7 +111,7 @@ def streamlit_main (url) :
     for tab in tabs :
 
         with tab :
-            tab_name = tab_list[i]
+            tab_name = ind_list[i]
             st.write (tab_name)
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.md'
             destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
