@@ -13,7 +13,7 @@ import re, urllib
 ## 
 
 
-st.title( 'Teach and Test K - 12 Grades')
+st.title( 'Stock Recommendations from News Sentiment')
 
 
 def streamlit_main (url) :
@@ -55,7 +55,7 @@ def streamlit_main (url) :
         df_arr.append(df)
     df = pd.concat(df_arr)
     
-    st.dataframe(df)
+    #st.dataframe(df)
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df['sentiment_score'].unique().tolist()
