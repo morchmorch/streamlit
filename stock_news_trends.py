@@ -95,7 +95,8 @@ def streamlit_main (url) :
         df_arr.append(df)
     df = pd.concat(df_arr)
 
-
+    st.dataframe(df)
+    
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df.industry.unique().tolist()
