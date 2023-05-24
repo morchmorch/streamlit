@@ -94,7 +94,7 @@ def streamlit_main (url) :
         df = pd.read_json(url)
         df_arr.append(df)
     df = pd.concat(df_arr)
-    extract_integer = lambda x: int(x.split()[1])
+    extract_integer = lambda x: int(str(x).split()[1])
     df ['ind-sent'] = df ['industry'] + "(" + str (df ['sentiment'].apply (extract_integer)) + ")"
 
 
