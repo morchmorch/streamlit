@@ -100,6 +100,7 @@ def streamlit_main (url) :
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df.industry.unique().tolist()
+    tab_list = tabs
     st.write(tabs)
 
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
