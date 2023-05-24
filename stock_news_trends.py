@@ -94,7 +94,8 @@ def streamlit_main (url) :
         df = pd.read_json(url)
         df_arr.append(df)
     df = pd.concat(df_arr)
-    df ['ind-sent'] = df ['industry'] + "(" + str (df ['sentiment']) + ")"
+    extract_integer = lambda x: int(x.split()[1])
+    df ['ind-sent'] = df ['industry'] + "(" + str (df ['sentiment'].apply (extract_integer)) + ")"
 
 
     # tabs are the industries
@@ -105,6 +106,7 @@ def streamlit_main (url) :
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
     tabs = st.tabs ( tabs )  
+
 
 
     i=0
