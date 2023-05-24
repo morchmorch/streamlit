@@ -50,7 +50,7 @@ def streamlit_main (url) :
         url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
         print (url)
         df = pd.read_json(url)
-        df['sentiment_score'] = df.sentiment.astype(str).str.split()[1]
+        df['sentiment_score'] = df.sentiment.astype(str).str.split().get(1)
         df_arr.append(df)
     df = pd.concat(df_arr)
     
