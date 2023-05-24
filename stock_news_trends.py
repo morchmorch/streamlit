@@ -121,7 +121,7 @@ def streamlit_main (url) :
             
             st.markdown (file_content)
           
-streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
+
 
 
     
