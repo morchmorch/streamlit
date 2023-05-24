@@ -95,7 +95,7 @@ def streamlit_main (url) :
         df_arr.append(df)
     df = pd.concat(df_arr)
     extract_integer = lambda x: int(str(x).split()[1])
-    df ['ind-sent'] = df ['industry'] + df.sentiment.astype(str).str.split()[1]
+    df ['ind-sent'] = df ['industry'] + "(" + df.sentiment.astype(str).str.split()[1] + ")"
 
 
     # tabs are the industries
