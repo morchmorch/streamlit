@@ -51,7 +51,7 @@ def streamlit_main (url) :
         print (url)
         df = pd.read_json(url)
         df = df.reset_index(drop=True)
-        df['sentiment_score'] = df.sentiment.astype(str).str.split().tolist()[0][0]
+        df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
         df_arr.append(df)
     df = pd.concat(df_arr)
     
