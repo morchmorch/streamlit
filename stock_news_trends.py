@@ -40,7 +40,20 @@ def streamlit_main (url) :
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
-
+    
+    industries = ['metals and mining', 
+              'semiconductor', 'software', 
+              'biotechnology', 'pharmaceuticals', 'medical devices', 
+              'consumer goods', 'retail and stores', 'food and beverage',
+              'financial services', 'banking', 'insurance', 
+              'real estate', 'construction', 'reit-industrial,medical,hotel'
+              'industrial goods', 'transportation', 'automotive', 'trucking and airlines',
+              'energy', 'utilities', 'telecommunications', 
+              'media', 'entertainment', 'leisure', 'travel', 'hospitality'
+              ]
+    
+   
+    
     #grade = url.split(".csv")[0].split("/")[-1].lower()
     url = "https://worldopen.s3.amazonaws.com/"+add_selectbox.lower()+".csv"
     grade = add_selectbox.lower()
@@ -72,13 +85,25 @@ def streamlit_main (url) :
     df['prompt'] = 'for ' + grade + ' grade teach me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
     df['testprompt'] = 'for ' + grade + ' grade test me about ' + df['Sub-Topic'] + " in the topic of " + df['Topic']
 
+    industries = ['biotechnology', 'pharmaceuticals', 'medical devices']
 
-    # tabs are the tasks
-    tab_list = df.tasks.unique().tolist()
+    df_arr = []
+    for industry in industries:
+        url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+        print (url)
+        df = pd.read_json(url)
+        df_arr.append(df)
+    df = pd.concat(df_arr)
 
-    tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
-    tabs = st.tabs ( tabs )  
+    # tabs are the industries
+    #tab_list = df.tasks.unique().tolist()
+    tabs = df.industry.unique().tolist()
+
+
+    #tabs = [ str(x) for x in tab_list if x is not np.nan ]
+
+    #tabs = st.tabs ( tabs )  
 
 
     i=0
@@ -86,17 +111,8 @@ def streamlit_main (url) :
 
         with tab :
             tab_name = tab_list[i]
-            #st.write (tab_name)
-            df_d = df [ df.tasks == tab_name ]
-
-            # these are the list of questions
-            dropdowns = df [ df.tasks == tab_name ].dropdown.unique().tolist()
-            #st.write (dropdowns)
-            openai_helpers.draw_multiple_prompts(dropdowns, tab_name, df_d)
-
-            i = i + 1
-
-            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/stock_news_reit___industrial__medical__hotel.md'
+            st.write (tab_name)
+            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
             destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
             urllib.request.urlretrieve(url, destination)
             file_path = '/tmp/stock_news_reit___industrial__medical__hotel.md'
