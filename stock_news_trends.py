@@ -95,13 +95,12 @@ def streamlit_main (url) :
         df_arr.append(df)
     df = pd.concat(df_arr)
 
-    st.dataframe(df)
+
 
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df.industry.unique().tolist()
     tab_list = tabs
-    st.write(tabs)
 
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
@@ -114,13 +113,14 @@ def streamlit_main (url) :
         with tab :
             tab_name = tab_list[i]
             st.write (tab_name)
-            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.md'
             destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
             urllib.request.urlretrieve(url, destination)
             file_path = '/tmp/stock_news_reit___industrial__medical__hotel.md'
             with open(file_path, 'r') as file:
                 file_content = file.read()
                 st.markdown (file_content)
+            i+=1
           
 
 
