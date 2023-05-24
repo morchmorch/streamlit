@@ -94,7 +94,7 @@ def streamlit_main (url) :
         df = pd.read_json(url)
         df_arr.append(df)
     df = pd.concat(df_arr)
-    df ['ind-sent'] = df ['industry'] + "(" + df ['sentiment'] + ")"
+    df ['ind-sent'] = df ['industry'] + "(" + str (df ['sentiment']) + ")"
 
 
     # tabs are the industries
