@@ -96,7 +96,7 @@ def streamlit_main (url) :
     df = pd.concat(df_arr)
 
     st.dataframe(df)
-    
+
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
     tabs = df.industry.unique().tolist()
@@ -124,4 +124,5 @@ def streamlit_main (url) :
 
 
 
-    
+streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
+
