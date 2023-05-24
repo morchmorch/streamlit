@@ -118,8 +118,7 @@ def streamlit_main (url) :
             file_path = '/tmp/stock_news_reit___industrial__medical__hotel.md'
             with open(file_path, 'r') as file:
                 file_content = file.read()
-            
-            st.markdown (file_content)
+                st.markdown (file_content)
           
 
 
