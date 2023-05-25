@@ -86,13 +86,14 @@ def streamlit_main (url) :
         sdf = pd.read_json(json_url)
         st.dataframe(sdf)
         df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
+        stock_arr = []
         for slist in sdf.stock_recommendations['buy']:
     
             for s in slist :
                 
                 stock_arr.append(s['stock'])
 
-        print (stock_arr)
+        #print (stock_arr)
         #print (sdf)
         cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
         print (df.columns)
