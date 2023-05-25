@@ -90,9 +90,7 @@ def streamlit_main (url) :
         
         for slist in sdf.stock_recommendations['buy']:
             st.write (slist)
-            for s in slist :
-                
-                stock_arr.append(s['stock'])
+            stock_arr.append(slist['stock'])
 
         #print (stock_arr)
         #print (sdf)
