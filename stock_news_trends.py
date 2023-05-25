@@ -82,6 +82,19 @@ def streamlit_main (url) :
                 st.markdown (file_content)
             i+=1
           
+        df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
+        for slist in sdf.stock_recommendations['buy'].tolist():
+    
+            for s in slist :
+                
+                stock_arr.append(s['stock'])
+
+        print (stock_arr)
+        #print (sdf)
+        cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
+        print (df.columns)
+        df [df.Ticker.isin (stock_arr)][cols]
+        st.dataframe(df)
 
 
 
