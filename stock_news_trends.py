@@ -91,10 +91,10 @@ def streamlit_main (url) :
         for slist in sdf.stock_recommendations['buy']:
             stock_arr.append(slist['stock'])
 
-        cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
-        print (df.columns)
-        df = df [df.Ticker.isin (stock_arr)][cols]
-        st.dataframe(df)
+    cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
+    print (df.columns)
+    df = df [df.Ticker.isin (stock_arr)][cols]
+    st.dataframe(df)
 
 
 
