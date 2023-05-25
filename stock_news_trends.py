@@ -89,6 +89,8 @@ def streamlit_main (url) :
                 
                 stock_arr.append(s['stock'])
 
+        json_url = url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+        sdf = pd.read_json(json_url)
         print (stock_arr)
         #print (sdf)
         cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
