@@ -87,9 +87,9 @@ def streamlit_main (url) :
         st.dataframe(sdf)
         df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
         stock_arr = []
-        evalx = lambda x: eval(x)
-        for slist in sdf.stock_recommendations['buy'].apply(eval).tolist():
-    
+        
+        for slist in sdf.stock_recommendations['buy']:
+            st.write (slist)
             for s in slist :
                 
                 stock_arr.append(s['stock'])
