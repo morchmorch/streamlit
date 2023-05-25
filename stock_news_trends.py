@@ -84,7 +84,7 @@ def streamlit_main (url) :
         json_url = url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
         
         sdf = pd.read_json(json_url)
-        st.dataframe(sdf)
+        
         df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
         stock_arr = []
         
