@@ -94,6 +94,8 @@ def streamlit_main (url) :
     cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
     print (df.columns)
     df = df [df.Ticker.isin (stock_arr)][cols]
+
+    st.header ("Fundamental Analysis of Stocks with Buy Recommendations")
     st.dataframe(df)
 
 
