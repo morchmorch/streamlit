@@ -81,22 +81,22 @@ def streamlit_main (url) :
                 file_content = file.read()
                 st.markdown (file_content)
             i+=1
-        json_url = url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
-        
-        sdf = pd.read_json(json_url)
-        
-        df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
-        stock_arr = []
-        
-        for slist in sdf.stock_recommendations['buy']:
-            stock_arr.append(slist['stock'])
+            json_url = url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+            
+            sdf = pd.read_json(json_url)
+            
+            df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
+            stock_arr = []
+            
+            for slist in sdf.stock_recommendations['buy']:
+                stock_arr.append(slist['stock'])
 
-        cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
-        print (df.columns)
-        df = df [df.Ticker.isin (stock_arr)][cols]
+            cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
+            print (df.columns)
+            df = df [df.Ticker.isin (stock_arr)][cols]
 
-        st.header ("Fundamental Analysis of Stocks with Buy Recommendations")
-        st.dataframe(df)
+            st.header ("Fundamental Analysis of Stocks with Buy Recommendations")
+            st.dataframe(df)
 
 
 
