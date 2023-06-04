@@ -1,6 +1,6 @@
 #from appsmills.streamlit_apps 
 import streamlit as st
-st.set_page_config(page_title= "Stock Recommendations by GPT Based on News Sentiment", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title= "GPT Stock Recommendations", page_icon='.teacher', layout="wide", initial_sidebar_state="expanded")
 from helpers import openai_helpers
 import numpy as np
 from random import randrange
