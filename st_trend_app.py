@@ -29,7 +29,7 @@ def draw_t_fig () :
     #kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
-    st.write (tdf.columns.tolist())
+    #st.write (tdf.columns.tolist())
     df_custom = tdf.copy()
     l = df_custom.Sector.unique().tolist()
     l.append('All')
@@ -99,7 +99,7 @@ def draw_f_fig () :
     kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
     kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 0 ]
 
-    st.write (kdf.columns.tolist())
+    #st.write (kdf.columns.tolist())
     kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
 
     kdf['growth_evsales_ratio'] = pd.to_numeric (kdf['growth_evsales_ratio'])
