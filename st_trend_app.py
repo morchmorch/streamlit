@@ -29,7 +29,7 @@ def draw_t_fig () :
     #kdf = kdf [ kdf [ 'Total Revenues/CAGR (2Y FY)' ] < 1000 ]
 
 
-
+    st.write (tdf.columns.tolist())
     df_custom = tdf.copy()
     l = df_custom.Sector.unique().tolist()
     l.append('All')
