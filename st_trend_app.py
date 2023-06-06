@@ -519,7 +519,7 @@ with tab5:
 
 with tab6:
     st.header("(technical)")
-    #draw_t_fig()
+    draw_t_fig()
 
       
 
