@@ -15,6 +15,24 @@ import re, urllib
 
 st.title( 'Stock Recommendations from News Sentiment')
 
+def recommendations_to_table(df):
+    columns = ["Stock", "Action", "Reasons", "Summary", "Source"]
+    table_data = []
+    
+    for index, row in df.iterrows():
+        sentiment = row["sentiment"]
+        summary = row["summary"]
+        recommendations = row["stock_recommendations"]
+        link = row["link"]
+        
+        for action, stocks in recommendations.items():
+            for stock in stocks:
+                stock_name = stock["stock"]
+                reasons = "\n".join(stock["reasons"])
+                table_data.append([stock_name, action.capitalize(), reasons, summary, link])
+    
+    table_df = pd.DataFrame(table_data, columns=columns)
+    return table_df
 
 def streamlit_main (url) :
 
@@ -45,6 +63,8 @@ def streamlit_main (url) :
               'financial services', 'banking', 'insurance', 
               'real estate']
 
+    industries = ['biotechnology']
+
     df_arr = []
     for industry in industries:
         url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
@@ -73,18 +93,24 @@ def streamlit_main (url) :
         with tab :
             tab_name = ind_list[i]
             st.write (tab_name)
-            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.md'
-            destination = '/tmp/stock_news_reit___industrial__medical__hotel.md'
-            urllib.request.urlretrieve(url, destination)
-            file_path = '/tmp/stock_news_reit___industrial__medical__hotel.md'
-            with open(file_path, 'r') as file:
-                file_content = file.read()
-                st.markdown (file_content)
-            i+=1
-            json_url = url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
-            
-            sdf = pd.read_json(json_url)
-            
+            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+            df = pd.read_json(url)
+            tdf = recommendations_to_table(df)
+            st.write ('Buy Recommendations')
+
+            btdf = tdf [tdf.Action == 'Buy']            
+            st.dataframe(btdf)
+
+            st.write ('Sell Recommendations')
+
+            btdf = tdf [tdf.Action == 'Sell']            
+            st.dataframe(btdf)
+
+            st.write ('Hold Recommendations')
+
+            btdf = tdf [tdf.Action == 'Hold']            
+            st.dataframe(btdf)
+
             df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
             stock_arr = []
             
