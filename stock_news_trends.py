@@ -15,6 +15,7 @@ import re, urllib
 
 st.title( 'Stock Recommendations from News Sentiment')
 
+
 def recommendations_to_table(df):
     columns = ["Stock", "Action", "Reasons", "Summary", "Source"]
     table_data = []
@@ -37,7 +38,7 @@ def recommendations_to_table(df):
 def streamlit_main (url) :
 
 
-    
+    pd.set_option('display.max_colwidth', None)
 
     button_name = "Draft it for me !! "
     response_while = "Right on it, it should be around 2-5 seconds ..."
@@ -85,7 +86,7 @@ def streamlit_main (url) :
 
     tabs = st.tabs ( tabs )  
 
-    i=1
+    i=0
     for tab in tabs :
 
         with tab :
@@ -98,6 +99,9 @@ def streamlit_main (url) :
 
             btdf = tdf [tdf.Action == 'Buy']            
             st.dataframe(btdf)
+            btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.url, "source link"), axis=1)
+
+            btdf.rename(columns={'clickable_url':'Link'}, inplace=True)
 
             st.write ('Sell Recommendations')
 
