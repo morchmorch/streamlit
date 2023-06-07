@@ -85,8 +85,6 @@ def streamlit_main (url) :
 
     tabs = st.tabs ( tabs )  
 
-
-
     i=0
     for tab in tabs :
 
