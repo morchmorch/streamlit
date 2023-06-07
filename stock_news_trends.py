@@ -99,7 +99,7 @@ def streamlit_main (url) :
 
             btdf = tdf [tdf.Action == 'Buy']            
             st.dataframe(btdf)
-            btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.url, "source link"), axis=1)
+            btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
 
             btdf.rename(columns={'clickable_url':'Link'}, inplace=True)
 
