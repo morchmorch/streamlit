@@ -103,7 +103,7 @@ def streamlit_main (url) :
 
             btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             st.write (btdf.columns.tolist())
-            btdf[['Stock','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
+            btdf[['Stock','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
             
             with open('/tmp/btdf.html', 'r') as file:
                 html_string = file.read()
