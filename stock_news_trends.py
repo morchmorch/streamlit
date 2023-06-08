@@ -100,7 +100,6 @@ def streamlit_main (url) :
             btdf = tdf [tdf.Action == 'Buy']            
             
             btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
-
             btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             st.write (btdf.columns.tolist())
             btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
@@ -113,19 +112,33 @@ def streamlit_main (url) :
             st.write ('Sell Recommendations')
 
             btdf = tdf [tdf.Action == 'Sell']            
-            st.dataframe(btdf)
+            btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
+            btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
+            st.write (btdf.columns.tolist())
+            btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
+            
+            with open('/tmp/btdf.html', 'r') as file:
+                html_string = file.read()
+
+            st.markdown(html_string, unsafe_allow_html=True)
 
             st.write ('Hold Recommendations')
 
             btdf = tdf [tdf.Action == 'Hold']            
-            st.dataframe(btdf)
+            btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
+            btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
+            st.write (btdf.columns.tolist())
+            btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
+            
+            with open('/tmp/btdf.html', 'r') as file:
+                html_string = file.read()
+
+            st.markdown(html_string, unsafe_allow_html=True)
 
             df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
-            stock_arr = []
             
-            for slist in sdf.stock_recommendations['buy']:
-                stock_arr.append(slist['stock'])
-
+            btdf = tdf [tdf.Action == 'Buy']  
+            stock_arr = btdf.Stock.unique().tolist()
             cols = ['Ticker', 'Company',  'Industry', 'Market Cap','Sales growth quarter over quarter', 'Profit Margin','Forward P/E', 'EPS growth this year','Performance (Week)', 'Performance (Month)','Relative Strength Index (14)', 'Analyst Recom', 'Relative Volume']
             print (df.columns)
             df = df [df.Ticker.isin (stock_arr)][cols]
