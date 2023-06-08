@@ -101,8 +101,8 @@ def streamlit_main (url) :
             
             btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
 
-            btdf.rename(columns={'clickable_url':'Link'}, inplace=True)
-            btdf.to_html('/tmp/btdf.html',escape=False)
+            btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
+            btdf['Stock', 'Reason', 'Source Link'].to_html('/tmp/btdf.html',escape=False, index=False)
             
             with open('/tmp/btdf.html', 'r') as file:
                 html_string = file.read()
