@@ -98,7 +98,7 @@ def streamlit_main (url) :
 
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
-    tabs = st.tabs ( tabs )  
+    #tabs = st.tabs ( tabs )  
     tabs = st.tabs ( list_c )
     i=0
     for tab in tabs :
