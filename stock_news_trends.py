@@ -113,7 +113,9 @@ def streamlit_main (url) :
             tdf = recommendations_to_table(df)
             st.write (tdf.columns.tolist())
             tdf.Reasons = tdf.Reasons.replace('\n', '<br>', regex=True)
+            
             summary = tdf['Summary'].tolist()[0]
+            summary = re.sub('[^A-Za-z0-9 ]+', '', summary)
 
 
             st.header ('Summary')
