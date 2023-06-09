@@ -88,13 +88,20 @@ def streamlit_main (url) :
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
-            st.write ('Buy Recommendations')
+
+            summary = tdf['Summary'].tolist()[0]
+
+
+            st.header ('Summary')
+            st.write (summary)
+
+            st.header ('Buy Recommendations')
 
             btdf = tdf [tdf.Action == 'Buy']            
             
             btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
             btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
-            st.write (btdf.columns.tolist())
+            #st.write (btdf.columns.tolist())
             btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
             
             with open('/tmp/btdf.html', 'r') as file:
@@ -102,12 +109,12 @@ def streamlit_main (url) :
 
             st.markdown(html_string, unsafe_allow_html=True)
 
-            st.write ('Sell Recommendations')
+            st.header ('Sell Recommendations')
 
             btdf = tdf [tdf.Action == 'Sell']            
             btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
             btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
-            st.write (btdf.columns.tolist())
+            #st.write (btdf.columns.tolist())
             btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
             
             with open('/tmp/btdf.html', 'r') as file:
@@ -115,12 +122,12 @@ def streamlit_main (url) :
 
             st.markdown(html_string, unsafe_allow_html=True)
 
-            st.write ('Hold Recommendations')
+            st.header ('Hold Recommendations')
 
             btdf = tdf [tdf.Action == 'Hold']            
             btdf [ 'clickable_url'  ] = btdf.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row.Source, "source link"), axis=1)
             btdf.rename(columns={'clickable_url':'Source Link'}, inplace=True)
-            st.write (btdf.columns.tolist())
+            #st.write (btdf.columns.tolist())
             btdf[['Stock','Action','Reasons','Source Link']].to_html('/tmp/btdf.html',escape=False, index=False)
             
             with open('/tmp/btdf.html', 'r') as file:
