@@ -81,15 +81,15 @@ def streamlit_main (url) :
     #industries = ['biotechnology']
 
     df_arr = []
-    for industry in industries:
-        url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
-        print (url)
-        df = pd.read_json(url)
-        df = df.reset_index(drop=True)
-        df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
-        df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
-        df_arr.append(df)
-    df = pd.concat(df_arr)
+    #for industry in industries:
+    #    url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+    #    print (url)
+    #    df = pd.read_json(url)
+    #    df = df.reset_index(drop=True)
+    #    df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
+    #    df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
+    #    df_arr.append(df)
+    #df = pd.concat(df_arr)
     
     for industry in list_c:
         url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry + '.json'
@@ -116,7 +116,7 @@ def streamlit_main (url) :
             tab_name = ind_list[i]
             tab_name = list_c[i]
             st.write (tab_name)
-            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+            $url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name + '.json'
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
