@@ -76,7 +76,8 @@ def streamlit_main (url) :
     allfiles = find_object_prefix_suffix_days('investrecipes','newsgpt','json',1)
     #st.write (allfiles)
     l = [x.key for x in allfiles]
-    st.write (l)
+    list_c = [x.split ('newsgpt/stock_news_')[1].split('.json')[0]]
+    st.write (list_c)
     #industries = ['biotechnology']
 
     df_arr = []
@@ -98,7 +99,7 @@ def streamlit_main (url) :
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
     tabs = st.tabs ( tabs )  
-
+    tabs = st.tabs ( list_c )
     i=0
     for tab in tabs :
 
