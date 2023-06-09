@@ -56,13 +56,6 @@ def streamlit_main (url) :
               ]
     
    
-    
-    industries = ['metals and mining', 
-              'semiconductor', 'software', 
-              'biotechnology', 'pharmaceuticals','medical devices', 
-              'consumer goods', 'retail and stores', 'food and beverage',
-              'financial services', 'banking', 'insurance', 
-              'real estate']
 
     #industries = ['biotechnology']
 
