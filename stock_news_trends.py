@@ -93,7 +93,7 @@ def streamlit_main (url) :
 
 
             st.header ('Summary')
-            st.write (summary)
+            
 
             st.header ('Buy Recommendations')
 
@@ -146,7 +146,7 @@ def streamlit_main (url) :
             st.header ("Fundamental Analysis of Stocks with Buy Recommendations")
             st.dataframe(df)
 
-
+        i = i + 1
 
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
