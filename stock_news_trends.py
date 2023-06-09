@@ -77,7 +77,7 @@ def streamlit_main (url) :
     #st.write (allfiles)
     l = [x.key for x in allfiles]
     list_c = [x.split ('newsgpt/stock_news_')[1].split('.json')[0] for x in l]
-    st.write (list_c)
+    #st.write (list_c)
     #industries = ['biotechnology']
 
     df_arr = []
@@ -87,9 +87,18 @@ def streamlit_main (url) :
         df = pd.read_json(url)
         df = df.reset_index(drop=True)
         df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
+        df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
         df_arr.append(df)
     df = pd.concat(df_arr)
     
+    for industry in list_c:
+        url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry + '.json'
+        df = pd.read_json(url)
+        df = df.reset_index(drop=True)
+        df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
+        df_arr.append(df)
+    df = pd.concat(df_arr)    
+
     #st.dataframe(df)
     # tabs are the industries
     #tab_list = df.tasks.unique().tolist()
@@ -99,7 +108,7 @@ def streamlit_main (url) :
     #tabs = [ str(x) for x in tab_list if x is not np.nan ]
 
     #tabs = st.tabs ( tabs )  
-    tabs = st.tabs ( list_c )
+    tabs = st.tabs ( tabs )
     i=0
     for tab in tabs :
 
@@ -111,7 +120,7 @@ def streamlit_main (url) :
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name + '.json'
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
-            st.write (tdf.columns.tolist())
+            #st.write (tdf.columns.tolist())
             tdf.Reasons = tdf.Reasons.replace('\n', '<br>', regex=True)
             
             summary = tdf['Summary'].tolist()[0]
