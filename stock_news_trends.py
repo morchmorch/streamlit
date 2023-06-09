@@ -76,7 +76,7 @@ def streamlit_main (url) :
     allfiles = find_object_prefix_suffix_days('investrecipes','newsgpt','json',1)
     #st.write (allfiles)
     l = [x.key for x in allfiles]
-    list_c = [x.split ('newsgpt/stock_news_')[1].split('.json')[0]]
+    list_c = [x.split ('newsgpt/stock_news_')[1].split('.json')[0] for x in l]
     st.write (list_c)
     #industries = ['biotechnology']
 
