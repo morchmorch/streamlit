@@ -105,7 +105,7 @@ def streamlit_main (url) :
 
         with tab :
             tab_name = ind_list[i]
-            tab_name = tabs[i]
+            tab_name = list_c[i]
             st.write (tab_name)
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name + '.json'
