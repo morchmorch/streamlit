@@ -89,7 +89,7 @@ def streamlit_main (url) :
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
             st.write (tdf.columns.tolist())
-            tdf.Reasons = tdf.Reasons.replace('\n', ' ', regex=True)
+            tdf.Reasons = tdf.Reasons.replace('\n', '<br>', regex=True)
             summary = tdf['Summary'].tolist()[0]
 
 
