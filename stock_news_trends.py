@@ -62,16 +62,16 @@ def streamlit_main (url) :
     response_while = "Right on it, it should be around 2-5 seconds ..."
     response_after = "Here you go ...  "
     
-    industries = ['metals and mining', 
-              'semiconductor', 'software', 
-              'biotechnology', 'pharmaceuticals', 'medical devices', 
-              'consumer goods', 'retail and stores', 'food and beverage',
-              'financial services', 'banking', 'insurance', 
-              'real estate', 'construction', 'reit-industrial,medical,hotel'
-              'industrial goods', 'transportation', 'automotive', 'trucking and airlines',
-              'energy', 'utilities', 'telecommunications', 
-              'media', 'entertainment', 'leisure', 'travel', 'hospitality'
-              ]
+    #industries = ['metals and mining', 
+    #          'semiconductor', 'software', 
+    #          'biotechnology', 'pharmaceuticals', 'medical devices', 
+    #          'consumer goods', 'retail and stores', 'food and beverage',
+    #          'financial services', 'banking', 'insurance', 
+    #          'real estate', 'construction', 'reit-industrial,medical,hotel'
+    #          'industrial goods', 'transportation', 'automotive', 'trucking and airlines',
+    #          'energy', 'utilities', 'telecommunications', 
+    #          'media', 'entertainment', 'leisure', 'travel', 'hospitality'
+    #          ]
     
     allfiles = find_object_prefix_suffix_days('investrecipes','newsgpt','json',1)
     #st.write (allfiles)
