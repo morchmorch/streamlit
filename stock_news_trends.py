@@ -88,6 +88,7 @@ def streamlit_main (url) :
             url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
+            st.write (tdf.columns.tolist())
             tdf.Reasons = tdf.Reasons.replace('\n', ' ', regex=True)
             summary = tdf['Summary'].tolist()[0]
 
