@@ -15,6 +15,24 @@ import re, urllib
 
 st.title( 'Stock Recommendations from News Sentiment')
 
+def find_object_prefix_suffix_days(bucketname, prefix, suffix, days):
+    print (bucketname, prefix)
+    import boto3, datetime,pytz
+    from datetime import timedelta
+    s3 = boto3.resource('s3')
+    my_bucket = s3.Bucket(bucketname)
+    unsorted = []
+    for myfile in my_bucket.objects.filter( Prefix=prefix ):
+        if  myfile.last_modified > ( datetime.datetime.now(pytz.utc) - timedelta(days=days) ) :
+            if ( myfile.key.endswith(suffix) ) :
+                unsorted.append(myfile)
+    if len(unsorted) > 0 :
+        #files = [{'prefix':prefix, 'object':obj.key.split(",")[-1], 'timestamp': obj.last_modified.strftime("%B %d, %Y") } for obj in sorted(unsorted, key=lambda x:x.last_modified, reverse=True)]
+        files = unsorted
+        return files
+    else :
+        return []
+
 
 def recommendations_to_table(df):
     columns = ["Stock", "Action", "Reasons", "Summary", "Source"]
@@ -55,8 +73,10 @@ def streamlit_main (url) :
               'media', 'entertainment', 'leisure', 'travel', 'hospitality'
               ]
     
-   
-
+    allfiles = find_object_prefix_suffix_days('investrecipes','newsgpt','json',1)
+    #st.write (allfiles)
+    l = [x.key for x in allfiles]
+    st.write (l)
     #industries = ['biotechnology']
 
     df_arr = []
