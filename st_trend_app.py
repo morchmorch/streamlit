@@ -8,13 +8,13 @@ from PIL import Image
 #blah
 
 def get_data () :
-    df_custom = pd.read_csv ("https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
+    df_custom = pd.read_csv ("https://investopsrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv")
     return df_custom
 
 def draw_t_fig () :
-    tdf = pd.read_csv ( "https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
+    tdf = pd.read_csv ( "https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/industries-rsi-adx-consolidated-stockcharts.csv")
     #print (tdf.shape)
-    #kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+    #kdf = pd.read_csv ('https://investopsrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
 
     #kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (2Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
 
@@ -94,7 +94,7 @@ def draw_t_fig () :
 
 def draw_f_fig () :
 
-    kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_companies.csv')
+    kdf = pd.read_csv ('https://investopsrecipes.s3.amazonaws.com/koyfin_all_companies.csv')
     
     kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] < 100 ]
     kdf = kdf [ kdf [  'Net Income Margin % (FY)' ] > 0 ]
@@ -173,32 +173,32 @@ def draw_f_fig () :
 
 def take_string_give_url (option):
     url_dict = {
-        '52wkhigh' :  'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html',
-        '52wkhigh(fv)': 'https://investrecipes.s3.amazonaws.com/all_stocks/technical/52wkhigh/stockworld_all_52wkhigh-finviz.csv-agg.html',
-        '60plusrsi' : 'https://investrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html',
-        'insider_buying': 'https://investrecipes.s3.amazonaws.com/apps/insiderbuying/insider-buying-finviz.csv-agg.html',
-        'in_news': 'https://investrecipes.s3.amazonaws.com/apps/news/finviz_major_news.csv-agg.html',
-        'strong_patterns': 'https://investrecipes.s3.amazonaws.com/all_stocks/technical/strongpatterns/stockworld_all_52wkhigh-strong-patterns-finviz.csv-agg.html',
-        'etf_unusual_relative_volume': 'https://investrecipes.s3.amazonaws.com/apps/volumegainers/etfworld-relative_volume-finviz.csv-agg.html',
-        'stock_unusual_relative_volume': 'https://investrecipes.s3.amazonaws.com/apps/volumegainers/stockworld-relative-volume_finviz.csv-agg.html',
-        'price_up_and_volume_up': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
-        'high_adx_slope':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_adx_slope-stockcharts.csv-agg.html',
-        'golden_cross': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
-        'industries_momentum' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
-        'etf_etfs_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
-        'industries_rsi': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' ,
-        'industries_pmo_cmf': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv-agg.html',
-        'koyfin_etf' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_koyfin-list.png',
-        'etf_heatmap' : 'https://investrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_heatmap-finviz.png',
-        'macro_market_charts': 'https://investrecipes.s3.amazonaws.com/market/fundamental/comparisoncharts/etfworld_sector_all_market-finviz-charts.png',    
-        'sector_market_charts': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png',
-        'sector_rrg': 'https://investrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
-        'industries_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv.html',
-        'stocks_20_50_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv-agg.html',
-        'etfs_20_50_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html',
-        'industries_50_200_sma': 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_50_200-stockcharts.csv.html',
-        'etfs_50_200_sma':'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_50_200-stockcharts.csv.html',
-        'stocks_50_200_sma' : 'https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_50_200-stockcharts.csv-agg.html'
+        '52wkhigh' :  'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_52wkhigh-stockcharts.csv-agg.html',
+        '52wkhigh(fv)': 'https://investopsrecipes.s3.amazonaws.com/all_stocks/technical/52wkhigh/stockworld_all_52wkhigh-finviz.csv-agg.html',
+        '60plusrsi' : 'https://investopsrecipes.s3.amazonaws.com/all_sectors/fundamental/comparisoncharts/stockworld_all_60plusrsi-finviz.csv-agg.html',
+        'insider_buying': 'https://investopsrecipes.s3.amazonaws.com/apps/insiderbuying/insider-buying-finviz.csv-agg.html',
+        'in_news': 'https://investopsrecipes.s3.amazonaws.com/apps/news/finviz_major_news.csv-agg.html',
+        'strong_patterns': 'https://investopsrecipes.s3.amazonaws.com/all_stocks/technical/strongpatterns/stockworld_all_52wkhigh-strong-patterns-finviz.csv-agg.html',
+        'etf_unusual_relative_volume': 'https://investopsrecipes.s3.amazonaws.com/apps/volumegainers/etfworld-relative_volume-finviz.csv-agg.html',
+        'stock_unusual_relative_volume': 'https://investopsrecipes.s3.amazonaws.com/apps/volumegainers/stockworld-relative-volume_finviz.csv-agg.html',
+        'price_up_and_volume_up': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_price_up_volume_up-stockcharts.csv-agg.html',
+        'high_adx_slope':'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_adx_slope-stockcharts.csv-agg.html',
+        'golden_cross': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_crossover_50_200-stockcharts.csv-agg.html',
+        'industries_momentum' : 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_momentum-stockcharts.csv.html',
+        'etf_etfs_rsi': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv.html',
+        'industries_rsi': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_aroon_rsi_slope-stockcharts.csv.html' ,
+        'industries_pmo_cmf': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_etfs_aroon-positive-pmo-above-zero_pmo-above-signal_cmf-positive-stockcharts.csv-agg.html',
+        'koyfin_etf' : 'https://investopsrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_koyfin-list.png',
+        'etf_heatmap' : 'https://investopsrecipes.s3.amazonaws.com/industry/fundamental/comparisoncharts/etfworld_industry_all_heatmap-finviz.png',
+        'macro_market_charts': 'https://investopsrecipes.s3.amazonaws.com/market/fundamental/comparisoncharts/etfworld_sector_all_market-finviz-charts.png',    
+        'sector_market_charts': 'https://investopsrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_finviz-charts.png',
+        'sector_rrg': 'https://investopsrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
+        'industries_20_50_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv.html',
+        'stocks_20_50_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv-agg.html',
+        'etfs_20_50_sma' : 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html',
+        'industries_50_200_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_50_200-stockcharts.csv.html',
+        'etfs_50_200_sma':'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_50_200-stockcharts.csv.html',
+        'stocks_50_200_sma' : 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_50_200-stockcharts.csv-agg.html'
 
     }
     return url_dict[option]
@@ -322,7 +322,7 @@ def draw_market_sector() :
         #st.image ( take_string_give_url ( sector_option ).split('-charts')[0]+'-list.png' )
 
     else :
-        adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
+        adf = pd.read_html('https://investopsrecipes.s3.amazonaws.com/all-files.html')[0]
         #xlydf = adf [ (adf.key.str.contains('.png') ) & (adf.key.str.contains('industry_'+sector_option)) ]
         #images = xlydf.key.tolist()
         images = adf.key.tolist()
@@ -331,7 +331,7 @@ def draw_market_sector() :
         #i = [x for x in images if 'industries_rrg' in x and 'stockworld' in x]
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'industr' in x] 
         i = [ x for x in i if str(sector_option).strip() in x]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i ]
+        urls = [ 'https://investopsrecipes.s3.amazonaws.com/'+ x for x in i ]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
 
         st.write ('industry and companies rrg')
@@ -341,14 +341,14 @@ def draw_market_sector() :
         #i= [x for x in images if 'stockworld_' + sector_option + '_rrg' in  x]
         i = [x for x in adf.key.tolist() if 'technical/rrg/' in x and 'stockcharts_'+ sector_option+"_rrg" in x ] 
         i = [ x for x in i if sector_option in x]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
+        urls = [ 'https://investopsrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         #st.image(urls,width=600,caption=captions)
  
 
          # koyfin etf
         i = [x for x in images if 'koyfin' in x and 'etf' in x and str(sector_option).strip() in x and 'watchlist' in x]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
+        urls = [ 'https://investopsrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
         
         st.write (' ETF ')
@@ -357,7 +357,7 @@ def draw_market_sector() :
 
         #finviz companies by industry
         i = [x for x in images if 'industry_' in x and 'finviz' in x and 'rrg' not in x and '60' not in x and '52' not in x and str(sector_option).strip() in x and 'png' in x]
-        urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in i]
+        urls = [ 'https://investopsrecipes.s3.amazonaws.com/'+ x for x in i]
         captions = [x.split('/')[-1].split('-finviz')[-1] for x in i]
         st.write ('companies by industry')
         st.image(urls,width=600,caption=i)
@@ -372,7 +372,7 @@ def draw_momentum_figs():
     sector_option = st.radio( "Relative Rotation Graphs, Industries and Companies in each Sector",  l  )
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
     images  = [] 
-    adf = pd.read_html('https://investrecipes.s3.amazonaws.com/all-files.html')[0]
+    adf = pd.read_html('https://investopsrecipes.s3.amazonaws.com/all-files.html')[0]
 
     if 'industries' in sector_option :
         images =  [ x for x in adf.key.tolist() if 'rrg' in x and 'industries_' in x and 'stock' in x and 'industry_' in x] 
@@ -380,7 +380,7 @@ def draw_momentum_figs():
         images = [ x for x in adf.key.tolist() if x.startswith ('industry_') and x.endswith('.png') and 'rrg' in x  and 'companies' in x ]
 
 
-    urls = [ 'https://investrecipes.s3.amazonaws.com/'+ x for x in images]
+    urls = [ 'https://investopsrecipes.s3.amazonaws.com/'+ x for x in images]
     captions = [x.split('/')[-1].split('-finviz')[0] for x in urls]
     st.image(urls,width=600,caption=captions)
  
@@ -389,7 +389,7 @@ def draw_momentum_figs():
 ## main
 
 
-#kdf = pd.read_csv ('https://investrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
+#kdf = pd.read_csv ('https://investopsrecipes.s3.amazonaws.com/koyfin_all_stocks.csv')
 
 #kdf['growth_evsales_ratio'] = kdf['Total Revenues/CAGR (1Y FY)'] / kdf[ 'EV/Sales (EST FY1)' ]
 
@@ -412,7 +412,7 @@ def draw_momentum_figs():
 #st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 #sector_option =  st.selectbox ( 'Select Sector', df_custom.Sector.unique().tolist() )
-#st.set_page_config(page_title="Investrecipes",layout='wide')
+#st.set_page_config(page_title="investopsrecipes",layout='wide')
 st.set_page_config( page_title="momentum lists", layout='wide')
 st.title ('momentum lists')
 
@@ -432,7 +432,7 @@ with tab1:
     
 
     #st.caption ('Correlated')
-    #df = pd.read_html ('https://investrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
+    #df = pd.read_html ('https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_runbook_sources_ranking-agg.html')[0]
     #cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
     #st.write(df[cols])
     #st.dataframe (use_container_width = True)
