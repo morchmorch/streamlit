@@ -73,7 +73,7 @@ def streamlit_main (url) :
     #          'media', 'entertainment', 'leisure', 'travel', 'hospitality'
     #          ]
     
-    allfiles = find_object_prefix_suffix_days('investrecipes','newsgpt','json',1)
+    allfiles = find_object_prefix_suffix_days('investopsrecipes','newsgpt','json',1)
     #st.write (allfiles)
     l = [x.key for x in allfiles]
     list_c = [x.split ('newsgpt/stock_news_')[1].split('.json')[0] for x in l]
@@ -82,7 +82,7 @@ def streamlit_main (url) :
 
     df_arr = []
     #for industry in industries:
-    #    url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+    #    url = 'https://investopsrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
     #    print (url)
     #    df = pd.read_json(url)
     #    df = df.reset_index(drop=True)
@@ -92,7 +92,7 @@ def streamlit_main (url) :
     #df = pd.concat(df_arr)
     
     for industry in list_c:
-        url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry + '.json'
+        url = 'https://investopsrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + industry + '.json'
         df = pd.read_json(url)
         df = df.reset_index(drop=True)
         df['sentiment_score'] = df['industry'] + "(" + df.sentiment.astype(str).str.split().tolist()[0][0] + ")"
@@ -116,8 +116,8 @@ def streamlit_main (url) :
             tab_name = ind_list[i]
             tab_name = list_c[i]
             st.write (tab_name)
-            #url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
-            url = 'https://investrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name + '.json'
+            #url = 'https://investopsrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name.replace(' ', '_').replace(",", "_").replace("-", "_") + '.json'
+            url = 'https://investopsrecipes.s3.amazonaws.com/newsgpt/' + 'stock_news_' + tab_name + '.json'
             df = pd.read_json(url)
             tdf = recommendations_to_table(df)
             #st.write (tdf.columns.tolist())
@@ -170,7 +170,7 @@ def streamlit_main (url) :
 
             st.markdown(html_string, unsafe_allow_html=True)
 
-            df = pd.read_csv ('https://investrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
+            df = pd.read_csv ('https://investopsrecipes.s3.amazonaws.com/basic/all_stocks/just-all-custom-finviz.csv')
             
             btdf = tdf [tdf.Action == 'Buy']  
             stock_arr = btdf.Stock.unique().tolist()
