@@ -425,10 +425,18 @@ with tab1:
     col1, col2 = st.columns(2)
 
     with col1:
-        draw_etf_fig()
-    with col2 :
-        draw_etf_image() 
+        try :
+            draw_etf_fig()
+        except Exception as e :
+            st.write (e)
+            st.write ('no data')
 
+    with col2 :
+        try :
+            draw_etf_image() 
+        except Exception as e :
+            st.write (e)
+            st.write ('no data')
     
 
     #st.caption ('Correlated')
@@ -443,14 +451,25 @@ with tab2:
     col1, col2 , col3 = st.columns(3)
 
     with col1:
-        draw_technical_fig()
+        try :
+            draw_technical_fig()
+        except Exception as e :
+            st.write (e)
+            st.write ('no data')
 
     with col3:
-        draw_external_fig()
-   
-    with col2:
-        draw_milestone_fig()
+        try :
+            draw_external_fig()
+        except Exception as e :
+            st.write (e)
+            st.write ('no data')
 
+    with col2:
+        try :
+            draw_milestone_fig()
+        except Exception as e :
+            st.write (e)
+            st.write ('no data')
 with tab3:
     st.header("(Weekly Performance)")
     
