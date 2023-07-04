@@ -182,6 +182,12 @@ def streamlit_main (url) :
             st.dataframe(df)
 
         i = i + 1
+    
+    tabs.append ( 'StockNews' )
+
+    with tabs [ -1 ] :
+        df = pd.read_csv('https://investopsrecipes.s3.amazonaws.com/newsgpt/stock_recs.csv')
+        st.dataframe(df)
 
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
