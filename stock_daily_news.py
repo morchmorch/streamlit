@@ -81,7 +81,7 @@ def streamlit_main (url) :
         with tab :
             df = pd.read_csv('https://investopsrecipes.s3.amazonaws.com/newsgpt/stock_recs.csv')
             df [ 'clickable_url'  ] = df.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row['source_url'], "source link"), axis=1)
-            
+            df.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             sdf1 = df.groupby( ['stock', 'stock_ticker','industry'] , dropna=True)['Source Link'].agg(' ,'.join).reset_index(name='Source Links')
             sdf2 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['reason'].agg(' ,'.join).reset_index(name='reasons')
             sdf3 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['sentiment'].mean().reset_index(name='avg_sentiment')
