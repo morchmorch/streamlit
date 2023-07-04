@@ -96,7 +96,7 @@ def streamlit_main (url) :
             df.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             #st.write (btdf.columns.tolist())
             #df[cols].sort_values('sentiment', ascending=False).to_html('/tmp/df.html',escape=False, index=False)
-            df.to_html('/tmp/df.html',escape=False, index=False)
+            df.sort_values('avg_sentiment', ascending=False).to_html('/tmp/df.html',escape=False, index=False)
             with open('/tmp/df.html', 'r') as file:
                 html_string = file.read()
 
