@@ -82,7 +82,18 @@ def streamlit_main (url) :
             df = pd.read_csv('https://investopsrecipes.s3.amazonaws.com/newsgpt/stock_recs.csv')
             st.write (df.shape)
             cols = ['stock', 'stock_ticker', 'recommendation', 'sentiment', 'industry', 'reason', 'source_url', 'news_summary']
-            st.write(df[cols])
+
+            df [ 'clickable_url'  ] = df.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row['source_url'], "source link"), axis=1)
+            df.rename(columns={'clickable_url':'Source Link'}, inplace=True)
+            #st.write (btdf.columns.tolist())
+            df.to_html('/tmp/df.html',escape=False, index=False)
+            
+            with open('/tmp/df.html', 'r') as file:
+                html_string = file.read()
+
+            st.markdown(html_string, unsafe_allow_html=True)
+
+            #st.write(df[cols])
 
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
