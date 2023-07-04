@@ -80,15 +80,23 @@ def streamlit_main (url) :
 
         with tab :
             df = pd.read_csv('https://investopsrecipes.s3.amazonaws.com/newsgpt/stock_recs.csv')
+            df [ 'clickable_url'  ] = df.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row['source_url'], "source link"), axis=1)
+            
+            sdf1 = df.groupby( ['stock', 'stock_ticker','industry'] , dropna=True)['Source Link'].agg(' ,'.join).reset_index(name='Source Links')
+            sdf2 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['reason'].agg(' ,'.join).reset_index(name='reasons')
+            sdf3 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['sentiment'].mean().reset_index(name='avg_sentiment')
+            sdf4 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['reason'].mean().reset_index(name='reasons')
+
+            df = pd.concat ([sdf1, sdf2['reasons'], sdf3['avg_sentiment']. sdf4['reasons']], axis = 1)
+
             st.write (df.shape)
             #cols = ['stock', 'stock_ticker', 'recommendation', 'sentiment', 'industry', 'reason', 'source_url', 'Source Link', 'news_summary']
             cols = ['stock', 'stock_ticker', 'recommendation', 'sentiment', 'industry', 'reason', 'Source Link']
 
-            df [ 'clickable_url'  ] = df.apply(lambda row: "<a href='{}' target='_blank'>{}</a>".format(row['source_url'], "source link"), axis=1)
             df.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             #st.write (btdf.columns.tolist())
-            df[cols].sort_values('sentiment', ascending=False).to_html('/tmp/df.html',escape=False, index=False)
-            
+            #df[cols].sort_values('sentiment', ascending=False).to_html('/tmp/df.html',escape=False, index=False)
+            df.to_html('/tmp/df.html',escape=False, index=False)
             with open('/tmp/df.html', 'r') as file:
                 html_string = file.read()
 
