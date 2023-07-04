@@ -85,8 +85,8 @@ def streamlit_main (url) :
             sdf1 = df.groupby( ['stock', 'stock_ticker','industry'] , dropna=True)['Source Link'].agg(' ,'.join).reset_index(name='Source Links')
             sdf2 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['reason'].agg(' ,'.join).reset_index(name='reasons')
             sdf3 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['sentiment'].mean().reset_index(name='avg_sentiment')
-            sdf4 = df.groupby( ['stock','stock_ticker','industry'] , dropna=True)['reason'].mean().reset_index(name='reasons')
-
+            sdf4 = df.groupby( ['stock', 'stock_ticker','industry'] , dropna=True)['reason'].agg(' ,'.join).reset_index(name='reasons')
+            
             df = pd.concat ([sdf1, sdf2['reasons'], sdf3['avg_sentiment']. sdf4['reasons']], axis = 1)
 
             st.write (df.shape)
