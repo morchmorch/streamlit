@@ -80,8 +80,9 @@ def streamlit_main (url) :
 
         with tab :
             df = pd.read_csv('https://investopsrecipes.s3.amazonaws.com/newsgpt/stock_recs.csv')
+            st.write (df.shape)
             cols = ['stock', 'stock_ticker', 'recommendation', 'sentiment', 'industry', 'reason', 'source_url', 'news_summary']
-            st.dataframe(df[cols])
+            st.write(df[cols])
 
 streamlit_main ("https://worldopen.s3.amazonaws.com/eighth.csv")
 
