@@ -74,7 +74,7 @@ def streamlit_main (url) :
     #          ]
     
      
-    tabs = st.tabs ( ['srock'] )
+    tabs = st.tabs ( ['stock'] )
     i=0
     for tab in tabs :
 
