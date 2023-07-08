@@ -96,7 +96,6 @@ def streamlit_main (url) :
             df.rename(columns={'clickable_url':'Source Link'}, inplace=True)
             #st.write (btdf.columns.tolist())
             #df[cols].sort_values('sentiment', ascending=False).to_html('/tmp/df.html',escape=False, index=False)
-            df = df [~df['source_url'].str.contains('example')]
             df = df [~df['stock'].str.contains('Company')]
             df = df [~df['stock'].str.contains('Reserve')]
                 
