@@ -541,7 +541,11 @@ with tab5:
 
 with tab6:
     st.header("(technical)")
-    draw_t_fig()
+    try :
+        draw_t_fig()
+    except Exception as e :
+                st.write (e)
+                st.write ('no data')
 
       
 
