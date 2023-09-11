@@ -478,18 +478,24 @@ with tab4:
     
     
         with col2:
-            st.write ('etfs')
-            if 'silver' in sector_option :
-                col3_sector_option = "etfs_20_50_sma"
-            if 'gold' in sector_option :
-                col3_sector_option = "etfs_50_200_sma"
-            df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
-            cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
-            cols = ['Symbol','Name']
-            #st.caption ( ', '.join (df[cols].symbols.tolist()) )
-            #st.write(df[cols])
-            st.dataframe ( df[cols], height=1000)
-    
+
+            try :
+
+                st.write ('etfs')
+                if 'silver' in sector_option :
+                    col3_sector_option = "etfs_20_50_sma"
+                if 'gold' in sector_option :
+                    col3_sector_option = "etfs_50_200_sma"
+                df = pd.read_html ( take_string_give_url ( col3_sector_option ) )[0]
+                cols = [x for x in df.columns.tolist() if 'Unnamed' not in x]
+                cols = ['Symbol','Name']
+                #st.caption ( ', '.join (df[cols].symbols.tolist()) )
+                #st.write(df[cols])
+                st.dataframe ( df[cols], height=1000)
+            except Exception as e :
+                st.write (e)
+                st.write ('no data')
+
         with col3 :
             st.write ('stocks')
             if 'silver' in sector_option :
