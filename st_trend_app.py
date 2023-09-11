@@ -195,8 +195,8 @@ def take_string_give_url (option):
         'sector_rrg': 'https://investopsrecipes.s3.amazonaws.com/sector/fundamental/comparisoncharts/etfworld_sector_all_stockcharts-rrg.png',
         
         'industries_20_50_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_20_50-stockcharts.csv.html',
-        'stocks_20_50_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_20_50-stockcharts.csv.html',
-        'etfs_20_50_sma' : 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfkworld_adx_slope-stockcharts.csv.html',
+        'stocks_20_50_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/stockworld_sma_20_50-stockcharts.csv.html',
+        'etfs_20_50_sma' : 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_20_50-stockcharts.csv.html',
         
         'industries_50_200_sma': 'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_industries_sma_50_200-stockcharts.csv.html',
         'etfs_50_200_sma':'https://investopsrecipes.s3.amazonaws.com/apps/stockcharts_as/etfworld_sma_50_200-stockcharts.csv.html',
@@ -497,6 +497,7 @@ with tab4:
                 st.write ('no data')
 
         with col3 :
+            
             st.write ('stocks')
             if 'silver' in sector_option :
                 col1_sector_option = "stocks_20_50_sma"
