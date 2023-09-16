@@ -16,6 +16,10 @@ import re
 st.set_page_config(page_title="Draft it for Me",layout='wide')
 
 url = 'https://investrecipes.s3.amazonaws.com/knowledge_graph.gv'
+import urllib.request
+with urllib.request.urlopen(url) as f:
+    html = f.read().decode('utf-8')
+
 r = requests.get(url, allow_redirects=True)
 st.graphviz_chart('''
     digraph {
@@ -34,6 +38,5 @@ st.graphviz_chart('''
         sleep -> runmem
     }
 ''')
-with open("knowledge_graph.gv", 'r') as file:
-    data = file.read().replace('\n', '')
-st.graphviz_chart(data)
+
+st.graphviz_chart(html)
