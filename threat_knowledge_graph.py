@@ -20,23 +20,4 @@ import urllib.request
 with urllib.request.urlopen(url) as f:
     html = f.read().decode('utf-8')
 
-r = requests.get(url, allow_redirects=True)
-st.graphviz_chart('''
-    digraph {
-        run -> intr
-        intr -> runbl
-        runbl -> run
-        run -> kernel
-        kernel -> zombie
-        kernel -> sleep
-        kernel -> runmem
-        sleep -> swap
-        swap -> runswap
-        runswap -> new
-        runswap -> runmem
-        new -> runmem
-        sleep -> runmem
-    }
-''')
-
 st.graphviz_chart(html)
