@@ -15,7 +15,7 @@ import re
 
 st.set_page_config(page_title="Draft it for Me",layout='wide')
 
-url = 'https://stockmills.s3.amazonaws.com/knowledge_graph.gv'
+url = 'https://investrecipes.s3.amazonaws.com/knowledge_graph.gv'
 r = requests.get(url, allow_redirects=True)
 
 st.graphviz_chart("knowledge_graph.gv")
