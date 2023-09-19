@@ -181,9 +181,12 @@ st.set_page_config(page_title="Draft it for Me",layout='wide')
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
+title = st.text_input('CVE ID', 'CVE-2023-35708')
+url = "https://nvd.nist.gov/vuln/detail/" + title
+
 text = fetch_text(url)
-st.write(text)
-st.write(url)
+#st.write(text)
+#st.write(url)
 kc=text
 objective = "understand the attack details and remediations"
 kg_schema = openai_schema (KnowledgeGraph)
