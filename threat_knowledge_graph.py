@@ -119,6 +119,6 @@ st.set_page_config(page_title="Draft it for Me",layout='wide')
 
 #st.graphviz_chart(html)
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
-fetch_text(url)
-st.write("hello")
+text = fetch_text(url)
+st.write(text)
 st.write(url)
