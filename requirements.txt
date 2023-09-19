@@ -1,5 +1,6 @@
 plotly
 selenium
+pydantic
 streamlit
 boto3
 openai
