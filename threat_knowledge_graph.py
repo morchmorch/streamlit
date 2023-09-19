@@ -23,21 +23,7 @@ from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 
 from graphviz import Digraph
 import ast
-def visualize_knowledge_graph(kg: KnowledgeGraph):
-    print (kg.keys())
-    dot = Digraph(comment="Knowledge Graph")
 
-    # Add nodes
-    for node in kg['nodes']:
-        dot.node(str(node['id']), node['label'], color=node['color'])
-
-    # Add edges
-    for edge in kg['edges']:
-        #dot.edge(str(edge['source']), str(edge['target']), label=edge['label'], color=edge['color'])
-        dot.edge(str(edge['source']), str(edge['target']), label=edge['label'])
-
-    # Render the graph
-    dot.render("knowledge_graph.gv", view=True)
     
 def openai_schema(cls):
     schema = cls.schema()
@@ -167,7 +153,21 @@ class KnowledgeGraph(BaseModel):
     nodes: List[Node] = Field(default_factory=list)
     edges: List[Edge] = Field(default_factory=list)
 
+def visualize_knowledge_graph(kg):
+    print (kg.keys())
+    dot = Digraph(comment="Knowledge Graph")
 
+    # Add nodes
+    for node in kg['nodes']:
+        dot.node(str(node['id']), node['label'], color=node['color'])
+
+    # Add edges
+    for edge in kg['edges']:
+        #dot.edge(str(edge['source']), str(edge['target']), label=edge['label'], color=edge['color'])
+        dot.edge(str(edge['source']), str(edge['target']), label=edge['label'])
+
+    # Render the graph
+    dot.render("/tmp/knowledge_graph.gv", view=True)
 
 st.set_page_config(page_title="Draft it for Me",layout='wide')
 
@@ -320,4 +320,9 @@ completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_c
 
 st.write (completion)
 ast.literal_eval (completion['choices'][0].message['function_call']['arguments'])
+
+with open('/tmp/knowledge_graph.gv', 'r', encoding='utf-8') as file:
+    file_contents = file.read()
+
+st.graphviz_chart (file_contents)
 st.write ("## Knowledge Graph")
