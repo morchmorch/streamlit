@@ -300,3 +300,5 @@ prompt_string =prompt_content.format(objective = objective) + "\n" + kc
 completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.5, user_content=prompt_string, functions = [kg_schema] ).completion
 
 st.write (completion)
+
+st.write ("## Knowledge Graph")
