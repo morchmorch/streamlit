@@ -20,10 +20,50 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 
-#blah
+def openai_schema(cls):
+    schema = cls.schema()
+    parameters = {
+        k: v for k, v in schema.items() if k not in ("title", "description")
+    }
+    parameters["required"] = sorted(parameters["properties"])
+    
+    return {
+        "name": schema["title"],
+        #"description": schema["description"],
+        "parameters": parameters,
+    }
 
 ## main
+class chat_complete:
 
+    def __init__(self, user_content, model="gpt-3.5-turbo-16k", temperature=0.1, functions=None, system_content="You are a helpful assistant"):
+        self.model = model
+        self.temperature = temperature
+        self.functions = functions if functions is not None else []
+        self.messages = [{"role": "user", "content": user_content}]
+        if system_content:
+            self.messages.insert(0, {"role": "system", "content": system_content})
+
+        self.completion = self.call_openai_create()
+        
+    
+    def call_openai_create(self):
+        task = {
+            "model": self.model,
+            "temperature": self.temperature,
+            "messages": self.messages
+        }
+
+        # Only add 'functions' key if self.functions is not empty
+        if self.functions:
+            task['functions'] = self.functions
+            task['function_call'] = {"name": self.functions[0]["name"]}
+
+        # Here we use OpenAI's API to create a completion
+        # completion = openai.ChatCompletion.create(**task)  # As per your original code
+        completion = openai.ChatCompletion.create(**task)  # As per OpenAI's API as of September 2021
+        # dlogging.info (completion)
+        return completion.to_dict()
 
 def initiate_driver_return_browser(url):
     print ( "initiate_driver_return_browser")
@@ -123,3 +163,140 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 text = fetch_text(url)
 st.write(text)
 st.write(url)
+kc=text
+objective = "understand the attack details and remediations"
+kg_schema = openai_schema (KnowledgeGraph)
+system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
+
+
+prompt_content = """ 
+ Your task is make the knowledge graph from an article for a given objective.
+ objective : {objective}
+ you must follow all reqirements that are listed below
+ ## graph requirements
+  - in the edges list, count the number of target ids for each source ids, and the
+  number must be list_target_ids for each node
+  - when you make the edges, ensure that there must not be more than 10 target node 
+    ids connected to any given source node id in the graph. the number in list_target_ids
+    for any given source node id must therefore be at most 10
+  - for edge colors, you must make it visually informative.  you must use red color for 
+    important bad items , green color for good items, be creative for other colors
+  - there graph should be uni-directional, no bi-directional edges.  for example,
+    if node 1 is connected to node 2, then node 2 should not be connected to node 1
+  - the number of target nodes that are attached to source node of id 1 should be at most 5
+  - group all related targets belonging to a theme to one soruce id
+  - all nodes in the graph should be connected to atleast one other node
+  - all labels should be text and strings, not integers
+  - num_edges for all nodes should be 2 or more
+  - all nodes should be connected to node with source id 1 , directly or indirectly
+  - focus on specific information such time periods, dates, numbers , percentages, make them as edges such as "on" or "during"
+  - if time periods are mentioned, use them as edges and put the nodes and IDs in chronological order
+  - ensure to be as exhaustive as you can, include all the details from the article to acheive the objective
+  
+  # example of a good graph output
+   ```
+     {{'nodes': [{{'id': 1,
+    'label': 'Attack Details (SOFARPC)',
+    'color': 'blue',
+    'num_targets': 4,
+    'num_sources': 0,
+    'list_target_ids': [3,4,8,18],
+    'num_edges': 4}},
+    {{'id': 2,
+    'label': 'Java RPC framework',
+    'color': 'blue',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [1],
+    'num_edges': 2}},
+    {{'id': 3,
+    'label': 'Versions prior to 5.11.0',
+    'color': 'blue',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [1],
+    'num_edges': 2}},
+    {{'id': 4,
+    'label': 'Remote command execution',
+    'color': 'red',
+    'num_targets': 1,
+    'num_sources': 2,
+    'list_target_ids': [1,5],
+    'num_edges': 3}},
+    {{'id': 5,
+    'label': 'Payload',
+    'color': 'red',
+    'num_targets': 2,
+    'num_sources': 1,
+    'list_target_ids': [4,6,7],
+    'num_edges': 3}},
+    {{'id': 6,
+    'label': 'JNDI injection',
+    'color': 'red',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [5],
+    'num_edges': 2}},
+    {{'id': 7,
+    'label': 'System command execution',
+    'color': 'red',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [5],
+    'num_edges': 2}},
+    {{'id': 9,
+    'label': 'Version 5.11.0',
+    'color': 'green',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [8],
+    'num_edges': 2}},
+    {{'id': 18,
+    'label': 'Fix',
+    'color': 'green',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [1],
+    'num_edges': 2}},
+    {{'id': 8,
+    'label': 'Workarounds and Fixe Details',
+    'color': 'green',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [9],
+    'num_edges': 2}},
+    {{'id': 11,
+    'label': '-Drpc_serialize_blacklist_override=javax.sound.sampled.AudioFileFormat',
+    'color': 'green',
+    'num_targets': 1,
+    'num_sources': 1,
+    'list_target_ids': [18],
+    'num_edges': 2}},
+    ],
+  'edges': [{{'source': 1, 'target': 2, 'label': 'is a', 'color': 'blue'}},
+    {{'source': 1, 'target': 3, 'label': 'Versions prior to', 'color': 'blue'}},
+    {{'source': 1, 'target': 4, 'label': 'vulnerable to', 'color': 'red'}},
+    {{'source': 4, 'target': 5, 'label': 'can achieve', 'color': 'blue'}},
+    {{'source': 5, 'target': 6, 'label': 'or', 'color': 'red'}},
+    {{'source': 5, 'target': 7, 'label': 'or', 'color': 'red'}},
+    {{'source': 1, 'target': 8, 'label': 'work around', 'color': 'red'}},
+    {{'source': 8, 'target': 9, 'label': 'or', 'color': 'green'}},
+    {{'source': 1, 'target': 18, 'label': 'fixed by', 'color': 'red'}},
+    {{'source': 18, 'target': 11, 'label': 'or', 'color': 'green'}},
+    
+    ]}}
+   ```
+  
+ think step by step, 
+  before you give the graph to the user =
+  - are the list_target_ids filled up for all nodes ?
+  - is the number of list_target_ids (num_targets) more than 8 ?
+  then re-do the graph
+
+ the attack article is as follows : 
+"""
+
+prompt_string =prompt_content.format(objective = objective) + "\n" + kc
+completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.5, user_content=prompt_string, functions = [kg_schema] ).completion
+
+st.write (completion)
