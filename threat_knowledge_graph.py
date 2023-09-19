@@ -167,7 +167,7 @@ def visualize_knowledge_graph(kg):
         dot.edge(str(edge['source']), str(edge['target']), label=edge['label'])
 
     # Render the graph
-    dot.render("/tmp/knowledge_graph.gv", view=True)
+    dot.render("/tmp/knowledge_graph.gv", view=False)
 
 st.set_page_config(page_title="Draft it for Me",layout='wide')
 
