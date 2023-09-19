@@ -2,6 +2,7 @@ plotly
 selenium
 pydantic
 streamlit
+graphviz
 boto3
 openai
 streamlit_authenticator

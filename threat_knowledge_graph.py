@@ -20,6 +20,25 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 
+
+from graphviz import Digraph
+import ast
+def visualize_knowledge_graph(kg: KnowledgeGraph):
+    print (kg.keys())
+    dot = Digraph(comment="Knowledge Graph")
+
+    # Add nodes
+    for node in kg['nodes']:
+        dot.node(str(node['id']), node['label'], color=node['color'])
+
+    # Add edges
+    for edge in kg['edges']:
+        #dot.edge(str(edge['source']), str(edge['target']), label=edge['label'], color=edge['color'])
+        dot.edge(str(edge['source']), str(edge['target']), label=edge['label'])
+
+    # Render the graph
+    dot.render("knowledge_graph.gv", view=True)
+    
 def openai_schema(cls):
     schema = cls.schema()
     parameters = {
@@ -300,5 +319,5 @@ prompt_string =prompt_content.format(objective = objective) + "\n" + kc
 completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.5, user_content=prompt_string, functions = [kg_schema] ).completion
 
 st.write (completion)
-
+ast.literal_eval (completion['choices'][0].message['function_call']['arguments'])
 st.write ("## Knowledge Graph")
