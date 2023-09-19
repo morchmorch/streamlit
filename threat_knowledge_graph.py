@@ -71,6 +71,7 @@ def fetch_text(url) -> List[str]:
                     text_arr.append(text)
             return ".".join (text_arr)
         except Exception as e:
+            st.write (e)
             print ("exceptin in fetch_text")
             return "NA"
 
