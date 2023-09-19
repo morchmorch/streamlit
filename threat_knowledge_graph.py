@@ -179,6 +179,8 @@ st.set_page_config(page_title="Draft it for Me",layout='wide')
 
 #st.graphviz_chart(html)
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
+url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
+
 text = fetch_text(url)
 st.write(text)
 st.write(url)
@@ -325,4 +327,3 @@ with open('/tmp/knowledge_graph.gv', 'r') as file:
     file_contents = file.read()
 
 st.graphviz_chart (file_contents)
-st.write ("## Knowledge Graph")
