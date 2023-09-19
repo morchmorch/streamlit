@@ -322,7 +322,7 @@ completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_c
 visualize_knowledge_graph ( ast.literal_eval (completion['choices'][0].message['function_call']['arguments']) )
 
 with open('/tmp/knowledge_graph.gv', 'r') as file:
-    file_contents = file.read().decode('utf-8')
+    file_contents = file.read()
 
 st.graphviz_chart (file_contents)
 st.write ("## Knowledge Graph")
