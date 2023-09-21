@@ -191,10 +191,10 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
 button_name = "Draw Knowledge Graph"
-response_while = "Right on it, it should be around 2-5 seconds ..."
+response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
-title = st.text_input('Enter any URL or a CVE ID', 'CVE-2023-35708')
+title = st.text_input('Enter any URL (https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (CVE-2023-35708)', 'CVE-2023-35708')
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
@@ -204,13 +204,14 @@ if sec_q_button or "enter" not in title.lower():
         if 'cve' in title.lower():
             url = "https://nvd.nist.gov/vuln/detail/" + title
         else :
-            title = url
+            url= title
         #text = fetch_text(url)
         #st.write(text)
         #st.write(url)
         kc= fetch_text_requests(url)
         objective = "understand the attack details and remediations"
         kg_schema = openai_schema (KnowledgeGraph)
+        st.write ('parsed the url, sending to openai for graph generation....')
         system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
 
         prompt_content = """ 
