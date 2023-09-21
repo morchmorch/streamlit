@@ -200,7 +200,7 @@ kc= fetch_text_requests(url)
 objective = "understand the attack details and remediations"
 kg_schema = openai_schema (KnowledgeGraph)
 system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
-
+st.write (kc)
 
 prompt_content = """ 
  Your task is make the knowledge graph from an article for a given objective.
@@ -329,7 +329,7 @@ prompt_content = """
  the attack article is as follows : 
 """
 
-prompt_string =prompt_content.format(objective = objective) + "\n" + kc
+prompt_string =prompt_content.format(objective = objective) + "\n" + str(kc)
 completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.5, user_content=prompt_string, functions = [kg_schema] ).completion
 
 #st.write (completion)
