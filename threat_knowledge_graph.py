@@ -106,13 +106,11 @@ def initiate_driver_return_browser(url):
 def fetch_text_requests(url) -> List[str]:
         import requests
         from bs4 import BeautifulSoup
-
-        def fetch_text_requests(url) -> List[str]:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            body = soup.find('body').get_text()
-            return body.split('\n')
-        
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        body = soup.find('body').get_text()
+        return body.split('\n')
+    
 
 def fetch_text(url) -> List[str]:
         text_arr = []
