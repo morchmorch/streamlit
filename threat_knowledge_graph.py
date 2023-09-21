@@ -202,7 +202,6 @@ kc= fetch_text_requests(url)
 objective = "understand the attack details and remediations"
 kg_schema = openai_schema (KnowledgeGraph)
 system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
-st.write (kc)
 
 prompt_content = """ 
  Your task is make the knowledge graph from an article for a given objective.
