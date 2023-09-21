@@ -103,6 +103,17 @@ def initiate_driver_return_browser(url):
     time.sleep(2)
     return browser 
 
+def fetch_text_requests(url) -> List[str]:
+        import requests
+        from bs4 import BeautifulSoup
+
+        def fetch_text_requests(url) -> List[str]:
+            response = requests.get(url)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            body = soup.find('body').get_text()
+            return body.split('\n')
+        
+
 def fetch_text(url) -> List[str]:
         text_arr = []
         try :
@@ -187,7 +198,7 @@ url = "https://nvd.nist.gov/vuln/detail/" + title
 #text = fetch_text(url)
 #st.write(text)
 #st.write(url)
-kc=text
+kc= fetch_text_requests(url)
 objective = "understand the attack details and remediations"
 kg_schema = openai_schema (KnowledgeGraph)
 system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
