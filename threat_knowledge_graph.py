@@ -191,6 +191,8 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
 button_name = "Draw Knowledge Graph"
+response_while = "Right on it, it should be around 2-5 seconds ..."
+response_after = "Here you go ...  "
 
 title = st.text_input('Enter any URL or a CVE ID', 'CVE-2023-35708')
 
