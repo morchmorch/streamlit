@@ -190,9 +190,11 @@ st.set_page_config(page_title="Draft it for Me",layout='wide')
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
-title = st.text_input('CVE ID', 'CVE-2023-35708')
-url = "https://nvd.nist.gov/vuln/detail/" + title
-
+title = st.text_input('Enter any URL or a CVE ID', 'CVE-2023-35708')
+if 'cve' in title.lower():
+    url = "https://nvd.nist.gov/vuln/detail/" + title
+else :
+    title = url
 #text = fetch_text(url)
 #st.write(text)
 #st.write(url)
