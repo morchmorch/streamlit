@@ -184,7 +184,7 @@ url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 title = st.text_input('CVE ID', 'CVE-2023-35708')
 url = "https://nvd.nist.gov/vuln/detail/" + title
 
-text = fetch_text(url)
+#text = fetch_text(url)
 #st.write(text)
 #st.write(url)
 kc=text
