@@ -190,6 +190,8 @@ st.set_page_config(page_title="Draft it for Me",layout='wide')
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
+button_name = "Draw Knowledge Graph"
+
 title = st.text_input('Enter any URL or a CVE ID', 'CVE-2023-35708')
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
