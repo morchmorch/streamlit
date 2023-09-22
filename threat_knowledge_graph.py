@@ -178,7 +178,7 @@ def visualize_knowledge_graph(kg):
     # Render the graph
     dot.render("/tmp/knowledge_graph.gv", view=False)
 
-st.set_page_config(page_title="Draft it for Me",layout='wide')
+st.set_page_config(page_title="SecurityGPT Threat Knowledge Graphs",layout='wide')
 
 #url = 'https://investrecipes.s3.amazonaws.com/knowledge_graph.gv'
 
@@ -195,6 +195,7 @@ response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
 title = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
+objective = st.text_input('understand the attack details ')
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
@@ -209,7 +210,7 @@ if sec_q_button or "enter" not in title.lower():
         #st.write(text)
         #st.write(url)
         kc= fetch_text_requests(url)
-        objective = "understand the attack details and remediations"
+        objective = objective
         kg_schema = openai_schema (KnowledgeGraph)
         st.write ('parsed the url, sending to openai for graph generation....')
         system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
