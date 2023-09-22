@@ -195,7 +195,7 @@ response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
 title = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
-objective = st.text_input('understand the attack details ')
+objective = st.text_input("objective", 'understand the attack details ')
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
