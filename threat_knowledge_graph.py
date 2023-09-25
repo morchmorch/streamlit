@@ -180,6 +180,8 @@ def visualize_knowledge_graph(kg):
 
 st.set_page_config(page_title="SecurityGPT Threat Knowledge Graphs",layout='wide')
 
+st.header("SecurityGPT - Draw any URL as a Threat Knowledge Graphs")
+
 #url = 'https://investrecipes.s3.amazonaws.com/knowledge_graph.gv'
 
 #import urllib.request
@@ -194,21 +196,22 @@ button_name = "Draw Knowledge Graph"
 response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
-title = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
-objective = st.text_input("objective", 'understand the attack in exhaustive detail, the who, the what, the how ')
+partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
+objective = st.text_input("objective", 'understand the technical details cyber security attack exhaustively, the who (who is responsible, who got affected), the what (techniques), how it started, how it propagated')
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
 if sec_q_button :
     with st.spinner ( response_while ) :
 
-        if 'cve' in title.lower():
-            url = "https://nvd.nist.gov/vuln/detail/" + title
+        if 'cve' in partial_url.lower():
+            url = "https://nvd.nist.gov/vuln/detail/" + partial_url
         else :
-            url= title
+            url= partial_url
         #text = fetch_text(url)
         #st.write(text)
         #st.write(url)
+        st.write ('fetching the url ' + url )
         kc= fetch_text_requests(url)
         objective = objective
         kg_schema = openai_schema (KnowledgeGraph)
