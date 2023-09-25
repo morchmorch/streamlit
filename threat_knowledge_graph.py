@@ -211,7 +211,7 @@ if sec_q_button :
         #text = fetch_text(url)
         #st.write(text)
         #st.write(url)
-        st.write ('fetching the url ' + url )
+        st.write ('fetching the url - ' + url )
         kc= fetch_text_requests(url)
         objective = objective
         kg_schema = openai_schema (KnowledgeGraph)
@@ -219,9 +219,11 @@ if sec_q_button :
         system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
 
         prompt_content = """ 
-        Your task is make the knowledge graph from an article for a given objective.
+        Your task is make the knowledge graph from an article text for a given objective.
+        the article test is under the section # article_text
         objective : {objective}
         you must follow all reqirements that are listed below
+        
         ## graph requirements
         - in the edges list, count the number of target ids for each source ids, and the
         number must be list_target_ids for each node
@@ -340,13 +342,15 @@ if sec_q_button :
         before you give the graph to the user =
         - are the list_target_ids filled up for all nodes ?
         - is the number of list_target_ids (num_targets) more than 8 ?
+        - do not hallucinate, do not repeat the example, analyze the text and make the graph
         then re-do the graph
 
         the attack article is as follows : 
+        # article_text
         """
 
         prompt_string =prompt_content.format(objective = objective) + "\n" + str(kc)
-        completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.5, user_content=prompt_string, functions = [kg_schema] ).completion
+        completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string, functions = [kg_schema] ).completion
 
         #st.write (completion)
         visualize_knowledge_graph ( ast.literal_eval (completion['choices'][0].message['function_call']['arguments']) )
