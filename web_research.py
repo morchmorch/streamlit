@@ -253,13 +253,13 @@ objective = st.text_input("Topic you want to research and write a report on (ex-
 
 links = serp_news_search({'query': objective, 'limit': 5})
 
-
+current_report = "NA"
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
 if sec_q_button :
     with st.spinner ( response_while ) :
         with st.empty ():
-            current_report = "NA"
+            
             for link in links :
                 st.write ('reading ...  ' + link)
                 #st.markdown('#### Reading the URL ' + link)
@@ -348,4 +348,4 @@ if sec_q_button :
 
                 st.markdown (completion['choices'][0]["message"]["content"])
                 current_report = completion['choices'][0]["message"]["content"]
-                time.sleep (5)
+                time.sleep (10)
