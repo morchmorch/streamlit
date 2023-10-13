@@ -28,6 +28,8 @@ from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 
+os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_API_KEY']
+
 def openai_schema(cls):
     schema = cls.schema()
     parameters = {
