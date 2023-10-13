@@ -260,7 +260,7 @@ if sec_q_button :
     with st.spinner ( response_while ) :
         with st.empty ():
             for link in links :
-                st.write ('reading ...  ', link)
+                st.write ('reading ...  ' + link)
                 st.markdown('#### Reading the URL ' + link)
                 st.write ('Analyzing and writing the report ')
                 request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
