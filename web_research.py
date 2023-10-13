@@ -25,7 +25,9 @@ from graphviz import Digraph
 import ast
 import urllib.request
 from urllib.request import Request, urlopen
-    
+from bs4 import BeautifulSoup
+from bs4.element import Comment
+
 def openai_schema(cls):
     schema = cls.schema()
     parameters = {
