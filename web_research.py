@@ -258,81 +258,81 @@ sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
 if sec_q_button :
     with st.spinner ( response_while ) :
+        with st.empty ():
+            for link in links :
+                st.write ('reading ...  ', link)
+                st.write ('Analyzing ')
+                request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
 
-        for link in links :
-            st.write ('reading ...  ', link)
-            st.write ('Analyzing ')
-            request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
+                #html = urllib.request.urlopen(sys.argv[1]).read()
+                #print(text_from_html(html))
+                #initiate_driver_return_browser(sys.argv[1])
+                webpage = urlopen(request).read()
+                text = text_from_html (webpage)
+                #print (text)
+                system_content = """ 
+                You are an excellent analyst with the ability to write comprehensive research report based on the information given to you.
+                """
+                prompt_content = """ 
 
-            #html = urllib.request.urlopen(sys.argv[1]).read()
-            #print(text_from_html(html))
-            #initiate_driver_return_browser(sys.argv[1])
-            webpage = urlopen(request).read()
-            text = text_from_html (webpage)
-            #print (text)
-            system_content = """ 
-            You are an excellent analyst with the ability to write comprehensive research report based on the information given to you.
-            """
-            prompt_content = """ 
-
-                # Your Role
-                        You are an excellent analyst with the ability to write comprehensive research report based on the 
-                        information given to you.
-                # Objective
-                {objective}
-                # Your Task
+                    # Your Role
+                            You are an excellent analyst with the ability to write comprehensive research report based on the 
+                            information given to you.
+                    # Objective
+                    {objective}
+                    # Your Task
 
 
-                Your job is to write a comprehensive report to fulfill the primary goals
-                under OBJECTIVE, using the information given to you.
-                To accomplish this task, you would be given three different sets of information. 
-                - The first set of information you will be given is the data collected from a website.
-                - The second set of information is an existing report that was written from data sourced from different websites and corresponding URLs(s).
-                - The third set of information is the URL of the website itself from which the data is soruced.
-                ### Location of the information that I am passing to you
-                - The data that is given to you is sourced from a website, that is under ## New_URL Section.  
-                - The data that is sourced that you will be basing the report on is under te # New_Data Section.
-                - The existing report that is given to you is under the # Current_Report section.
-                ### Contexts of writing the report
-                There can be two different contexts under which you have to write the report 
-                - There is a current report that you have to enhance : if the # Current_Report section is not 'NA', then your task is to enhance the report in the # Current_Report section  with the information that I am supplying is in the newdata section.  If that is the case, add the new URL that is in the New_URL section to the reference URL table, and enhance the content in the current report, add the citations for the new URL and produce the new report.
-                - There is no existing report, you are starting fresh: If the # Current_Report Section is "NA", then, your task is to write the report for the objective afresh, since there is no existing report.
+                    Your job is to write a comprehensive report to fulfill the primary goals
+                    under OBJECTIVE, using the information given to you.
+                    To accomplish this task, you would be given three different sets of information. 
+                    - The first set of information you will be given is the data collected from a website.
+                    - The second set of information is an existing report that was written from data sourced from different websites and corresponding URLs(s).
+                    - The third set of information is the URL of the website itself from which the data is soruced.
+                    ### Location of the information that I am passing to you
+                    - The data that is given to you is sourced from a website, that is under ## New_URL Section.  
+                    - The data that is sourced that you will be basing the report on is under te # New_Data Section.
+                    - The existing report that is given to you is under the # Current_Report section.
+                    ### Contexts of writing the report
+                    There can be two different contexts under which you have to write the report 
+                    - There is a current report that you have to enhance : if the # Current_Report section is not 'NA', then your task is to enhance the report in the # Current_Report section  with the information that I am supplying is in the newdata section.  If that is the case, add the new URL that is in the New_URL section to the reference URL table, and enhance the content in the current report, add the citations for the new URL and produce the new report.
+                    - There is no existing report, you are starting fresh: If the # Current_Report Section is "NA", then, your task is to write the report for the objective afresh, since there is no existing report.
 
-                # Your Response and Output Format
-                You should ONLY respond in the Markdown format as described below
-                Markdown document with a title (which is the objective) and multiple sections, each with up to 2000 words.
-                Start each section with a H1 heading with emoji (e.g. `# ⛳️ Title`).  use approritate emoji for each section's and subection heading and content.  Add references to the URLs in the text of the report using the [^number^] format, where number is the id of the URL reference so the reader can reference the sources of the text in your report.
-                
-                You must keep the URLs and your notes in the  Notes_And_References section, which must be the last section of the report
-
-                Instructions on how to build up the Notes_And_References section -
-                1. It has two subsections, ##Notes and ##Reference_URLs.
-
-                ### Instructions on how to write notes section 
-                1. The ##Notes must have notes around what you changed in the existing report and why.  
-                #### Instructions on how to build the #Reference_URLs section is as follows:
-                1. The "Reference_URLs" section must have a table, with 5 columns: Citation ID, URL and Summary, "New or Existing URL" and "Sections where References are Added". 
-                1. You must include the URL (or add to the existing table) in the Reference_URL section.
-                1. You must add the URL Citation ID and corresponding citations to the report as you are enhancing the current report or writing a fresh report
-
-                # Check list Before your show me the report 
-
-                Think step by step, and produce the new report.  Before producing the report, check the following and add how you accomplished these to the notes section -
-
-                        - check 1 : How many existing URLs are there in the current report ? Did you keep all the existing and relevant URLs and corresponding citations in the old Reference_URL table and not remove them ? --> this is a must pls check
-                        - check 2 : Did you add the new URL supplied to the reference table using the [^num^] notation ? what is the new url and did you add the fact that its a new URL to the table ? what is the ciation ID for the new URL ? which sections did you add the citations with that citation ID of the new URL ? list the sections 
+                    # Your Response and Output Format
+                    You should ONLY respond in the Markdown format as described below
+                    Markdown document with a title (which is the objective) and multiple sections, each with up to 2000 words.
+                    Start each section with a H1 heading with emoji (e.g. `# ⛳️ Title`).  use approritate emoji for each section's and subection heading and content.  Add references to the URLs in the text of the report using the [^number^] format, where number is the id of the URL reference so the reader can reference the sources of the text in your report.
                     
-                        - Give importance to numbers such as dates, percentages, and other numerical data to include in the report
-            # New_URL
-            {url}
+                    You must keep the URLs and your notes in the  Notes_And_References section, which must be the last section of the report
 
-            # New_Data
-            {new_data}
-            """
+                    Instructions on how to build up the Notes_And_References section -
+                    1. It has two subsections, ##Notes and ##Reference_URLs.
 
-            prompt_string =prompt_content.format(objective = objective, url=link, new_data=text) 
-            completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string ).completion
+                    ### Instructions on how to write notes section 
+                    1. The ##Notes must have notes around what you changed in the existing report and why.  
+                    #### Instructions on how to build the #Reference_URLs section is as follows:
+                    1. The "Reference_URLs" section must have a table, with 5 columns: Citation ID, URL and Summary, "New or Existing URL" and "Sections where References are Added". 
+                    1. You must include the URL (or add to the existing table) in the Reference_URL section.
+                    1. You must add the URL Citation ID and corresponding citations to the report as you are enhancing the current report or writing a fresh report
+
+                    # Check list Before your show me the report 
+
+                    Think step by step, and produce the new report.  Before producing the report, check the following and add how you accomplished these to the notes section -
+
+                            - check 1 : How many existing URLs are there in the current report ? Did you keep all the existing and relevant URLs and corresponding citations in the old Reference_URL table and not remove them ? --> this is a must pls check
+                            - check 2 : Did you add the new URL supplied to the reference table using the [^num^] notation ? what is the new url and did you add the fact that its a new URL to the table ? what is the ciation ID for the new URL ? which sections did you add the citations with that citation ID of the new URL ? list the sections 
+                        
+                            - Give importance to numbers such as dates, percentages, and other numerical data to include in the report
+                # New_URL
+                {url}
+
+                # New_Data
+                {new_data}
+                """
+
+                prompt_string =prompt_content.format(objective = objective, url=link, new_data=text) 
+                completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string ).completion
 
 
-            st.markdown (completion['choices'][0]["message"]["content"])
-            time.sleep (5)
+                st.markdown (completion['choices'][0]["message"]["content"])
+                time.sleep (2)
