@@ -178,6 +178,53 @@ def visualize_knowledge_graph(kg):
     # Render the graph
     dot.render("/tmp/knowledge_graph.gv", view=False)
 
+ef serp_news_search (query_json) :
+
+	search = query_json['query']
+	number = query_json['limit']
+
+	params = {
+        "api_key": os.environ["SERPAPI_API_KEY"],         # https://serpapi.com/manage-api-key
+        "engine": "google",       # serpapi parsing engine
+        "q": search,         # search query
+        "tbm": "nws"  ,            # news results
+        "h1": "en",                # language
+        "gl": "us",                # country to search from
+        "google_domain": "google.com",
+        "num": number,
+        "tbs": "qdr:d3" # last week
+        }
+
+
+	search = GoogleSearch(params) # where data extraction happens
+	results = search.get_dict()   # returns an iterator of all pages
+	news_dict_arr = []
+	for result in results["news_results"]:
+		news_dict_arr.append(result)
+	#titles_and_links = [ {'title': news_dict_arr[i]['title'], 'link': news_dict_arr[i]['link'], 'snippet': news_dict_arr[i]['snippet']}   for i in range(len(news_dict_arr)) ]
+	titles_and_links = [ {'title': news_dict_arr[i]['title'], 'link': news_dict_arr[i]['link'] }   for i in range(len(news_dict_arr)) ]
+	
+	# Extracting links from titles_and_links
+	links = [item['link'] for item in titles_and_links if 'youtube' not in item['link'] ]
+
+ 	#links = [ link_dict['link'] for link_dict in titles_and_links if 'youtube' not in link ]
+	
+	return links
+
+def tag_visible(element):
+    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+        return False
+    if isinstance(element, Comment):
+        return False
+    return True
+
+
+def text_from_html(body):
+    soup = BeautifulSoup(body, 'html.parser')
+    texts = soup.findAll(text=True)
+    visible_texts = filter(tag_visible, texts)  
+    return u" ".join(t.strip() for t in visible_texts)
+
 st.set_page_config(page_title="SecurityGPT Threat Knowledge Graphs",layout='wide')
 
 st.header("SecurityGPT - Draw any URL as a Threat Knowledge Graphs")
@@ -198,6 +245,18 @@ response_after = "Here you go ...  "
 
 partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
 objective = st.text_input("objective", 'understand the technical details cyber security attack exhaustively, the who (who is responsible, who got affected), the what (techniques), how it started, how it propagated')
+
+serp_news_search({'query': objective, 'limit': 5})
+
+request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
+
+#html = urllib.request.urlopen(sys.argv[1]).read()
+#print(text_from_html(html))
+#initiate_driver_return_browser(sys.argv[1])
+webpage = urlopen(request).read()
+text = text_from_html (webpage)
+print (text)
+
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
 st.markdown ( "--------")
