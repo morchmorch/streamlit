@@ -264,6 +264,8 @@ if sec_q_button :
                 #st.markdown('#### Reading the URL ' + link)
                 multi = ''' 
                      __Reading ...__    {link}
+                     
+                     
                      **Analyzing and writing the report**
                 '''.format(link=link)
                 #st.markdown (' __Reading ...__   ' + link + ' \n **Analyzing and writing the report** ')
