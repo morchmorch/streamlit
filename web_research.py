@@ -178,7 +178,7 @@ def visualize_knowledge_graph(kg):
     # Render the graph
     dot.render("/tmp/knowledge_graph.gv", view=False)
 
-ef serp_news_search (query_json) :
+def serp_news_search (query_json) :
 
 	search = query_json['query']
 	number = query_json['limit']
@@ -243,19 +243,10 @@ button_name = "Draw Knowledge Graph"
 response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
-partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
-objective = st.text_input("objective", 'understand the technical details cyber security attack exhaustively, the who (who is responsible, who got affected), the what (techniques), how it started, how it propagated')
+#partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
+objective = st.text_input("Topic", 'Report on latest CURL vulnerabilities')
 
-serp_news_search({'query': objective, 'limit': 5})
-
-request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
-
-#html = urllib.request.urlopen(sys.argv[1]).read()
-#print(text_from_html(html))
-#initiate_driver_return_browser(sys.argv[1])
-webpage = urlopen(request).read()
-text = text_from_html (webpage)
-print (text)
+links = serp_news_search({'query': objective, 'limit': 5})
 
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
@@ -263,158 +254,76 @@ st.markdown ( "--------")
 if sec_q_button :
     with st.spinner ( response_while ) :
 
-        if 'cve' in partial_url.lower():
-            url = "https://nvd.nist.gov/vuln/detail/" + partial_url
-        else :
-            url= partial_url
-        #text = fetch_text(url)
-        #st.write(text)
-        #st.write(url)
-        st.write ('fetching the url - ' + url )
-        kc= fetch_text_requests(url)
-        objective = objective
-        kg_schema = openai_schema (KnowledgeGraph)
-        st.write ('parsed the url, sending to openai for graph generation....')
-        system_content = "You are an an awesome information security engineer and detailed knowledge graph developer"
+        for link in links :
+
+        request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
+
+        #html = urllib.request.urlopen(sys.argv[1]).read()
+        #print(text_from_html(html))
+        #initiate_driver_return_browser(sys.argv[1])
+        webpage = urlopen(request).read()
+        text = text_from_html (webpage)
+        #print (text)
 
         prompt_content = """ 
-        Your task is make the knowledge graph from an article text for a given objective.
-        the article test is under the section # article_text
-        objective : {objective}
-        you must follow all reqirements that are listed below
-        
-        ## graph requirements
-        - in the edges list, count the number of target ids for each source ids, and the
-        number must be list_target_ids for each node
-        - when you make the edges, ensure that there must not be more than 10 target node 
-            ids connected to any given source node id in the graph. the number in list_target_ids
-            for any given source node id must therefore be at most 10
-        - for edge colors, you must make it visually informative.  you must use red color for 
-            important bad items , green color for good items, be creative for other colors
-        - there graph should be uni-directional, no bi-directional edges.  for example,
-            if node 1 is connected to node 2, then node 2 should not be connected to node 1
-        - the number of target nodes that are attached to source node of id 1 should be at most 5
-        - group all related targets belonging to a theme to one soruce id
-        - all nodes in the graph should be connected to atleast one other node
-        - all labels should be text and strings, not integers
-        - num_edges for all nodes should be 2 or more
-        - all nodes should be connected to node with source id 1 , directly or indirectly
-        - focus on specific information such time periods, dates, numbers , percentages, make them as edges such as "on" or "during"
-        - if time periods are mentioned, use them as edges and put the nodes and IDs in chronological order
-        - ensure to be as exhaustive as you can, include all the details from the article to acheive the objective
-        
-        # example of a good graph output
-        ```
-            {{'nodes': [{{'id': 1,
-            'label': 'Attack Details (SOFARPC)',
-            'color': 'blue',
-            'num_targets': 4,
-            'num_sources': 0,
-            'list_target_ids': [3,4,8,18],
-            'num_edges': 4}},
-            {{'id': 2,
-            'label': 'Java RPC framework',
-            'color': 'blue',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [1],
-            'num_edges': 2}},
-            {{'id': 3,
-            'label': 'Versions prior to 5.11.0',
-            'color': 'blue',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [1],
-            'num_edges': 2}},
-            {{'id': 4,
-            'label': 'Remote command execution',
-            'color': 'red',
-            'num_targets': 1,
-            'num_sources': 2,
-            'list_target_ids': [1,5],
-            'num_edges': 3}},
-            {{'id': 5,
-            'label': 'Payload',
-            'color': 'red',
-            'num_targets': 2,
-            'num_sources': 1,
-            'list_target_ids': [4,6,7],
-            'num_edges': 3}},
-            {{'id': 6,
-            'label': 'JNDI injection',
-            'color': 'red',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [5],
-            'num_edges': 2}},
-            {{'id': 7,
-            'label': 'System command execution',
-            'color': 'red',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [5],
-            'num_edges': 2}},
-            {{'id': 9,
-            'label': 'Version 5.11.0',
-            'color': 'green',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [8],
-            'num_edges': 2}},
-            {{'id': 18,
-            'label': 'Fix',
-            'color': 'green',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [1],
-            'num_edges': 2}},
-            {{'id': 8,
-            'label': 'Workarounds and Fixe Details',
-            'color': 'green',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [9],
-            'num_edges': 2}},
-            {{'id': 11,
-            'label': '-Drpc_serialize_blacklist_override=javax.sound.sampled.AudioFileFormat',
-            'color': 'green',
-            'num_targets': 1,
-            'num_sources': 1,
-            'list_target_ids': [18],
-            'num_edges': 2}},
-            ],
-        'edges': [{{'source': 1, 'target': 2, 'label': 'is a', 'color': 'blue'}},
-            {{'source': 1, 'target': 3, 'label': 'Versions prior to', 'color': 'blue'}},
-            {{'source': 1, 'target': 4, 'label': 'vulnerable to', 'color': 'red'}},
-            {{'source': 4, 'target': 5, 'label': 'can achieve', 'color': 'blue'}},
-            {{'source': 5, 'target': 6, 'label': 'or', 'color': 'red'}},
-            {{'source': 5, 'target': 7, 'label': 'or', 'color': 'red'}},
-            {{'source': 1, 'target': 8, 'label': 'work around', 'color': 'red'}},
-            {{'source': 8, 'target': 9, 'label': 'or', 'color': 'green'}},
-            {{'source': 1, 'target': 18, 'label': 'fixed by', 'color': 'red'}},
-            {{'source': 18, 'target': 11, 'label': 'or', 'color': 'green'}},
-            
-            ]}}
-        ```
-        
-        think step by step, 
-        before you give the graph to the user =
-        - are the list_target_ids filled up for all nodes ?
-        - is the number of list_target_ids (num_targets) more than 8 ?
-        - do not hallucinate, do not repeat the example, analyze the text and make the graph
-        then re-do the graph
 
-        the attack article is as follows : 
-        # article_text
+            # Your Role
+                    You are an excellent analyst with the ability to write comprehensive research report based on the 
+                    information given to you.
+            # Objective
+            {objective}
+            # Your Task
+
+
+            Your job is to write a comprehensive report to fulfill the primary goals
+            under OBJECTIVE, using the information given to you.
+            To accomplish this task, you would be given three different sets of information. 
+            - The first set of information you will be given is the data collected from a website.
+            - The second set of information is an existing report that was written from data sourced from different websites and corresponding URLs(s).
+            - The third set of information is the URL of the website itself from which the data is soruced.
+            ### Location of the information that I am passing to you
+            - The data that is given to you is sourced from a website, that is under ## New_URL Section.  
+            - The data that is sourced that you will be basing the report on is under te # New_Data Section.
+            - The existing report that is given to you is under the # Current_Report section.
+            ### Contexts of writing the report
+            There can be two different contexts under which you have to write the report 
+            - There is a current report that you have to enhance : if the # Current_Report section is not 'NA', then your task is to enhance the report in the # Current_Report section  with the information that I am supplying is in the newdata section.  If that is the case, add the new URL that is in the New_URL section to the reference URL table, and enhance the content in the current report, add the citations for the new URL and produce the new report.
+            - There is no existing report, you are starting fresh: If the # Current_Report Section is "NA", then, your task is to write the report for the objective afresh, since there is no existing report.
+
+            # Your Response and Output Format
+            You should ONLY respond in the Markdown format as described below
+            Markdown document with a title (which is the objective) and multiple sections, each with up to 2000 words.
+            Start each section with a H1 heading with emoji (e.g. `# ⛳️ Title`).  use approritate emoji for each section's and subection heading and content.  Add references to the URLs in the text of the report using the [^number^] format, where number is the id of the URL reference so the reader can reference the sources of the text in your report.
+            
+            You must keep the URLs and your notes in the  Notes_And_References section, which must be the last section of the report
+
+            Instructions on how to build up the Notes_And_References section -
+            1. It has two subsections, ##Notes and ##Reference_URLs.
+
+            ### Instructions on how to write notes section 
+            1. The ##Notes must have notes around what you changed in the existing report and why.  
+            #### Instructions on how to build the #Reference_URLs section is as follows:
+            1. The "Reference_URLs" section must have a table, with 5 columns: Citation ID, URL and Summary, "New or Existing URL" and "Sections where References are Added". 
+            1. You must include the URL (or add to the existing table) in the Reference_URL section.
+            1. You must add the URL Citation ID and corresponding citations to the report as you are enhancing the current report or writing a fresh report
+
+            # Check list Before your show me the report 
+
+            Think step by step, and produce the new report.  Before producing the report, check the following and add how you accomplished these to the notes section -
+
+                    - check 1 : How many existing URLs are there in the current report ? Did you keep all the existing and relevant URLs and corresponding citations in the old Reference_URL table and not remove them ? --> this is a must pls check
+                    - check 2 : Did you add the new URL supplied to the reference table using the [^num^] notation ? what is the new url and did you add the fact that its a new URL to the table ? what is the ciation ID for the new URL ? which sections did you add the citations with that citation ID of the new URL ? list the sections 
+                
+                    - Give importance to numbers such as dates, percentages, and other numerical data to include in the report
+        # New_URL
+        {url}
+
+        # New_Data
+        {new_data}
         """
 
-        prompt_string =prompt_content.format(objective = objective) + "\n" + str(kc)
+        prompt_string =prompt_content.format(objective = objective, url=link, new_data=text) + "\n" + str(kc)
         completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string, functions = [kg_schema] ).completion
 
-        #st.write (completion)
-        visualize_knowledge_graph ( ast.literal_eval (completion['choices'][0].message['function_call']['arguments']) )
 
-        with open('/tmp/knowledge_graph.gv', 'r') as file:
-            file_contents = file.read()
-
-        st.graphviz_chart (file_contents)
+        st.markdown (completion['choices'][0].message['function_call']['arguments'])
