@@ -342,8 +342,8 @@ if sec_q_button :
                 {current_report}
                 """
 
-                prompt_string =prompt_content.format(objective = objective, url=link, new_data=text) 
-                completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string, current_report=current_report ).completion
+                prompt_string =prompt_content.format(objective = objective, url=link, new_data=text, current_report=current_report) 
+                completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string).completion
 
 
                 st.markdown (completion['choices'][0]["message"]["content"])
