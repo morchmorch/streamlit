@@ -262,7 +262,7 @@ if sec_q_button :
             for link in links :
                 st.write ('reading ...  ', link)
                 st.markdown('#### Reading the URL ' + link)
-                st.write ('Analyzing ')
+                st.write ('Analyzing and writing the report ')
                 request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
 
                 #html = urllib.request.urlopen(sys.argv[1]).read()
@@ -336,4 +336,4 @@ if sec_q_button :
 
 
                 st.markdown (completion['choices'][0]["message"]["content"])
-                time.sleep (2)
+                time.sleep (5)
