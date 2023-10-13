@@ -23,7 +23,8 @@ from serpapi import GoogleSearch
 
 from graphviz import Digraph
 import ast
-
+import urllib.request
+from urllib.request import Request, urlopen
     
 def openai_schema(cls):
     schema = cls.schema()
@@ -225,9 +226,9 @@ def text_from_html(body):
     visible_texts = filter(tag_visible, texts)  
     return u" ".join(t.strip() for t in visible_texts)
 
-st.set_page_config(page_title="SecurityGPT Threat Knowledge Graphs",layout='wide')
+st.set_page_config(page_title="Auto Research and Report",layout='wide')
 
-st.header("SecurityGPT - Draw any URL as a Threat Knowledge Graphs")
+st.header("Auto Research - Auto Web Research and Write Professional Looking Report on Any Topic")
 
 #url = 'https://investrecipes.s3.amazonaws.com/knowledge_graph.gv'
 
@@ -239,7 +240,7 @@ st.header("SecurityGPT - Draw any URL as a Threat Knowledge Graphs")
 url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.html"
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
-button_name = "Draw Knowledge Graph"
+button_name = "Write Report"
 response_while = "Right on it, it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
