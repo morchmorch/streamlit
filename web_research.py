@@ -245,7 +245,7 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
 button_name = "Write Report"
-response_while = "Right on it,  searching the web  .. it should be around 5-10 seconds ..."
+response_while = "Right on it,  searching the web  .. it should be around 5-10 seconds ... (research limited to top 2 links)"
 response_after = "Here you go ...  "
 
 #partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
@@ -259,6 +259,7 @@ st.markdown ( "--------")
 if sec_q_button :
     with st.spinner ( response_while ) :
         with st.empty ():
+            current_report = "NA"
             for link in links :
                 st.write ('reading ...  ' + link)
                 #st.markdown('#### Reading the URL ' + link)
@@ -336,11 +337,15 @@ if sec_q_button :
 
                 # New_Data
                 {new_data}
+
+                # Current_Report
+                {current_report}
                 """
 
                 prompt_string =prompt_content.format(objective = objective, url=link, new_data=text) 
-                completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string ).completion
+                completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string, current_report=current_report ).completion
 
 
                 st.markdown (completion['choices'][0]["message"]["content"])
+                current_report = completion['choices'][0]["message"]["content"]
                 time.sleep (5)
