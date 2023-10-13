@@ -24,6 +24,7 @@ from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 from graphviz import Digraph
 import ast
 
+os.environ['OPENAI_API_KEY'] = st.secrets['OPEN_API_KEY']
     
 def openai_schema(cls):
     schema = cls.schema()
