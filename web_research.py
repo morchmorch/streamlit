@@ -245,7 +245,7 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
 button_name = "Write Report"
-response_while = "Right on it, it should be around 5-10 seconds ..."
+response_while = "Right on it, it should be around 5-10 seconds ... searching the web "
 response_after = "Here you go ...  "
 
 #partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
@@ -260,7 +260,8 @@ if sec_q_button :
     with st.spinner ( response_while ) :
 
         for link in links :
-
+            st.write ('reading ...  ', link)
+            st.write ('Analyzing ')
             request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
 
             #html = urllib.request.urlopen(sys.argv[1]).read()
