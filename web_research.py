@@ -267,7 +267,9 @@ if sec_q_button :
             webpage = urlopen(request).read()
             text = text_from_html (webpage)
             #print (text)
-
+            system_content = """ 
+            You are an excellent analyst with the ability to write comprehensive research report based on the information given to you.
+            """
             prompt_content = """ 
 
                 # Your Role
