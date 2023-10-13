@@ -1,3 +1,5 @@
+google-search-results
+google-serp-api
 plotly
 selenium
 bs4
