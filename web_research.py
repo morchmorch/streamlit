@@ -184,7 +184,7 @@ def serp_news_search (query_json) :
 	number = query_json['limit']
 
 	params = {
-        "api_key": st.secrets["SERPAPI_API_KEY"],         # https://serpapi.com/manage-api-key
+        "api_key": st.secrets["SERP_API_KEY"],         # https://serpapi.com/manage-api-key
         "engine": "google",       # serpapi parsing engine
         "q": search,         # search query
         "tbm": "nws"  ,            # news results
