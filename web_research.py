@@ -262,7 +262,12 @@ if sec_q_button :
             for link in links :
                 st.write ('reading ...  ' + link)
                 #st.markdown('#### Reading the URL ' + link)
-                st.markdown (' __Reading ...__  ' + link + ' \n **Analyzing and writing the report** ')
+                multi = ''' 
+                     __Reading ...__    {link}
+                     **Analyzing and writing the report**
+                '''.format(link=link)
+                #st.markdown (' __Reading ...__   ' + link + ' \n **Analyzing and writing the report** ')
+                st.markdown (multi)
                 request = Request(url=url, headers={'User-Agent': 'Mozilla/5.0'})
 
                 #html = urllib.request.urlopen(sys.argv[1]).read()
