@@ -251,7 +251,7 @@ response_after = "Here you go ...  "
 #partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
 objective = st.text_input("Topic", 'Report on latest CURL vulnerabilities')
 
-links = serp_news_search({'query': objective, 'limit': 5})
+links = serp_news_search({'query': objective, 'limit': 3})
 
 
 sec_q_button=st.button(button_name, key = 'sec_q_button')
@@ -333,5 +333,5 @@ if sec_q_button :
             completion = chat_complete (model = "gpt-3.5-turbo-16k", system_content=system_content, temperature=0.2, user_content=prompt_string ).completion
 
 
-            st.markdown (completion['choices'][0].message['function_call']['arguments'])
+            st.markdown (completion['choices'][0]["message"]["content"])
             time.sleep (5)
