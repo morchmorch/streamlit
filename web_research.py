@@ -245,11 +245,11 @@ url = "https://thehackernews.com/2023/09/financially-motivated-unc3944-threat.ht
 url = "https://nvd.nist.gov/vuln/detail/CVE-2023-41331"
 
 button_name = "Write Report"
-response_while = "Right on it, it should be around 5-10 seconds ... searching the web "
+response_while = "Right on it,  searching the web  .. it should be around 5-10 seconds ..."
 response_after = "Here you go ...  "
 
 #partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
-objective = st.text_input("Topic", 'Report on latest CURL vulnerabilities')
+objective = st.text_input("Topic you want to research and write a report on (ex- 'report on latest CURL vulnerabilities' or 'What are the stocks to buy in war times ?' )", 'Report on latest CURL vulnerabilities')
 
 links = serp_news_search({'query': objective, 'limit': 3})
 
