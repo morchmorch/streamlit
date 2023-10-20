@@ -251,7 +251,7 @@ response_after = "Here you go ...  "
 #partial_url = st.text_input('Enter any URL (ex - https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/) or a CVE ID (ex - CVE-2023-35708)', 'CVE-2023-35708')
 objective = st.text_input("Topic you want to research and write a report on (ex- 'report on latest CURL vulnerabilities' or 'What are the stocks to buy in war times ?' )", 'Report on latest CURL vulnerabilities')
 
-links = serp_news_search({'query': objective, 'limit': 5})
+links = serp_news_search({'query': objective, 'limit': 2})
 
 current_report = "NA"
 sec_q_button=st.button(button_name, key = 'sec_q_button')
@@ -348,4 +348,4 @@ if sec_q_button :
 
                 st.markdown (completion['choices'][0]["message"]["content"])
                 current_report = completion['choices'][0]["message"]["content"]
-                time.sleep (10)
+                time.sleep (5)
