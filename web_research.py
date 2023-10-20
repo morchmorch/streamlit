@@ -348,4 +348,4 @@ if sec_q_button :
 
                 st.markdown (completion['choices'][0]["message"]["content"])
                 current_report = completion['choices'][0]["message"]["content"]
-                time.sleep (5)
+                time.sleep (7)
